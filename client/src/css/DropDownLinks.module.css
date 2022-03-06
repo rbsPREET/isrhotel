@@ -1,0 +1,23 @@
+.dropDownContent {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 1.4rem); /* Dropdown height */
+    background-color: white;
+    padding: .75rem;
+    border-radius: 0.50rem;
+    min-width: 160px;
+    opacity: 1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    transition: opacity 250ms ease-in-out;
+    z-index: 1;
+}
+
+.dropDownContent span {
+    border-bottom: 0.1px solid rgb(231, 231, 231);
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
