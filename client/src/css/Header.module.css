@@ -1,0 +1,30 @@
+.container {
+    height: 100vh;
+    min-height: 620px;
+    background-color: aqua;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.wrapper{
+text-align: center;
+}
+
+.title p{
+    font-size: 30px;
+    color: #fff;
+    font-family: 'Niconne',cursive;
+    font-weight: 500;
+}
+
+.description p{
+        color: #fff;
+        font-weight: 600;
+        margin-top: 5px;
+        display: block;
+        margin-bottom: 5px;
+        font-size: 60px;
+        line-height: 1.1;
+}
