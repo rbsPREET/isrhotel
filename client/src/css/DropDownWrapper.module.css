@@ -1,0 +1,15 @@
+.menuItem {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 25px;
+}
+
+.menuItem:hover {
+    color: #ff5722;
+}
+
+.menuItem:hover > .dropDownContent {
+    opacity: 1;
+}
