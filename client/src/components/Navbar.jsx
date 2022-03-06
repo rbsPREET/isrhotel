@@ -1,17 +1,24 @@
 import React from 'react'
-import classes from '../css/Navbar.module.css';
+import {
+    Container,
+    Wrapper,
+    Left,
+    Logo,
+    Center,
+    Right
+} from '../css/styled-components'
 
 const Navbar = () => {
     return (
-        <div className={classes.container}>
-            <div className={classes.wrapper}>
-            <div className={classes.left}>
-                    <h1>ISRHOTEL</h1> {/* Will change to a real Logo */}
-                </div>
-                <div className={classes.center}>Center</div>
-                <div className={classes.right}>Right</div>
-            </div>
-        </div>
+        <Container>
+            <Wrapper>
+                <Left>
+                    <Logo>ISRHOTEL</Logo> {/* Will change to a real Logo */}
+                </Left>
+                <Center>Center</Center>
+                <Right>Right</Right>
+            </Wrapper>
+        </Container>
     )
 }
 
