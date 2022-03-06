@@ -14,18 +14,20 @@
   margin: 0 15px;
   height: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .input:not(:nth-child(3)) {
   border-right: 1px solid black;
 }
-.input > input {
+.input  input {
   margin-top: 10px;
   padding: 5px;
   border: unset;
 }
 
-.input > label {
+.input  label {
   margin-left: 5px;
   margin-top: 15px;
   color: #707e9c;
@@ -35,7 +37,7 @@
   display: block;
 }
 
-.input > input:focus-visible {
+.input  input:focus-visible {
   border: unset !important;
 }
 
