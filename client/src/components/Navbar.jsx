@@ -2,7 +2,6 @@ import classes from "../css/Navbar.module.css";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import DropDownWrapper from "../ui/DropDownWrapper";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
 import DropDownLinks from "../ui/DropDownLinks";
 import LiLink from "../ui/LiLink";
 const Navbar = () => {
@@ -28,6 +27,29 @@ const Navbar = () => {
     }
   };
 
+  const browseIsOpen = isOpenDropDown.browse && (
+    <DropDownLinks>
+      <LiLink to="/" linkName="Test" />
+      <LiLink to="/" linkName="Testt" />
+      <LiLink to="/" linkName="Testttt" />
+    </DropDownLinks>
+  );
+
+  const homeIsOpen = isOpenDropDown.home && (
+    <DropDownLinks>
+      <LiLink to="/" linkName="Test" />
+      <LiLink to="/" linkName="Testt" />
+      <LiLink to="/" linkName="Testttt" />
+    </DropDownLinks>
+  );
+  const pagesIsOpen = isOpenDropDown.pages && (
+    <DropDownLinks>
+      <LiLink to="/" linkName="Test" />
+      <LiLink to="/" linkName="Testt" />
+      <LiLink to="/" linkName="Testttt" />
+    </DropDownLinks>
+  );
+
   return (
     <div className={classes.container}>
       <div className={classes.wrapper}>
@@ -38,27 +60,25 @@ const Navbar = () => {
             openDropDown={openDropDown}
             name="Home"
             icon={<KeyboardArrowDownIcon />}
-          />
-
+          >
+            {homeIsOpen}
+          </DropDownWrapper>
           <DropDownWrapper
             openDropDown={openDropDown}
             name="Browse"
             icon={<KeyboardArrowDownIcon />}
           >
-            {isOpenDropDown.browse && (
-              <DropDownLinks>
-                <LiLink to="/" linkName="Test" />
-                <LiLink to="/" linkName="Testt" />
-                <LiLink to="/" linkName="Testttt" />
-              </DropDownLinks>
-            )}
+            {browseIsOpen}
           </DropDownWrapper>
 
           <DropDownWrapper
             openDropDown={openDropDown}
             name="Pages"
             icon={<KeyboardArrowDownIcon />}
-          />
+          >
+            {pagesIsOpen}
+          </DropDownWrapper>
+
           <LiLink to="/" className={classes.menuItem} linkName="Contact" />
         </div>
         <div className={classes.right}>
