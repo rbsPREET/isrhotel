@@ -3,7 +3,7 @@ import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import DropDownWrapper from "../ui/DropDownWrapper";
 import { useState } from "react";
 import DropDownLinks from "../ui/DropDownLinks";
-import LiLink from "../ui/LiLink";
+import LiNavLink from "../ui/LiNavLink";
 const Navbar = () => {
   const [isOpenDropDown, setIsOpen] = useState({
     home: false,
@@ -27,24 +27,24 @@ const Navbar = () => {
 
   const browseIsOpen = isOpenDropDown.browse && (
     <DropDownLinks>
-      <LiLink to="/" linkName="Test" />
-      <LiLink to="/" linkName="Testt" />
-      <LiLink to="/" linkName="Testttt" />
+      <LiNavLink to="/" linkName="Test" />
+      <LiNavLink to="/" linkName="Testt" />
+      <LiNavLink to="/" linkName="Testttt" />
     </DropDownLinks>
   );
 
   const homeIsOpen = isOpenDropDown.home && (
     <DropDownLinks>
-      <LiLink to="/" linkName="Test" />
-      <LiLink to="/" linkName="Testt" />
-      <LiLink to="/" linkName="Testttt" />
+      <LiNavLink to="/" linkName="Test" />
+      <LiNavLink to="/" linkName="Testt" />
+      <LiNavLink to="/" linkName="Testttt" />
     </DropDownLinks>
   );
   const pagesIsOpen = isOpenDropDown.pages && (
     <DropDownLinks>
-      <LiLink to="/" linkName="Test" />
-      <LiLink to="/" linkName="Testt" />
-      <LiLink to="/" linkName="Testttt" />
+      <LiNavLink to="/" linkName="Test" />
+      <LiNavLink to="/" linkName="Testt" />
+      <LiNavLink to="/" linkName="Testttt" />
     </DropDownLinks>
   );
 
@@ -77,7 +77,7 @@ const Navbar = () => {
             {pagesIsOpen}
           </DropDownWrapper>
 
-          <LiLink to="/" className={classes.menuItem} linkName="Contact" />
+          <LiNavLink to="/" className={classes.menuItem} linkName="Contact" />
         </div>
         <div className={classes.right}>
           <button className={classes.hostButton}>Become a Host</button>

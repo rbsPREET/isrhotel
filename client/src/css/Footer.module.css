@@ -1,0 +1,110 @@
+.container {
+    display: flex;
+    background-color: #2e3446;
+    color: #858b9f;   
+}
+
+.wrapper {
+    display: flex;
+    height: 100%;
+    justify-content: flex-end;
+    width: 75%;
+    margin: 20px auto;
+}
+
+/* Left */
+
+.left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.title {
+    margin-bottom: 10px;
+}
+
+.subTitle {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.email:hover {
+    cursor: pointer;
+    color: #ff5722;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.description {
+    margin: 20px 0px;
+} 
+
+.socialContainer {
+    display: flex;
+}
+
+.socialIcon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.contactItem {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+/* Center */
+
+.center {
+    flex: 1;
+    padding: 20px;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+/* Right */
+
+.right {
+    flex: 1;
+    padding: 20px;
+}
+
+.appItem {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    border: solid 1px black;
+}
+
+.payment {
+    width: 50%;
+}
+
+@media only screen and (max-width: 380px) {
+    .container {
+        flex-direction: column;
+    }
+    .center {
+        display: none;
+    }
+}
