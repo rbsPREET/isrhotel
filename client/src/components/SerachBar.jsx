@@ -23,20 +23,24 @@ const SearchBar = () => {
     <div className={classes.container}>
       <form className="">
         <div className={classes.wrapper}>
-          <LocationIcon />
           <Country
+            icon={<LocationIcon />}
             mainDiv={classes.border__right}
             className={classes.select__country}
           />
-          <DatesIcon />
           <InputRangeDates
+            icon={<DatesIcon />}
             onChange={calenderChangedHandler}
             dates={dates}
             nameId="dates"
             label="Dates"
           />
-          <PeopleIcon />
-          <Input type="text" nameId="guests" label="Guests" />
+          <Input
+            icon={<PeopleIcon />}
+            type="text"
+            nameId="guests"
+            label="Guests"
+          />
           <SearchBarButton />
         </div>
       </form>
