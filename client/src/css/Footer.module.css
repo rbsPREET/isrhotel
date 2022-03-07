@@ -80,15 +80,6 @@
     flex-direction: column;
 }
 
-.listItem {
-    width: 50%;
-    margin-bottom: 20px;
-    cursor: pointer;
-}
-
-.listItem:hover {
-    color: white;
-}
 
 /* Right */
 
