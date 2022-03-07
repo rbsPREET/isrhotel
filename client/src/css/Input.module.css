@@ -1,0 +1,24 @@
+select {
+  padding: 10px;
+  border: unset;
+}
+
+input {
+  margin-top: 10px;
+  padding: 5px;
+  border: unset;
+}
+
+label {
+  margin-left: 15px;
+  margin-top: 15px;
+  color: #707e9c;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.8;
+  display: block;
+}
+
+input:focus-visible {
+  border: unset !important;
+}

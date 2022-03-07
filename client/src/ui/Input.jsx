@@ -1,15 +1,16 @@
-import classes from "../css/Input.module.css";
+import "../css/Input.module.css";
+import { InputWrapper } from "./InputWrapper";
 
 const Input = (props) => {
   return (
-    <div className={classes.input}>
+    <InputWrapper mainDiv={props.mainDiv}>
       <label htmlFor={props.nameId}>{props.label}</label>
       {props.type === ("text" || "number" || "email" || "tel") && (
         <input
           placeholder={props.placeholder}
           type={props.tpye}
           name={props.nameId}
-          className={props.classes}
+          className={props.className}
           id={props.nameId}
           onChange={props.onChange}
           onBlur={props.onBlur}
@@ -18,7 +19,7 @@ const Input = (props) => {
       {props.type === "select" && (
         <select
           name={props.nameId}
-          className={props.classes}
+          className={props.className}
           id={props.nameId}
           onChange={props.onChange}
           onBlur={props.onBlur}
@@ -30,7 +31,7 @@ const Input = (props) => {
           ))}
         </select>
       )}
-    </div>
+    </InputWrapper>
   );
 };
 

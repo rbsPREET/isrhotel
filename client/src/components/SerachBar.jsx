@@ -6,25 +6,37 @@ import PeopleIcon from "@material-ui/icons/EmojiPeopleOutlined";
 import Input from "../ui/Input";
 import { Country } from "./Country";
 
+import { useEffect, useState } from "react";
+import { InputRangeDates } from "../ui/InputRangeDates";
 
 const SearchBar = () => {
+  const [dates, setDates] = useState([new Date(), new Date()]);
+
+  const calenderChangedHandler = (value) => {
+    setDates(value);
+  };
+  useEffect(() => {
+    console.log(dates);
+  }, [dates]);
 
   return (
     <div className={classes.container}>
       <form className="">
         <div className={classes.wrapper}>
-          <div className={`${classes.input} ${classes.location}`}>
-            <LocationIcon />
-            <Country/>
-          </div>
-          <div className={`${classes.input} ${classes.dates}`}>
-            <DatesIcon />
-            <Input type="text" nameId="dates" label="From - To" />
-          </div>
-          <div className={classes.input}>
-            <PeopleIcon />
-            <Input type="text" nameId="guests" label="Guests" />
-          </div>
+          <LocationIcon />
+          <Country
+            mainDiv={classes.border__right}
+            className={classes.select__country}
+          />
+          <DatesIcon />
+          <InputRangeDates
+            onChange={calenderChangedHandler}
+            dates={dates}
+            nameId="dates"
+            label="Dates"
+          />
+          <PeopleIcon />
+          <Input type="text" nameId="guests" label="Guests" />
           <SearchBarButton />
         </div>
       </form>
