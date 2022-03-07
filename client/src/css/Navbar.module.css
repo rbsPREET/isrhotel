@@ -1,35 +1,36 @@
 .container {
-    height: 70px;
-    background-color: #f5ebebed;
+  height: 70px;
+  background-color: #f5ebebed;
 }
 
 .wrapper {
-    padding: 12px 20px; 
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 75%;
-    margin: 0 auto;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .left {
-    flex: 1;
-    display: flex;
-    align-items: center;
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .right {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .hostButton {
-    background-color: #ff5722;
-    color: #efefef;
-    border: none;
-    text-align: center;
-    padding: 15px 20px;
-    border-radius: 25px;
+  background-color: #ff5722;
+  color: #efefef;
+  border: none;
+  text-align: center;
+  padding: 15px 20px;
+  border-radius: 25px;
 }

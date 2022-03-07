@@ -2,7 +2,9 @@ import classes from "../css/Navbar.module.css";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import DropDownWrapper from "../ui/DropDownWrapper";
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import DropDownLinks from "../ui/DropDownLinks";
+import LiLink from "../ui/LiLink";
 const Navbar = () => {
   const [isOpenDropDown, setIsOpen] = useState({
     home: false,
@@ -15,6 +17,7 @@ const Navbar = () => {
     for (name in isOpenDropDown) {
       if (name === dropName.toLowerCase()) {
         const open = JSON.parse(`{"${name}":${isOpen}}`);
+
         setIsOpen((prev) => {
           return {
             ...prev,
@@ -29,25 +32,34 @@ const Navbar = () => {
     <div className={classes.container}>
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <h1>ISRHOTEL</h1> {/* Will change to a real Logo */}
-          <DropDownWrapper openDropDown={openDropDown} name="Home">
-            <KeyboardArrowDownIcon />
-          </DropDownWrapper>
-          <DropDownWrapper openDropDown={openDropDown} name="Browse">
-            <KeyboardArrowDownIcon />
+          <h1>ISRHOTEL</h1>
+
+          <DropDownWrapper
+            openDropDown={openDropDown}
+            name="Home"
+            icon={<KeyboardArrowDownIcon />}
+          />
+
+          <DropDownWrapper
+            openDropDown={openDropDown}
+            name="Browse"
+            icon={<KeyboardArrowDownIcon />}
+          >
             {isOpenDropDown.browse && (
               <DropDownLinks>
-                {/* Change to Router later */}
-                <span>Test</span>
-                <span>Testt</span>
-                <span>Testtt</span>
+                <LiLink to="/" linkName="Test" />
+                <LiLink to="/" linkName="Testt" />
+                <LiLink to="/" linkName="Testttt" />
               </DropDownLinks>
             )}
           </DropDownWrapper>
-          <DropDownWrapper openDropDown={openDropDown} name="Pages">
-            <KeyboardArrowDownIcon />
-          </DropDownWrapper>
-          <div className={classes.menuItem}>Contact</div>
+
+          <DropDownWrapper
+            openDropDown={openDropDown}
+            name="Pages"
+            icon={<KeyboardArrowDownIcon />}
+          />
+          <LiLink to="/" className={classes.menuItem} linkName="Contact" />
         </div>
         <div className={classes.right}>
           <button className={classes.hostButton}>Become a Host</button>

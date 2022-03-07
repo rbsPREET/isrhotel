@@ -4,12 +4,9 @@
     align-items: center;
     cursor: pointer;
     margin-left: 25px;
+    height: 50px;
 }
 
 .menuItem:hover {
     color: #ff5722;
-}
-
-.menuItem:hover > .dropDownContent {
-    opacity: 1;
 }
