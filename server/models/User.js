@@ -1,31 +1,40 @@
 const mongoose = require("mongoose")
 const Order = require("./Order")
 
-const UserSchema = new mongoose.Schema(
-    {
-        username: {
+const UserSchema = new mongoose.Schema({
+    fullDetails: {
+        firstName: {
             type: String,
             required: true,
-            unique: true
         },
-        password: {
-            type: String,
-            required: true
-        },
-        email: {
+        lastName: {
             type: String,
             required: true,
-            unique: true
         },
-        pendingOrder: { // If user has an unfinished order
-            type: Order,
-            required: false
+        address: {
+            type: String,
+            required: true,
         },
-        isAdmin: {
-            type: Boolean,
-            default: false
+        phone: {
+            type: Number,
+            required: true,
         }
-    }, { timestamps: true }
-)
+    },
+    password: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
+}, {
+    timestamps: true
+})
 
 module.exports = mongoose.model("User", UserSchema)
