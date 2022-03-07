@@ -5,24 +5,16 @@ import { useState } from "react";
 import DropDownLinks from "../ui/DropDownLinks";
 import LiNavLink from "../ui/LiNavLink";
 const Navbar = () => {
-  const [isOpenDropDown, setIsOpen] = useState({
-    home: false,
-    browse: false,
-    pages: false,
-  });
+  const [isOpenDropDown, setIsOpen] = useState({});
 
   const openDropDown = (isOpen, dropName) => {
-    for (const name in isOpenDropDown) {
-      if (name === dropName.toLowerCase()) {
-        const open = JSON.parse(`{"${name}":${isOpen}}`);
-        setIsOpen((prev) => {
-          return {
-            ...prev,
-            ...open,
-          };
-        });
-      }
-    }
+    const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);
+    setIsOpen((prev) => {
+      return {
+        ...prev,
+        ...open,
+      };
+    });
   };
 
   const browseIsOpen = isOpenDropDown.browse && (
