@@ -21,7 +21,7 @@ const SearchBar = () => {
           </div>
           <div className={`${classes.input} ${classes.dates}`}>
             <DatesIcon />
-            <Input type="text" nameId="dates" label="Dates" />
+            <Input type="text" nameId="dates" label="From - To" />
           </div>
           <div className={classes.input}>
             <PeopleIcon />
