@@ -4,20 +4,18 @@ import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import DatesIcon from "@material-ui/icons/DateRangeOutlined";
 import PeopleIcon from "@material-ui/icons/EmojiPeopleOutlined";
 import Input from "../ui/Input";
+import { Country } from "./Country";
+
 
 const SearchBar = () => {
+
   return (
     <div className={classes.container}>
       <form className="">
         <div className={classes.wrapper}>
           <div className={`${classes.input} ${classes.location}`}>
             <LocationIcon />
-            <Input
-              placeholder="choose location"
-              type="text"
-              label="Location"
-              nameId="location"
-            />
+            <Country/>
           </div>
           <div className={`${classes.input} ${classes.dates}`}>
             <DatesIcon />
