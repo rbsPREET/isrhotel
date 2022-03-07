@@ -1,5 +1,5 @@
 .container {
-  margin: 0 1200px;
+  max-width: 1200px;
   border-radius: 0.6rem;
   background: #fff;
   display: flex;
@@ -7,46 +7,19 @@
 }
 .wrapper {
   width: 100%;
+  padding-left: 1%;
   align-items: center;
   display: flex;
 }
-
-.input {
-  margin: 0 15px;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
+.select__country {
+  width: 60%;
 }
-
-.input:not(:nth-child(3)) {
+.border__right {
   border-right: 1px solid black;
 }
-.input  input {
-  margin-top: 10px;
-  padding: 5px;
-  border: unset;
-}
-
-.input  label {
-  margin-left: 5px;
-  margin-top: 15px;
-  color: #707e9c;
-  font-size: 14px;
-  font-weight: 500;
-  opacity: 0.8;
-  display: block;
-}
-
-.input  input:focus-visible {
-  border: unset !important;
+.rs-icon {
+  display: none !important;
 }
 
 @media (min-width: 1024px) {
-    .location {
-    width: 300px;
-  }
-    .dates {
-    width: 200px;
-  }
 }

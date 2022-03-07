@@ -8,15 +8,13 @@ export const Country = (props) => {
   const data = Countries;
 
   useEffect(() => {
-    data((data) => {
-        
-        console.log(data);
-        setSelectOptions(data)
-    });
+    data((data) => setSelectOptions(data));
   }, [data]);
 
   return (
     <Input
+      mainDiv={props.mainDiv}
+      className={props.className}
       data={selectOptions}
       placeholder="choose location"
       type="select"
