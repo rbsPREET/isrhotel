@@ -1,40 +1,41 @@
 const mongoose = require("mongoose")
 
-const MallSchema = new mongoose.Schema(
-    {
-        title: {
-            type: String,
-            required: true,
-            unique: true
+const MallSchema = new mongoose.Schema({
+    title: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    description: {
+        type: String,
+        required: true,
+    },
+    img: {
+        type: Array,
+        required: true
+    },
+    guests: {
+        type: Array,
+        required: true
+    },
+    rooms: { // will include rooms & available rooms (obj in arr) with relation between hotel table and rooms table
+        roomId: {
+            type: mongoose.Schema.Types.ObjectId,
         },
-        description: {
-            type: String,
-            required: true,
-        },
-        img: {
-            type: Array,
-            required: true
-        },
-        guests: {
-            type: Array,
-            required: true
-        },
-        rooms: {
-            type: Array,
-        },
-        price: {
-            type: Number,
-            required: true
-        },
-        inStock: {
-            type: Boolean,
-            default: true
-        },
-        email: {
-            type: String,
-            required: true
+        availableAmount: {
+            type: Number
         }
-    }, { timestamps: true }
-)
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    }
+}, {
+    timestamps: true
+})
 
 module.exports = mongoose.model("Mall", MallSchema)
