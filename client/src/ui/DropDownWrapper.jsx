@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "../css/DropDownWrapper.module.css";
-const DropDownLink = React.forwardRef((props, ref) => {
+const DropDownLink = (props) => {
   const [isDroped, setDropDown] = useState(false);
 
   const toggle = () => {
@@ -8,16 +8,17 @@ const DropDownLink = React.forwardRef((props, ref) => {
     props.openDropDown(!isDroped, props.name);
   };
   return (
-    <div
+    <li
       ref={props.ref}
       onMouseEnter={toggle}
       onMouseLeave={toggle}
-      className={props.className + " " + classes.menuItem}
+      className={`${props.className ? props.className : ''} ${classes.menuItem}`}
     >
       {props.name}
+      {props.icon}
       {props.children}
-    </div>
+    </li>
   );
-});
+};
 
 export default DropDownLink;

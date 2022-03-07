@@ -1,9 +1,14 @@
+import { NavLink } from "react-router-dom";
 import classes from "../css/DropDownLinks.module.css";
 
-const DropDownLinks = (props) => (
-  <div className={classes.dropDownContent}>
-    {props.children}
-  </div>
-);
+const DropDownLinks = (props) => {
+  return (
+    <ul
+      className={`${classes.dropDownContent} ${classes.dropDownContentActive}`}
+    >
+      {props.children}
+    </ul>
+  );
+};
 
 export default DropDownLinks;
