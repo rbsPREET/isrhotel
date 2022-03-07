@@ -12,11 +12,9 @@ const Navbar = () => {
   });
 
   const openDropDown = (isOpen, dropName) => {
-    let name;
-    for (name in isOpenDropDown) {
+    for (const name in isOpenDropDown) {
       if (name === dropName.toLowerCase()) {
         const open = JSON.parse(`{"${name}":${isOpen}}`);
-
         setIsOpen((prev) => {
           return {
             ...prev,

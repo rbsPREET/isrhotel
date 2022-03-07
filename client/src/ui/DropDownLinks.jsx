@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import classes from "../css/DropDownLinks.module.css";
 
 const DropDownLinks = (props) => {
