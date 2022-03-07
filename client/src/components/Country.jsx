@@ -18,7 +18,7 @@ export const Country = (props) => {
         mainDiv={props.mainDiv}
         className={props.className}
         data={selectOptions}
-        placeholder="choose location"
+        placeholder="Choose the location you wanna stay!"
         type="select"
         label="Location"
         nameId="location"

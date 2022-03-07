@@ -12,14 +12,11 @@
   display: flex;
 }
 .select__country {
-  width: 60%;
+  width: 80%;
 }
 .border__right {
   border-right: 1px solid black;
 }
 .rs-icon {
   display: none !important;
-}
-
-@media (min-width: 1024px) {
 }

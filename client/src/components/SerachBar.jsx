@@ -30,6 +30,7 @@ const SearchBar = () => {
           />
           <InputRangeDates
             icon={<DatesIcon />}
+            mainDiv={classes.border__right}
             onChange={calenderChangedHandler}
             dates={dates}
             nameId="dates"
