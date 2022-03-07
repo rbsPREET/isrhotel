@@ -27,6 +27,7 @@ const Input = (props) => {
             onChange={props.onChange}
             onBlur={props.onBlur}
           >
+            <option>{props.placeholder}</option>
             {props.data.map((data) => (
               <option value={data.name} id={data.id} key={data.id}>
                 {data.name}
