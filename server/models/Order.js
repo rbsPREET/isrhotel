@@ -8,26 +8,23 @@ const OrderSchema = new mongoose.Schema({
     },
     orderDetails: {
         rooms: {
-            type: Array(mongoose.Schema.Types.ObjectId),
+            type: Array({
+                adults: Number,
+                children: Number,
+                amount: Number
+            }),
             required: true
         },
-        guestsAmount: {
-            room: {
-                type: mongoose.Schema.Types.ObjectId,
-                required: true
-            },
-            adults: {
-                type: Number
-            },
-            childrens: {
-                type: Number
-            },
-            amount: {
-                type: Number,
-                required: true
-            },
-        }
-
+        // adults: {
+        //     type: Number
+        // },
+        // childrens: {
+        //     type: Number
+        // },
+        // amount: {
+        //     type: Number,
+        //     required: true
+        // },
     },
     totalAmount: {
         type: Number,
