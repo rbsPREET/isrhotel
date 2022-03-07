@@ -4,27 +4,35 @@ const Room = require("./Room")
 const OrderSchema = new mongoose.Schema({
     userId: {
         type: String,
-        required: true
+        required: true,
+        ref: 'User'
+
     },
     orderDetails: {
         rooms: {
-            type: Array({
-                adults: Number,
-                children: Number,
-                amount: Number
-            }),
+            type: Array,
+            default: [{
+                adults: {
+                    type: Number,
+                    required: true
+                },
+                childrens: {
+                    type: Number,
+                    required: true
+
+                },
+                amount: {
+                    type: Number,
+                    required: true
+                },
+                room: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    required: true
+                }
+            }],
             required: true
         },
-        // adults: {
-        //     type: Number
-        // },
-        // childrens: {
-        //     type: Number
-        // },
-        // amount: {
-        //     type: Number,
-        //     required: true
-        // },
+
     },
     totalAmount: {
         type: Number,

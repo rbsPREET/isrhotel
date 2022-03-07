@@ -13,12 +13,20 @@ const RoomSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    img: {
+    images: {
         type: Array,
         required: true
     },
     guests: {
-        type: Number,
+        type: Array,
+        default: [{
+            adults: {
+                type: Number
+            },
+            childrens: {
+                type: Number
+            }
+        }],
         required: true
     },
     additions: {

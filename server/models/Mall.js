@@ -20,7 +20,8 @@ const MallSchema = new mongoose.Schema({
     },
     rooms: { // will include rooms & available rooms (obj in arr) with relation between hotel table and rooms table
         roomIds: {
-            type: Array(mongoose.Schema.Types.ObjectId),
+            type: Array,
+            ref: 'Room'
         },
         availableAmount: {
             type: Number
