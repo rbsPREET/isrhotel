@@ -1,8 +1,13 @@
+// Imports - main
 const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const cors = require("cors")
+
+// Imports - routes
+const userRoute = require("./routes/user")
+const authRoute = require("./routes/auth")
 
 // Allow .env file
 dotenv.config()
@@ -22,7 +27,8 @@ app.use(cors())
 app.use(express.json())
 
 // Routes
-/* app.use("/api/auth", authRoute) */
+app.use("/api/v1/auth", authRoute)
+app.use("/api/v1/users", userRoute)
 
 // Server
 app.listen(process.env.PORT || 5001, () => {
