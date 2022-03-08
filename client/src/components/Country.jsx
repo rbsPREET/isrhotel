@@ -4,13 +4,13 @@ import { Countries } from "../api/Countries";
 import React, { useEffect, useState } from "react";
 import useHttp from "../api/http";
 
-const Country = (props) => {
+const Country = ({ getDetails, icon, onBlur, type, label, nameId, placeholder, mainDiv, className }) => {
   const { sendRequest, data } = useHttp(Countries, true);
   const [country, setCountry] = useState("");
 
   const changeHandler = (value) => {
     setCountry(value);
-    props.getDetails(value, props.nameId);
+    getDetails(value, nameId);
   };
 
   useEffect(() => {
@@ -19,17 +19,17 @@ const Country = (props) => {
 
   return (
     <Input
-      mainDiv={props.mainDiv}
-      className={props.className}
-      icon={props.icon}
+      mainDiv={mainDiv}
+      className={className}
+      icon={icon}
       value={country}
       onChange={changeHandler}
-      onBlur={props.onBlur}
+      onBlur={onBlur}
       data={data}
-      placeholder={props.placeholder}
-      type={props.type}
-      label={props.label}
-      nameId={props.nameId}
+      placeholder={placeholder}
+      type={type}
+      label={label}
+      nameId={nameId}
     />
   );
 };
