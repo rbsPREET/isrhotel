@@ -1,9 +1,12 @@
-import { useReducer, useCallback } from 'react';
+import {
+  useReducer,
+  useCallback
+} from 'react';
 
 function httpReducer(state, action) {
   if (action.type === 'SEND') {
     return {
-      data: null,
+      data: [],
       error: null,
       status: 'pending',
     };
@@ -19,7 +22,7 @@ function httpReducer(state, action) {
 
   if (action.type === 'ERROR') {
     return {
-      data: null,
+      data: [],
       error: action.errorMessage,
       status: 'completed',
     };
@@ -28,27 +31,32 @@ function httpReducer(state, action) {
   return state;
 }
 
-function useHttp(requestFunction, startWithPending = false) {
+const useHttp = (requestFunction, startWithPending = false) => {
   const [httpState, dispatch] = useReducer(httpReducer, {
     status: startWithPending ? 'pending' : null,
-    data: null,
+    data: [],
     error: null,
   });
 
   const sendRequest = useCallback(
-    async function (requestData) {
-      dispatch({ type: 'SEND' });
-      try {
-        const responseData = await requestFunction(requestData);
-        dispatch({ type: 'SUCCESS', responseData });
-      } catch (error) {
+    async (requestData) => {
         dispatch({
-          type: 'ERROR',
-          errorMessage: error.message || 'Something went wrong!',
+          type: 'SEND'
         });
-      }
-    },
-    [requestFunction]
+        try {
+          const responseData = await requestFunction(requestData);
+          dispatch({
+            type: 'SUCCESS',
+            responseData
+          });
+        } catch (error) {
+          dispatch({
+            type: 'ERROR',
+            errorMessage: error.message || 'Something went wrong!',
+          });
+        }
+      },
+      [requestFunction]
   );
 
   return {
