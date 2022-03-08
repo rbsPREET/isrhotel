@@ -45,7 +45,7 @@ const Navbar = () => {
       <div className={classes.wrapper}>
         <div className={classes.left}>
           <h1>ISRHOTEL</h1>
-          <ul style={{ marginBottom: "unset !important" }}>
+          <ul style={{ marginBottom : "unset" }}>
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Home"
