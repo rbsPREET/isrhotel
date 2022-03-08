@@ -3,6 +3,7 @@
   min-height: 620px;
   background-color: aqua;
   display: flex;
+  z-index: 200;
   background-size: cover !important;
   background-position: center !important;
   background-image: url("../assets/images/header-photo.jpg");

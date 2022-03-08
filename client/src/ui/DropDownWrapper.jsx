@@ -9,7 +9,6 @@ const DropDownLink = (props) => {
   };
   return (
     <li
-      ref={props.ref}
       onMouseEnter={toggle.bind(null,props.name)}
       onMouseLeave={toggle.bind(null,props.name)}
       className={`${props.className ? props.className : ''} ${classes.menuItem}`}
