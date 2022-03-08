@@ -1,15 +1,15 @@
 import Input from "../ui/Input";
 
 import { Countries } from "../api/Countries";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect } from "react";
+import useHttp from "../api/http";
 
 export const Country = (props) => {
-  const [selectOptions, setSelectOptions] = useState([]);
-  const data = Countries;
+  const { sendRequest, data } = useHttp(Countries, true);
 
   useEffect(() => {
-    data((data) => setSelectOptions(data));
-  }, [data]);
+    sendRequest();
+  }, [sendRequest]);
 
   return (
     <Fragment>
@@ -17,7 +17,7 @@ export const Country = (props) => {
       <Input
         mainDiv={props.mainDiv}
         className={props.className}
-        data={selectOptions}
+        data={data}
         placeholder="Choose the location you wanna stay!"
         type="select"
         label="Location"
