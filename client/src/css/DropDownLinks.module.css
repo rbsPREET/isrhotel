@@ -12,16 +12,13 @@
     z-index: 1;
 }
 
-.dropDownContent span {
-    border-bottom: 0.1px solid rgb(231, 231, 231);
-    float: none;
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
 .dropDownContentActive {
     opacity: 1;
+    transition: all .6s ease-in-out;
+
+}
+
+.ul{
+    display: flex;
+    flex-direction: column;
 }
