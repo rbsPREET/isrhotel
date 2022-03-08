@@ -4,9 +4,14 @@ import DropDownWrapper from "../ui/DropDownWrapper";
 import { useState } from "react";
 import DropDownLinks from "../ui/DropDownLinks";
 import LiNavLink from "../ui/LiNavLink";
-const Navbar = () => {
-  const [isOpenDropDown, setIsOpen] = useState({});
+import Transition from "react-transition-group/Transition";
 
+const Navbar = () => {
+  const [isOpenDropDown, setIsOpen] = useState({
+    browse: false,
+    pages: false,
+    home: false,
+  });
   const openDropDown = (isOpen, dropName) => {
     const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);
     setIsOpen((prev) => {
@@ -18,35 +23,47 @@ const Navbar = () => {
   };
 
   const browseIsOpen = (
-    <DropDownLinks
-      open={isOpenDropDown.browse}
-      style={{ height: `${45 * 3 + 20}px` }}
-    >
-      <LiNavLink to="/" linkName="Test" />
-      <LiNavLink to="/" linkName="Testt" />
-      <LiNavLink to="/" linkName="Testttt" />
-    </DropDownLinks>
+    <Transition unmountOnExit in={isOpenDropDown.browse} timeout={150}>
+      {(state) => (
+        <DropDownLinks
+          open={state === "entered" && isOpenDropDown.browse}
+          style={{ height: `${45 * 3 + 20}px` }}
+        >
+          <LiNavLink to="/" linkName="Test" />
+          <LiNavLink to="/" linkName="Testt" />
+          <LiNavLink to="/" linkName="Testttt" />
+        </DropDownLinks>
+      )}
+    </Transition>
   );
 
   const homeIsOpen = (
-    <DropDownLinks
-      open={isOpenDropDown.home}
-      style={{ height: `${45 * 3 + 20}px` }}
-    >
-      <LiNavLink to="/" linkName="Test" />
-      <LiNavLink to="/" linkName="Testt" />
-      <LiNavLink to="/" linkName="Testttt" />
-    </DropDownLinks>
+    <Transition unmountOnExit in={isOpenDropDown.home} timeout={150}>
+      {(state) => (
+        <DropDownLinks
+          open={state === "entered" && isOpenDropDown.home}
+          style={{ height: `${45 * 3 + 20}px` }}
+        >
+          <LiNavLink to="/" linkName="Test" />
+          <LiNavLink to="/" linkName="Testt" />
+          <LiNavLink to="/" linkName="Testttt" />
+        </DropDownLinks>
+      )}
+    </Transition>
   );
   const pagesIsOpen = (
-    <DropDownLinks
-      open={isOpenDropDown.pages}
-      style={{ height: `${45 * 3 + 20}px` }}
-    >
-      <LiNavLink to="/" linkName="Test" />
-      <LiNavLink to="/" linkName="Testt" />
-      <LiNavLink to="/" linkName="Testttt" />
-    </DropDownLinks>
+    <Transition unmountOnExit in={isOpenDropDown.pages} timeout={150}>
+      {(state) => (
+        <DropDownLinks
+          open={state === "entered" && isOpenDropDown.pages}
+          style={{ height: `${45 * 3 + 20}px` }}
+        >
+          <LiNavLink to="/" linkName="Test" />
+          <LiNavLink to="/" linkName="Testt" />
+          <LiNavLink to="/" linkName="Testttt" />
+        </DropDownLinks>
+      )}
+    </Transition>
   );
 
   return (
