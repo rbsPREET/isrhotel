@@ -5,8 +5,7 @@ import { InputWrapper } from "./InputWrapper";
 const Input = (props) => {
   return (
     <Fragment>
-      {props.icon}
-      <InputWrapper mainDiv={props.mainDiv}>
+      <InputWrapper icon={props.icon} mainDiv={props.mainDiv}>
         <label htmlFor={props.nameId}>{props.label}</label>
         {props.type === ("text" || "number" || "email" || "tel") && (
           <input
