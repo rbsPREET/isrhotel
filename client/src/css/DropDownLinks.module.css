@@ -1,24 +1,26 @@
 .dropDownContent {
-    position: absolute;
-    left: 0;
-    top:100%; /* Dropdown height */
-    background-color: white;
-    padding: .75rem;
-    border-radius: 0.50rem;
-    min-width: 160px;
-    opacity: 0;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    transition: all .6s ease-in-out;
-    z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 60%; /* Dropdown height */
+  background-color: white;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  min-width: 160px;
+  opacity: 0;
+  height: 0px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.6s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
 }
 
 .dropDownContentActive {
-    opacity: 1;
-    transition: all .6s ease-in-out;
-
+  opacity: 1;
+  top:100% !important;
+  transition: all 0.6s ease-in-out;
 }
 
-.ul{
-    display: flex;
-    flex-direction: column;
+.ul {
+  display: flex;
+  flex-direction: column;
 }

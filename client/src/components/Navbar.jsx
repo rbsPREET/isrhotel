@@ -18,7 +18,10 @@ const Navbar = () => {
   };
 
   const browseIsOpen = (
-    <DropDownLinks open={isOpenDropDown.browse}>
+    <DropDownLinks
+      open={isOpenDropDown.browse}
+      style={{ height: `${45 * 3 + 20}px` }}
+    >
       <LiNavLink to="/" linkName="Test" />
       <LiNavLink to="/" linkName="Testt" />
       <LiNavLink to="/" linkName="Testttt" />
@@ -26,14 +29,20 @@ const Navbar = () => {
   );
 
   const homeIsOpen = (
-    <DropDownLinks open={isOpenDropDown.home}>
+    <DropDownLinks
+      open={isOpenDropDown.home}
+      style={{ height: `${45 * 3 + 20}px` }}
+    >
       <LiNavLink to="/" linkName="Test" />
       <LiNavLink to="/" linkName="Testt" />
       <LiNavLink to="/" linkName="Testttt" />
     </DropDownLinks>
   );
   const pagesIsOpen = (
-    <DropDownLinks open={isOpenDropDown.pages}>
+    <DropDownLinks
+      open={isOpenDropDown.pages}
+      style={{ height: `${45 * 3 + 20}px` }}
+    >
       <LiNavLink to="/" linkName="Test" />
       <LiNavLink to="/" linkName="Testt" />
       <LiNavLink to="/" linkName="Testttt" />
@@ -45,7 +54,7 @@ const Navbar = () => {
       <div className={classes.wrapper}>
         <div className={classes.left}>
           <h1>ISRHOTEL</h1>
-          <ul style={{ marginBottom : "unset" }}>
+          <ul style={{ marginBottom: "unset" }}>
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Home"
