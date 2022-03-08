@@ -5,20 +5,10 @@ import DatesIcon from "@material-ui/icons/DateRangeOutlined";
 import PeopleIcon from "@material-ui/icons/EmojiPeopleOutlined";
 import Input from "../ui/Input";
 import { Country } from "./Country";
-
 import { useEffect, useState } from "react";
 import { InputRangeDates } from "../ui/InputRangeDates";
 
 const SearchBar = () => {
-  const [dates, setDates] = useState([new Date(), new Date()]);
-
-  const calenderChangedHandler = (value) => {
-    setDates(value);
-  };
-  useEffect(() => {
-    console.log(dates);
-  }, [dates]);
-
   return (
     <div className={classes.container}>
       <form className="">
@@ -31,8 +21,6 @@ const SearchBar = () => {
           <InputRangeDates
             icon={<DatesIcon />}
             mainDiv={classes.border__right}
-            onChange={calenderChangedHandler}
-            dates={dates}
             nameId="dates"
             label="Dates"
           />
