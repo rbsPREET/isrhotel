@@ -1,26 +1,26 @@
-.input {
-    margin: 0 15px;
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
+.wrapper {
+  margin: 0 15px;
 }
-  .input  input {
-    margin-top: 10px;
-    padding: 5px;
-    border: unset;
-  }
+.flex {
+  display: flex;
+  align-items: center;
+}
+.input input {
+  margin-top: 10px;
+  padding: 5px;
+  border: unset;
+}
 
-  .input  label {
-    margin-left: 15px;
-    margin-top: 15px;
-    color: #707e9c;
-    font-size: 14px;
-    font-weight: 500;
-    opacity: 0.8;
-    display: block;
-  }
-  
-  .input  input:focus-visible {
-    border: unset !important;
-  }
+.input label {
+  margin-left: 15px;
+  margin-top: 15px;
+  color: #707e9c;
+  font-size: 14px;
+  font-weight: 500;
+  opacity: 0.8;
+  display: block;
+}
+
+.input input:focus-visible {
+  border: unset !important;
+}

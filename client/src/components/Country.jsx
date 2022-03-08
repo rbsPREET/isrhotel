@@ -12,17 +12,15 @@ export const Country = (props) => {
   }, [sendRequest]);
 
   return (
-    <Fragment>
-      {props.icon}
       <Input
         mainDiv={props.mainDiv}
         className={props.className}
+        icon={props.icon}
         data={data}
         placeholder="Choose the location you wanna stay!"
         type="select"
         label="Location"
         nameId="location"
       />
-    </Fragment>
   );
 };
