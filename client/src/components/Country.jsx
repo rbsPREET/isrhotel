@@ -1,6 +1,3 @@
-import Input from "../ui/Input";
-
-import { Countries } from "../api/Countries";
 import React, { useEffect, useState } from "react";
 import useHttp from "../api/http";
 
@@ -14,8 +11,7 @@ const Country = (props) => {
   };
 
   useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
+	@@ -19,17 +19,17 @@ const Country = (props) => {
 
   return (
     <Input
@@ -33,4 +29,3 @@ const Country = (props) => {
     />
   );
 };
-export default Country;
