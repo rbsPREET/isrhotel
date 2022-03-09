@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Transition from "react-transition-group/Transition";
 const Select = (props) => {
   const [optionsOpen, setOptionsOpen] = useState(false);
+  const [options, setOptionsData] = useState([]);
   const select = useRef();
   const [chosenOption, setChosenOption] = useState({
     id: null,
@@ -14,6 +15,19 @@ const Select = (props) => {
     if (document.body !== e.target) {
       setOptionsOpen(!optionsOpen);
     }
+  };
+
+  const changeOptionHandler = (e) => {
+    const availableCountries = props.options.filter((option) =>
+      option.name.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    setOptionsData(availableCountries);
+    setChosenOption((prev) => {
+      return {
+        ...prev,
+        name: e.target.value,
+      };
+    });
   };
 
   const chosenOptionHandler = (e) => {
@@ -41,7 +55,7 @@ const Select = (props) => {
   useEffect(() => {
     document.addEventListener("keydown", escPress);
     return () => document.removeEventListener("keydown", escPress);
-  }, [escPress]);
+  }, [escPress, options]);
 
   return (
     <InputWrapper
@@ -60,7 +74,7 @@ const Select = (props) => {
             select.current = node;
           }}
           value={chosenOption.name}
-          onChange={chosenOptionHandler}
+          onChange={changeOptionHandler}
           type="text"
           className={classes.input}
           placeholder={props.placeholder}
@@ -75,10 +89,10 @@ const Select = (props) => {
                 state === "entered" && classes.optionItemOpen
               }`}
             >
-              {props.options.map((option) => (
+              {options.map((option) => (
                 <p
                   onClick={chosenOptionHandler}
-                  id={option.name.split(" ").join("-").toLowerCase()}
+                  id={option.name}
                   key={option.id}
                 >
                   {option.name}
