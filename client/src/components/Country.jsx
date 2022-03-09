@@ -1,5 +1,3 @@
-import Input from "../ui/Input";
-
 import { Countries } from "../api/Countries";
 import React, { Fragment, useEffect, useState } from "react";
 import useHttp from "../api/http";
@@ -31,19 +29,6 @@ const Country = (props) => {
         className={props.className}
         mainDiv={props.mainDiv}
       />
-      {/* <Input
-        mainDiv={props.mainDiv}
-        className={props.className}
-        icon={props.icon}
-        value={country}
-        onChange={changeHandler}
-        onBlur={props.onBlur}
-        data={data}
-        placeholder={props.placeholder}
-        type={props.type}
-        label={props.label}
-        nameId={props.nameId}
-      /> */}
     </Fragment>
   );
 };

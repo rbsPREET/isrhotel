@@ -1,6 +1,18 @@
 .optionsWrapper {
   height: 30px;
+  transition: all 0.5s ease-in-out;
   overflow: hidden;
+}
+.optionsWrapper input {
+  cursor: pointer;
+}
+.optionWrapperGoingToBeClose {
+  position: absolute;
+  height: 30px;
+  width: 15%;
+  top: 66%;
+
+  transition: all 0.5s ease-in-out;
 }
 .optionsWrapperOpen {
   overflow-y: scroll !important;
@@ -12,6 +24,7 @@
 }
 
 .optionItemOpen {
+  top: 66%;
   background-color: white;
   border-left: 1px solid rgba(102, 102, 102, 0.247);
   border-right: 1px solid rgba(102, 102, 102, 0.247);
@@ -23,6 +36,10 @@
   position: absolute;
   transition: all 0.5s ease-in-out;
 }
+
+.optionItemOpen input {
+  cursor: unset !important;
+}
 .customWidth {
   width: 350px;
 }
@@ -33,7 +50,9 @@
   transition: all 0.5s ease-in-out;
 }
 
-.WrapperOptionItemOpen p {
+.WrapperOptionItemOpen p,
+.optionWrapperGoingToBeClose p {
+  cursor: pointer;
   padding: 10px;
 }
 .WrapperOptionItemOpen p:hover {

@@ -8,7 +8,7 @@ import Country from "./Country";
 import InputRangeDates from "../ui/InputRangeDates";
 import { useEffect, useState } from "react";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [details, setDetails] = useState({
     location: null,
     dates: null,
@@ -46,9 +46,7 @@ const SearchBar = () => {
     }
   };
 
-  useEffect(() => {
-    console.log(details);
-  }, [details]);
+  useEffect(() => {}, [details]);
 
   return (
     <div className={classes.container}>
