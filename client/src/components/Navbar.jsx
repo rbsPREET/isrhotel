@@ -13,14 +13,14 @@ const Navbar = () => {
     pages: false,
     home: false,
   });
-  
-    // Login/Register Modal State
-  const [activeModal, setActiveModal] = useState(false)
+
+  // Login/Register Modal State
+  const [activeModal, setActiveModal] = useState(false);
 
   const openModal = () => {
-    setActiveModal(prev => !prev)
-  }
-  
+    setActiveModal((prev) => !prev);
+  };
+
   const openDropDown = (isOpen, dropName) => {
     const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);
     setIsOpen((prev) => {
@@ -75,8 +75,19 @@ const Navbar = () => {
     </Transition>
   );
 
+  const modal = (
+    <Transition unmountOnExit in={activeModal} timeout={150}>
+      {(state) => (
+        <Modal
+          activeModal={state === "entered" && activeModal}
+          setActiveModal={setActiveModal}
+        />
+      )}
+    </Transition>
+  );
   return (
     <div className={classes.container}>
+      {modal}
       <div className={classes.wrapper}>
         <div className={classes.left}>
           <h1>ISRHOTEL</h1>
@@ -109,8 +120,9 @@ const Navbar = () => {
         </div>
         {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
-          <button onClick={openModal} className={classes.loginButton}>Login</button>
-          <Modal activeModal={activeModal} setActiveModal={setActiveModal} />
+          <button onClick={openModal} className={classes.loginButton}>
+            Login
+          </button>
         </div>
       </div>
     </div>
