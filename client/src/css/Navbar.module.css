@@ -25,7 +25,13 @@
   align-items: center;
   justify-content: flex-end;
 }
-
+ul {
+  display: flex;
+  align-items: center;
+}
+ul > li.menuItem {
+  margin: 0 5px;
+}
 .hostButton {
   background-color: #ff5722;
   color: #efefef;
