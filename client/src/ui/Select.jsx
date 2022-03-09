@@ -4,17 +4,18 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Transition from "react-transition-group/Transition";
 const Select = (props) => {
   const [optionsOpen, setOptionsOpen] = useState(false);
-  const [transitionState, setTransitionState] = useState("");
   const select = useRef();
   const [chosenOption, setChosenOption] = useState({
     id: null,
     name: "",
   });
+
   const closeOptionsHandler = (e) => {
     if (document.body !== e.target) {
       setOptionsOpen(!optionsOpen);
     }
   };
+
   const chosenOptionHandler = (e) => {
     setChosenOption((prev) => {
       return {
@@ -23,11 +24,10 @@ const Select = (props) => {
       };
     });
   };
-  const InputWrapperClasses = `
-  ${props.mainDiv} ${optionsOpen && classes.WrapperOptionItemOpen} 
-   ${
-     transitionState === "exiting" && classes.WrapperOptionItemGoingToBeClose
-   } `;
+
+  const InputWrapperClasses = ` ${props.mainDiv} ${
+    optionsOpen && classes.WrapperOptionItemOpen
+  } `;
 
   const escPress = useCallback(
     (e) => {
@@ -43,15 +43,12 @@ const Select = (props) => {
     return () => document.removeEventListener("keydown", escPress);
   }, [escPress]);
 
-  useEffect(() => {
-    console.log(optionsOpen);
-  }, [optionsOpen]);
   return (
     <InputWrapper
       onClick={closeOptionsHandler}
       customWidth={classes.customWidth}
       icon={props.icon}
-      className={classes.defaultInputWidth}
+      className={classes.defaultInputWMT}
       mainDiv={InputWrapperClasses}
     >
       <span className={classes.span} defaultValue={props.label}>
@@ -72,7 +69,6 @@ const Select = (props) => {
 
       <Transition mountOnEnter unmountOnExit in={optionsOpen} timeout={500}>
         {(state) => {
-          setTransitionState(state);
           return (
             <div
               className={`${classes.optionsWrapper} ${
@@ -80,11 +76,14 @@ const Select = (props) => {
               }`}
             >
               {props.options.map((option) => (
-                <p onClick={chosenOptionHandler} id={option.id} key={option.id}>
+                <p
+                  onClick={chosenOptionHandler}
+                  id={option.name.split(" ").join("-").toLowerCase()}
+                  key={option.id}
+                >
                   {option.name}
                 </p>
               ))}
-              ;
             </div>
           );
         }}
