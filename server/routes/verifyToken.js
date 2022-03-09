@@ -1,10 +1,5 @@
 const jwt = require("jsonwebtoken")
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
-    next();
-});
-
 // Token when User login
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers.token
@@ -57,5 +52,6 @@ const verifyAdminOrSelfUser = (req, res, next) => {
 module.exports = {
     verifyToken,
     verifyTokenAndAuthorization,
-    verifyTokenAndAdmin
+    verifyTokenAndAdmin,
+    verifyAdminOrSelfUser
 }
