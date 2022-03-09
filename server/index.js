@@ -9,6 +9,7 @@ const bodyParger = require('body-parser');
 // Imports - routes
 const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
+const mallRoute = require("./routes/mall")
 
 // Allow .env file
 dotenv.config()
@@ -35,11 +36,10 @@ app.use(bodyParger.json())
 // Cors
 app.use(cors())
 
-
-
 // Routes
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/users", userRoute)
+app.use("/api/v1/malls", mallRoute)
 
 // Server
 app.listen(process.env.PORT || 5001, () => {
