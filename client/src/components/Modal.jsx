@@ -14,7 +14,7 @@ export const Modal = (props) => {
         lastName: "levy",
         address: "address test",
         phone: "0525938898",
-        email: "dogr@dor.com",
+        email: "dorwgr@dor.com",
         password: "123456",
       })
     );

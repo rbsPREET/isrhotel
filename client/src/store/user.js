@@ -24,7 +24,7 @@ const userSlice = createSlice({
 })
 
 export const storeUser = (data) => {
-    return async dispatch => {
+    return () => {
         const sendRequest = async () => {
             const response = await axios.post("http://localhost:5000/api/v1/auth/register", data);
 
@@ -33,7 +33,7 @@ export const storeUser = (data) => {
             }
         }
         try {
-            await sendRequest();
+            sendRequest();
         } catch (err) {
             console.log(err);
         }
