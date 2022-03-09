@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 const Select = (props) => {
   const [optionsOpen, setOptionsOpen] = useState(false);
 
-  const [chosenOption, setChosenOption] = useState({});
+  const [chosenOption, setChosenOption] = useState({
+    id: null,
+    name: "",
+  });
 
   const chosenOptionHandler = (e) => {
     setChosenOption((prev) => {
       return {
-        name: e.target.textContent,
+        name: e.target.textContent || e.target.value,
         id: e.target.id,
       };
     });
@@ -28,12 +31,14 @@ const Select = (props) => {
       <span defaultValue={props.label}>{props.label}</span>
       <div
         className={`${classes.optionsWrapper} ${
-          optionsOpen && classes.optionItemOpen
+          optionsOpen &&
+          classes.optionItemOpen + " " + classes.optionsWrapperOpen
         }`}
       >
         <input
-          value={chosenOption.name || ''}
+          value={chosenOption.name}
           onClick={setOptionsOpen}
+          onChange={chosenOptionHandler}
           className={`${classes.optionItem}`}
           type="text"
           placeholder={props.placeholder}
