@@ -2,6 +2,7 @@ import {
     createSlice
 } from "@reduxjs/toolkit";
 import axios from 'axios';
+import useHttp from "../api/http";
 
 
 const userSlice = createSlice({
@@ -16,12 +17,10 @@ const userSlice = createSlice({
     },
     reducers: {
         storeUser(state, action) {
-            axios.post("http://localhost:5000/api/v1/auth/register", action.payload)
-                .then(res => {
-                    console.log(res)
-                }).catch(err => {
-                    console.log(err);
-                });
+            const register = useHttp(axios.post("http://localhost:5000/api/v1/auth/register"));
+            const data = register(action.payload);
+
+            console.log(data);
         },
         updateUser(state, action) {},
         deleteUser(state, action) {}

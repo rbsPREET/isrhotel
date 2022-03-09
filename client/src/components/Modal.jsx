@@ -8,7 +8,7 @@ export const Modal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
   const handleLoginAndRegister = () => {
-      
+    
     distpach(
       userActions.storeUser({
         firstName: "dor",
