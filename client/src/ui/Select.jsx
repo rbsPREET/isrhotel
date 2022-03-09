@@ -23,15 +23,12 @@ const Select = (props) => {
       };
     });
   };
-  const aboveTheInput = `${classes.optionsWrapper} ${
-    optionsOpen && classes.optionItemOpen + " " + classes.optionsWrapperOpen
-  }  ${transitionState === "exiting" && classes.optionWrapperGoingToBeClose}`;
-
   const InputWrapperClasses = `
   ${props.mainDiv} ${optionsOpen && classes.WrapperOptionItemOpen} 
    ${
      transitionState === "exiting" && classes.WrapperOptionItemGoingToBeClose
    } `;
+
   const escPress = useCallback(
     (e) => {
       if (e.key === "Escape" && optionsOpen) {
@@ -60,28 +57,38 @@ const Select = (props) => {
       <span className={classes.span} defaultValue={props.label}>
         {props.label}
       </span>
-      <div onClick={setOptionsOpen.bind(null, true)} className={aboveTheInput}>
+      <div onClick={setOptionsOpen.bind(null, true)}>
         <input
           ref={(node) => {
             select.current = node;
           }}
           value={chosenOption.name}
           onChange={chosenOptionHandler}
-          className={`${classes.optionItem}`}
           type="text"
+          className={classes.input}
           placeholder={props.placeholder}
         />
-        <Transition mountOnEnter unmountOnExit in={optionsOpen} timeout={500}>
-          {(state) => {
-            setTransitionState(state);
-            return props.options.map((option) => (
-              <p onClick={chosenOptionHandler} id={option.id} key={option.id}>
-                {option.name}
-              </p>
-            ));
-          }}
-        </Transition>
       </div>
+
+      <Transition mountOnEnter unmountOnExit in={optionsOpen} timeout={500}>
+        {(state) => {
+          setTransitionState(state);
+          return (
+            <div
+              className={`${classes.optionsWrapper} ${
+                state === "entered" && classes.optionItemOpen
+              }`}
+            >
+              {props.options.map((option) => (
+                <p onClick={chosenOptionHandler} id={option.id} key={option.id}>
+                  {option.name}
+                </p>
+              ))}
+              ;
+            </div>
+          );
+        }}
+      </Transition>
     </InputWrapper>
   );
 };
