@@ -8,6 +8,7 @@
 .wrapper {
   width: 100%;
   padding-left: 1%;
+  height: 94px;
   align-items: center;
   display: flex;
 }

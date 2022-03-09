@@ -1,0 +1,26 @@
+.optionsWrapper {
+  height: 30px;
+  overflow: hidden;
+}
+
+.optionItem {
+  padding: 5px;
+  width: 250px;
+}
+
+.optionItemOpen {
+  height: 100px !important;
+  position: absolute;
+}
+.customWidth {
+  width: 350px;
+}
+
+.WrapperOptionItemOpen {
+  /* margin-top:-3%; */
+  height: 100%;
+}
+
+.WrapperOptionItemOpen svg {
+  margin-top: 10%;
+}
