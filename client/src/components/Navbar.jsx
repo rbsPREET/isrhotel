@@ -4,6 +4,7 @@ import DropDownWrapper from "../ui/DropDownWrapper";
 import { useState } from "react";
 import DropDownLinks from "../ui/DropDownLinks";
 import LiNavLink from "../ui/LiNavLink";
+import { Modal } from "./Modal";
 import Transition from "react-transition-group/Transition";
 
 const Navbar = () => {
@@ -12,6 +13,14 @@ const Navbar = () => {
     pages: false,
     home: false,
   });
+  
+    // Login/Register Modal State
+  const [activeModal, setActiveModal] = useState(false)
+
+  const openModal = () => {
+    setActiveModal(prev => !prev)
+  }
+  
   const openDropDown = (isOpen, dropName) => {
     const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);
     setIsOpen((prev) => {
@@ -98,8 +107,10 @@ const Navbar = () => {
             <LiNavLink to="/" className={classes.menuItem} linkName="Contact" />
           </ul>
         </div>
+        {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
-          <button className={classes.hostButton}>Become a Host</button>
+          <button onClick={openModal} className={classes.loginButton}>Login</button>
+          <Modal activeModal={activeModal} setActiveModal={setActiveModal} />
         </div>
       </div>
     </div>
