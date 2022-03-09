@@ -13,8 +13,7 @@
 .input{
   padding: 10px 0px;
   transition: all 0.5s ease-in-out;
-
-
+  width: 100%;
 }
 .optionsWrapper {
   cursor: pointer;
