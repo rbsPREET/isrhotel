@@ -1,11 +1,16 @@
 const jwt = require("jsonwebtoken")
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
+    next();
+});
+
 // Token when User login
 const verifyToken = (req, res, next) => {
     const authHeader = req.headers.token
     if (authHeader) {
         const token = authHeader.split(" ")[1]
-        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+        jwt.verify(token, 'random', (err, user) => {
             if (err)
                 return res.status(403).json("Unvalid Token")
             req.user = user
@@ -19,7 +24,7 @@ const verifyToken = (req, res, next) => {
 // Check if the Token belong to the User that request the call
 const verifyTokenAndAuthorization = (req, res, next) => {
     verifyToken(req, res, () => {
-        if (req.user.id === req.params.id) {
+        if (req.user._id === req.params.id) {
             next()
         } else {
             res.status(403).json("Not allowed")
@@ -38,5 +43,19 @@ const verifyTokenAndAdmin = (req, res, next) => {
     })
 }
 
+const verifyAdminOrSelfUser = (req, res, next) => {
+    verifyToken(req, res, () => {
+        if (req.user.isAdmin || req.params.id === req.user._id) {
+            next()
+        } else {
+            res.status(403).json("No permission")
+        }
+    })
+}
 
-module.exports = { verifyToken, verifyTokenAndAuthorization, verifyTokenAndAdmin }
+
+module.exports = {
+    verifyToken,
+    verifyTokenAndAuthorization,
+    verifyTokenAndAdmin
+}

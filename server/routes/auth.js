@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken")
 
 // Register
 router.post("/register", async (req, res) => {
-  
+
     const newUser = new User({
         fullDetails: {
             firstName: req.body.firstName,
@@ -21,7 +21,7 @@ router.post("/register", async (req, res) => {
     try {
         const savedUser = await newUser.save()
         res.status(201).json({
-            booleanType:true,
+            bool: true,
             status: "Success",
             message: `Hey ${savedUser.fullDetails.firstName}!, Thank You for your registration to ISRhotels`,
         })
@@ -34,7 +34,7 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({
-            username: req.body.username
+            email: req.body.email
         });
 
         !user && res.status(401).json("Wrong credentials")
@@ -45,24 +45,24 @@ router.post("/login", async (req, res) => {
 
         const accessToken = jwt.sign({
                 id: user._id,
-                isAdmin: user.isAdmin
+                isAdmin: user.isAdmin,
             },
-            process.env.JWT_SECRET, {
+            'random', {
                 expiresIn: "3d"
             }
         )
 
-        const {
-            password,
-            ...others
-        } = user._doc;
-
         res.status(200).json({
-            ...others,
-            accessToken
+            success: true,
+            error: null,
+            token: accessToken
         })
     } catch (err) {
-        res.status(500).json(err)
+        res.status(500).json({
+            success: false,
+            error: err,
+            token: null
+        })
     }
 })
 
