@@ -2,7 +2,6 @@ import {
     createSlice
 } from "@reduxjs/toolkit";
 import axios from 'axios';
-import useHttp from "../api/http";
 
 
 const userSlice = createSlice({
@@ -16,17 +15,31 @@ const userSlice = createSlice({
         password: null,
     },
     reducers: {
-        storeUser(state, action) {
-            const register = useHttp(axios.post("http://localhost:5000/api/v1/auth/register"));
-            const data = register(action.payload);
-
-            console.log(data);
-        },
-        updateUser(state, action) {},
-        deleteUser(state, action) {}
+        checkValidityForEmail(state, action) {},
+        checkValidityForPassword(state, action) {},
+        checkValidityForName(state, action) {},
+        checkValidityForAge(state, action) {},
+        comparePasswordConfirmation(state, action) {},
     }
-
 })
+
+export const storeUser = (data) => {
+    return async dispatch => {
+        const sendRequest = async () => {
+            const response = await axios.post("http://localhost:5000/api/v1/auth/register", data);
+
+            if (response.status !== 200) {
+                return;
+            }
+        }
+        try {
+            await sendRequest();
+        } catch (err) {
+            console.log(err);
+        }
+    }
+}
+
 
 export const userActions = userSlice.actions;
 export default userSlice;

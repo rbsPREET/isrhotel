@@ -2,20 +2,19 @@ import Input from "../ui/Input";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import classes from "../css/Modal.module.css";
 import { useDispatch } from "react-redux";
-import { userActions } from "../store/user";
+import { storeUser } from "../store/user";
 
 export const Modal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
   const handleLoginAndRegister = () => {
-    
     distpach(
-      userActions.storeUser({
+      storeUser({
         firstName: "dor",
         lastName: "levy",
         address: "address test",
         phone: "0525938898",
-        email: "dor@dor.com",
+        email: "dogr@dor.com",
         password: "123456",
       })
     );
