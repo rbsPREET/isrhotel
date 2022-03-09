@@ -11,7 +11,11 @@ const Input = (props) => {
     <Fragment>
       <InputWrapper icon={props.icon} mainDiv={props.mainDiv}>
         <label htmlFor={props.nameId}>{props.label}</label>
-        {props.type === ("text" || "number" || "email" || "tel") && (
+        {(props.type === "text" ||
+          props.type === "number" ||
+          props.type === "email" ||
+          props.type === "tel" ||
+          props.type === "password") && (
           <input
             placeholder={props.placeholder}
             type={props.type}

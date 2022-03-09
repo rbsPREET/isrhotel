@@ -1,94 +1,140 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
-import classes from '../css/Modal.module.css'
+import Input from "../ui/Input";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import classes from "../css/Modal.module.css";
+import { useDispatch } from "react-redux";
+import { userActions } from "../store/user";
 
-export const Modal = ({ activeModal, setActiveModal }) => {
-    const [isLogin, setIsLogin] = useState(true)
+export const Modal = (props) => {
+  const [isLogin, setIsLogin] = useState(true);
+  const distpach = useDispatch();
+  const handleLoginAndRegister = () => {
+    distpach(
+      userActions.storeUser({
+        firstName: "dor",
+        lastName: "levy",
+        address: "address test",
+        phone: "0525938898",
+        email: "dor@dor.com",
+        password: "123456",
+      })
+    );
+    setIsLogin((prev) => !prev);
+  };
 
-    const handleLoginAndRegister = () => {
-        setIsLogin(prev => !prev)
+  // Close Modal if clicking outside of it
+  const modalRef = useRef();
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      props.setActiveModal(false);
     }
+  };
 
-    // Close Modal if clicking outside of it
-    const modalRef = useRef()
-    const closeModal = e => {
-        if (modalRef.current === e.target) {
-            setActiveModal(false)
-        }
-    }
+  // Close Modal when click "ESC" key
+  const { setActiveModal, activeModal } = props;
+  const escPress = useCallback(
+    (e) => {
+      if (e.key === "Escape" && activeModal) {
+        setActiveModal(false);
+      }
+    },
+    [setActiveModal, activeModal]
+  );
 
-    // Close Modal when click "ESC" key
-    const escPress = useCallback(e => {
-        if (e.key === 'Escape' && activeModal) {
-            setActiveModal(false)
-        }
-    }, [setActiveModal, activeModal])
+  useEffect(() => {
+    document.addEventListener("keydown", escPress);
+    return () => document.removeEventListener("keydown", escPress);
+  }, [escPress]);
 
-    useEffect(() => {
-        document.addEventListener('keydown', escPress)
-        return () => document.removeEventListener('keydown', escPress)
-    }, [escPress])
+  /* Will Replace to UI template for Login/Register */
 
-    {/* Will Replace to UI template for Login/Register */ }
-    return (
-        <>
-            {activeModal ? (
-                <div ref={modalRef} onClick={closeModal} className={classes.modalBackground}>
-                    <div activeModal={activeModal} className={classes.wrapper}>
-                        {isLogin ? (
-                            <>
-                                <div className={classes.modalContentL}>
-                                    Doesn't have an account?
-                                    <span className={classes.checkStatus} onClick={handleLoginAndRegister}>register now</span>
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div className={classes.modalContentL}>
-                                    Already a User?
-                                    <span className={classes.checkStatus} onClick={handleLoginAndRegister}>Login</span>
-                                </div>
-                            </>
-                        )}
+  return (
+    <div
+      ref={modalRef}
+      onClick={closeModal}
+      className={classes.modalBackground}
+    >
+      <div activeModal={props.activeModal} className={classes.wrapper}>
+        {isLogin ? (
+          <div className={classes.modalContentL}>
+            Doesn't have an account?
+            <span
+              className={classes.checkStatus}
+              onClick={handleLoginAndRegister}
+            >
+              register now
+            </span>
+          </div>
+        ) : (
+          <div className={classes.modalContentL}>
+            Already a User?
+            <span
+              className={classes.checkStatus}
+              onClick={handleLoginAndRegister}
+            >
+              Login
+            </span>
+          </div>
+        )}
 
-                        <div className={classes.modalContentR}>
-                            {isLogin ? (
-                                <>
-                                    <h1>@ISRHOTEL</h1>
-                                    <div>
-                                        <form className={classes.formContent}>
-                                            <label for="">Email</label>
-                                            <input placeholder='email' />
-                                            <label for="">Password</label>
-                                            <input placeholder='password' type="password" />
-                                            <button onSubmit={{}}>Login</button>
-                                        </form>
-                                    </div>
-                                </>
-                            ) : (
-                                <>
-                                    <h1>@ISRHOTEL</h1>
-                                    <div>
-                                        <form className={classes.formContent}>
-                                            <label for="">Username</label>
-                                            <input placeholder='username' />
-                                            <label for="">Email</label>
-                                            <input placeholder='email' type="email" />
-                                            <label for="">Password</label>
-                                            <input placeholder='password' type="password" />
-                                            <label for="">Confirm Password</label>
-                                            <input placeholder='password' type="password" />
-                                            <button onSubmit={{}}>Register</button>
-                                        </form>
-                                    </div>
-                                </>
-                            )}
-                        </div>
-                        <button className={classes.closeModal} onClick={() => setActiveModal(prev => !prev)} aria-label='Close'>&#10005;</button>
-                    </div>
-                </div>
-            ) : (
-                null
-            )}
-        </>
-    )
-}
+        <div className={classes.modalContentR}>
+          {isLogin ? (
+            <div>
+              <h1>@ISRHOTEL</h1>
+              <div>
+                <form className={classes.formContent}>
+                  <Input
+                    placeholder="enter you email"
+                    nameId="email"
+                    type="text"
+                    label="Email"
+                  />
+                  <Input
+                    placeholder="password"
+                    nameId="password"
+                    type="password"
+                    label="Password"
+                  />
+                  <button onSubmit={{}}>Login</button>
+                </form>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <h1>@ISRHOTEL</h1>
+              <div>
+                <form className={classes.formContent}>
+                  <Input
+                    placeholder="enter you email"
+                    nameId="email"
+                    type="text"
+                    label="Email"
+                  />
+                  <Input
+                    placeholder="password"
+                    nameId="password"
+                    type="password"
+                    label="Password"
+                  />
+                  <Input
+                    placeholder="Confirm Pass"
+                    nameId="confirm-password"
+                    type="password"
+                    label="Confirm Password"
+                  />
+                  <button onSubmit={{}}>Register</button>
+                </form>
+              </div>
+            </div>
+          )}
+        </div>
+        <button
+          className={classes.closeModal}
+          onClick={() => props.setActiveModal((prev) => !prev)}
+          aria-label="Close"
+        >
+          &#10005;
+        </button>
+      </div>
+    </div>
+  );
+};
