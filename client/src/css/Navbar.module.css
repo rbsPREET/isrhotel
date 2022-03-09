@@ -34,3 +34,13 @@
   padding: 15px 20px;
   border-radius: 25px;
 }
+
+.loginButton {
+  background-color: #373991;
+  color: #efefef;
+  border: none;
+  text-align: center;
+  padding: 15px 20px;
+  border-radius: 25px;
+  text-transform: uppercase;
+}

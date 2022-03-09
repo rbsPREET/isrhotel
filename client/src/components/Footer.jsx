@@ -75,7 +75,7 @@ const Footer = () => {
           <div className={classes.appItem}>
             <MailOutline style={{ margin: "0px 10px", width: "35px", height: "35px" }} />
             <div className={classes.subAppItem}>
-              <div style={{ marginTop: "10px" }}>Google Play</div>
+              <div style={{ marginTop: "10px", color: "white" }}>Google Play</div>
               <div className={classes.subAppItemContent}>Get It Now</div>
             </div>
           </div>
