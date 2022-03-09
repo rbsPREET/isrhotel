@@ -1,6 +1,7 @@
 import { InputWrapper } from "./InputWrapper";
 import classes from "../css/Select.module.css";
 import { useEffect, useState } from "react";
+import Transition from "react-transition-group/Transition";
 const Select = (props) => {
   const [optionsOpen, setOptionsOpen] = useState(false);
 
@@ -18,8 +19,8 @@ const Select = (props) => {
     });
   };
   useEffect(() => {
-    console.log(chosenOption);
-  }, [chosenOption]);
+    console.log(optionsOpen);
+  }, [optionsOpen]);
   return (
     <InputWrapper
       customWidth={classes.customWidth}
@@ -30,6 +31,7 @@ const Select = (props) => {
     >
       <span defaultValue={props.label}>{props.label}</span>
       <div
+        onClick={setOptionsOpen.bind(null, true)}
         className={`${classes.optionsWrapper} ${
           optionsOpen &&
           classes.optionItemOpen + " " + classes.optionsWrapperOpen
@@ -37,17 +39,20 @@ const Select = (props) => {
       >
         <input
           value={chosenOption.name}
-          onClick={setOptionsOpen}
           onChange={chosenOptionHandler}
           className={`${classes.optionItem}`}
           type="text"
           placeholder={props.placeholder}
         />
-        {props.options.map((option) => (
-          <p onClick={chosenOptionHandler} id={option.id} key={option.id}>
-            {option.name}
-          </p>
-        ))}
+        <Transition unmountOnExit in={optionsOpen} timeout={300}>
+          {(state) =>
+            props.options.map((option) => (
+              <p onClick={chosenOptionHandler} id={option.id} key={option.id}>
+                {option.name}
+              </p>
+            ))
+          }
+        </Transition>
       </div>
     </InputWrapper>
   );

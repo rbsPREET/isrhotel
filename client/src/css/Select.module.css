@@ -2,19 +2,17 @@
   height: 30px;
   overflow: hidden;
 }
-.optionsWrapperOpen{
-
-    overflow-y: scroll !important;
+.optionsWrapperOpen {
+  overflow-y: scroll !important;
 }
 .optionItem {
   padding: 5px;
   width: 250px;
-  transition: all .5s ease-in-out;
-
+  transition: all 0.5s ease-in-out;
 }
 
 .optionItemOpen {
-    background-color: white;
+  background-color: white;
   border-left: 1px solid rgba(102, 102, 102, 0.247);
   border-right: 1px solid rgba(102, 102, 102, 0.247);
   border-bottom: 1px solid rgba(102, 102, 102, 0.247);
@@ -23,8 +21,7 @@
   width: 15%;
   height: 30% !important;
   position: absolute;
-  transition: all .5s ease-in-out;
-
+  transition: all 0.5s ease-in-out;
 }
 .customWidth {
   width: 350px;
@@ -33,23 +30,19 @@
 .WrapperOptionItemOpen {
   /* margin-top:-3%; */
   height: 100%;
-  transition: all .5s ease-in-out;
-
+  transition: all 0.5s ease-in-out;
 }
 
 .WrapperOptionItemOpen p {
-    padding: 10px;
-
+  padding: 10px;
 }
 .WrapperOptionItemOpen p:hover {
-background-color: rgba(157, 229, 223, 0.247);
-transition: all .5s ease-in-out;
+  background-color: rgba(157, 229, 223, 0.247);
+  transition: all 0.5s ease-in-out;
 }
 .WrapperOptionItemOpen input {
-    padding: 10px;
-
+  padding: 10px;
 }
 .WrapperOptionItemOpen svg {
   margin-top: 10%;
-
 }

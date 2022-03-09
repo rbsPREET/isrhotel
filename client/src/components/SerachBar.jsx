@@ -7,7 +7,6 @@ import Input from "../ui/Input";
 import Country from "./Country";
 import InputRangeDates from "../ui/InputRangeDates";
 import { useEffect, useState } from "react";
-import Select from "../ui/Select";
 
 const SearchBar = () => {
   const [details, setDetails] = useState({
