@@ -1,5 +1,5 @@
 import { Countries } from "../api/Countries";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import useHttp from "../api/http";
 import Select from "../ui/Select";
 
@@ -17,19 +17,16 @@ const Country = (props) => {
   }, [sendRequest]);
 
   return (
-    <Fragment>
-      <Select
-        placeholder="Choose the location you wanna stay!"
-        icon={props.icon}
-        options={data}
-        onChange={changeHandler}
-        onBlur={props.onBlur}
-        value={country}
-        label={props.label}
-        className={props.className}
-        mainDiv={props.mainDiv}
-      />
-    </Fragment>
+    <Select
+      placeholder="Choose the location you wanna stay!"
+      icon={props.icon}
+      options={data}
+      onChange={changeHandler}
+      onBlur={props.onBlur}
+      value={country}
+      label={props.label}
+      mainDiv={props.mainDiv}
+    />
   );
 };
 export default Country;

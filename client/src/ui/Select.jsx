@@ -27,6 +27,11 @@ const Select = (props) => {
     optionsOpen && classes.optionItemOpen + " " + classes.optionsWrapperOpen
   }  ${transitionState === "exiting" && classes.optionWrapperGoingToBeClose}`;
 
+  const InputWrapperClasses = `
+  ${props.mainDiv} ${optionsOpen && classes.WrapperOptionItemOpen} 
+   ${
+     transitionState === "exiting" && classes.WrapperOptionItemGoingToBeClose
+   } `;
   const escPress = useCallback(
     (e) => {
       if (e.key === "Escape" && optionsOpen) {
@@ -49,11 +54,12 @@ const Select = (props) => {
       onClick={closeOptionsHandler}
       customWidth={classes.customWidth}
       icon={props.icon}
-      mainDiv={`${props.mainDiv} ${
-        optionsOpen && classes.WrapperOptionItemOpen
-      }`}
+      className={classes.defaultInputWidth}
+      mainDiv={InputWrapperClasses}
     >
-      <span defaultValue={props.label}>{props.label}</span>
+      <span className={classes.span} defaultValue={props.label}>
+        {props.label}
+      </span>
       <div onClick={setOptionsOpen.bind(null, true)} className={aboveTheInput}>
         <input
           ref={(node) => {
@@ -65,7 +71,7 @@ const Select = (props) => {
           type="text"
           placeholder={props.placeholder}
         />
-        <Transition unmountOnExit in={optionsOpen} timeout={500}>
+        <Transition mountOnEnter unmountOnExit in={optionsOpen} timeout={500}>
           {(state) => {
             setTransitionState(state);
             return props.options.map((option) => (

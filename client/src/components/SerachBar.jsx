@@ -60,9 +60,7 @@ const SearchBar = (props) => {
             nameId="location"
             placeholder="Choose the location you wanna stay!"
             mainDiv={classes.border__right}
-            className={classes.select__country}
           />
-
           <InputRangeDates
             getDetails={getDetails}
             icon={<DatesIcon />}
