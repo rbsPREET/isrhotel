@@ -5,8 +5,12 @@ import { useDispatch } from "react-redux";
 import { storeUser } from "../store/user";
 
 export const Modal = (props) => {
+  const modalRef = useRef();
+
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
+  const { setActiveModal, activeModal } = props;
+
   const handleLoginAndRegister = () => {
     distpach(
       storeUser({
@@ -14,31 +18,27 @@ export const Modal = (props) => {
         lastName: "levy",
         address: "address test",
         phone: "0525938898",
-        email: "dorwgr@dor.com",
+        email: "dorwgeqwsfsdr@dor.com",
         password: "123456",
       })
     );
-    setIsLogin((prev) => !prev);
+    setIsLogin(!isLogin);
   };
 
-  // Close Modal if clicking outside of it
-  const modalRef = useRef();
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
-      props.setActiveModal(false);
+      setActiveModal(!activeModal);
     }
-  };
+  }; // Close Modal if clicking outside of it
 
-  // Close Modal when click "ESC" key
-  const { setActiveModal, activeModal } = props;
   const escPress = useCallback(
     (e) => {
       if (e.key === "Escape" && activeModal) {
-        setActiveModal(false);
+        setActiveModal(!activeModal);
       }
     },
     [setActiveModal, activeModal]
-  );
+  ); // Close Modal when click "ESC" key
 
   useEffect(() => {
     document.addEventListener("keydown", escPress);
@@ -53,7 +53,7 @@ export const Modal = (props) => {
       onClick={closeModal}
       className={classes.modalBackground}
     >
-      <div activeModal={props.activeModal} className={classes.wrapper}>
+      <div className={classes.wrapper}>
         {isLogin ? (
           <div className={classes.modalContentL}>
             Doesn't have an account?
@@ -94,7 +94,7 @@ export const Modal = (props) => {
                     type="password"
                     label="Password"
                   />
-                  <button onSubmit={{}}>Login</button>
+                  <button>Login</button>
                 </form>
               </div>
             </div>
@@ -121,7 +121,7 @@ export const Modal = (props) => {
                     type="password"
                     label="Confirm Password"
                   />
-                  <button onSubmit={{}}>Register</button>
+                  <button>Register</button>
                 </form>
               </div>
             </div>
@@ -129,7 +129,7 @@ export const Modal = (props) => {
         </div>
         <button
           className={classes.closeModal}
-          onClick={() => props.setActiveModal((prev) => !prev)}
+          onClick={() => setActiveModal(!activeModal)}
           aria-label="Close"
         >
           &#10005;

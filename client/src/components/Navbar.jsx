@@ -18,7 +18,7 @@ const Navbar = () => {
   const [activeModal, setActiveModal] = useState(false);
 
   const openModal = () => {
-    setActiveModal((prev) => !prev);
+    setActiveModal(true);
   };
 
   const openDropDown = (isOpen, dropName) => {
