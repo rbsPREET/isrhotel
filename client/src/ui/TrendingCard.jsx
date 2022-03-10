@@ -1,8 +1,9 @@
 import { useState } from "react";
 import classes from "../css/TrendingCard.module.css";
+import FlexColumn from "./FlexColumn";
 
 const TrendingCard = (props) => {
-    const [hover, setHover] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <div
@@ -14,7 +15,10 @@ const TrendingCard = (props) => {
         className={`${classes.backgroundImage} ${hover && classes.hover}`}
         style={{ backgroundImage: `url(${props.src})` }}
       ></div>
-      {props.children}
+      <FlexColumn className={classes.wrapperDetails}>
+        <h3 className={classes.cityName}>{props.cityName}</h3>
+        <p className={classes.listing}>Listing {props.listing}</p>
+      </FlexColumn>
     </div>
   );
 };
