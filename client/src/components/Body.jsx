@@ -1,10 +1,12 @@
 import React from 'react'
-import MallsList from './MallsList'
+import MallsListSection from './MallsListSection'
+import TrendingDestionationSection from './TrendingDestionationSection.jsx'
 
 const Body = () => {
     return (
         <div>
-            <MallsList />
+            <TrendingDestionationSection />
+            <MallsListSection />
         </div>
     )
 }

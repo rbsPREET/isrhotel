@@ -18,7 +18,7 @@ const Select = (props) => {
   };
 
   const changeOptionHandler = (e) => {
-    const availableCountries = props.options.filter((option) =>
+    const availableCountries = options.filter((option) =>
       option.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setOptionsData(availableCountries);
@@ -38,10 +38,6 @@ const Select = (props) => {
       };
     });
   };
-
-  const InputWrapperClasses = ` ${props.mainDiv} ${
-    optionsOpen && classes.WrapperOptionItemOpen
-  } `;
 
   const escPress = useCallback(
     (e) => {
@@ -64,7 +60,9 @@ const Select = (props) => {
       customWidth={classes.customWidth}
       icon={props.icon}
       className={classes.defaultInputWMT}
-      mainDiv={InputWrapperClasses}
+      mainDiv={` ${props.mainDiv} ${
+        optionsOpen && classes.WrapperOptionItemOpen
+      } `}
     >
       <span className={classes.span} defaultValue={props.label}>
         {props.label}
