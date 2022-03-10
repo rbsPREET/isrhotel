@@ -1,10 +1,10 @@
 import classes from "../css/Section.module.css";
 const Section = (props) => {
   return (
-    <div className={classes.container}>
+    <div className={`${classes.container} ${props.className}`}>
       <div className={classes.wrapper}>
         <div>
-          <h1>{props.title}</h1>
+          <h1 className={classes.title}>{props.title}</h1>
         </div>
         {props.children}
       </div>
