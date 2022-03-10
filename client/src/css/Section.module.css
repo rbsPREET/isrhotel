@@ -1,15 +1,28 @@
 .container {
   padding: 20px;
-  
 }
 
 .wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
-  
 }
 
-.title{
-  margin-bottom: 30px;
+.title {
+  position: relative;
+  margin-bottom: 60px;
+}
+.title::after {
+  background: #f91942;
+  bottom: -16px;
+  left: 0;
+  right: 0;
+  width: 60px;
+  content: "";
+  height: 2px;
+  border-radius: 6px;
+  display: block;
+  position: absolute;
+  margin: 0 auto;
+  text-align: center;
 }
