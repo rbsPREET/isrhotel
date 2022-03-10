@@ -3,3 +3,10 @@
     padding: 0;
     margin: 0;
 }
+
+.slides .slick-prev,
+.slides .slick-next {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+}
