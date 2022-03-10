@@ -53,9 +53,10 @@ const Select = (props) => {
   ); // Close Modal when click "ESC" key
 
   useEffect(() => {
+    setOptionsData(props.options);
     document.addEventListener("keydown", escPress);
     return () => document.removeEventListener("keydown", escPress);
-  }, [escPress, options]);
+  }, [escPress, setOptionsData, props.options]);
 
   return (
     <InputWrapper
