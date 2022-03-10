@@ -14,9 +14,34 @@
     height: 250px;
     background-size: 100% 100%;
     transition: all 0.5s ease-in-out;
+    z-index: -1;
   }
   
   .hover {
     transition: all 0.5s ease-in-out;
     transform: scale(1.2);
+  }
+
+  .listing{
+    color: rgba(255,255,255,0.9);
+    background: rgba(255,255,255,0.12);
+    padding: 4px 12px;
+    margin-top: 4px;
+    line-height: 20px;
+    display: inline-block;
+    border-radius: 50px;
+    font-size: 15px;
+    transition: 0.3s;
+  }
+
+  .cityName{
+      color:white;
+      margin-left:5px;
+      font-size:22px;
+  }
+
+  .wrapperDetails{
+    position: absolute;
+    top: 55%;
+    left: 4%;
   }
