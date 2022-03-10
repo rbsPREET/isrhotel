@@ -1,9 +1,15 @@
 .container {
   padding: 20px;
+  
 }
 
 .wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
+  
+}
+
+.title{
+  margin-bottom: 30px;
 }

@@ -1,0 +1,24 @@
+.top2Destinations {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.top2Destinations div {
+  width: 50%;
+  height: 250px;
+  margin: 0 10px;
+  border: 1px solid;
+}
+.top3Destinations {
+  width: 100%;
+}
+.top3Destinations div {
+  margin: 0 10px;
+  width: 33.334%;
+  height: 250px;
+  border: 1px solid;
+}
