@@ -9,30 +9,30 @@ const TrendingDestionationSection = (props) => {
       <FlexRow className={classes.top2Destinations}>
         <TrendingCard
           src="/assets/images/trending1.jpg"
-          cityName="test"
-          listing={5}
+          cityName="Tel Aviv"
+          listing={15}
         />
         <TrendingCard
           src="/assets/images/trending1.jpg"
-          cityName="test"
-          listing={5}
+          cityName="Eilat"
+          listing={12}
         />
       </FlexRow>
       <FlexRow className={classes.top3Destinations}>
         <TrendingCard
           src="/assets/images/trending1.jpg"
-          cityName="test"
+          cityName="Jerusalem"
+          listing={8}
+        />
+        <TrendingCard
+          src="/assets/images/trending1.jpg"
+          cityName="Haifa"
           listing={5}
         />
         <TrendingCard
           src="/assets/images/trending1.jpg"
-          cityName="test"
-          listing={5}
-        />
-        <TrendingCard
-          src="/assets/images/trending1.jpg"
-          cityName="test"
-          listing={5}
+          cityName="Herzelia"
+          listing={2}
         />
       </FlexRow>
     </Section>

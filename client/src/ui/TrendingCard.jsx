@@ -17,7 +17,7 @@ const TrendingCard = (props) => {
       ></div>
       <FlexColumn className={classes.wrapperDetails}>
         <h3 className={classes.cityName}>{props.cityName}</h3>
-        <p className={classes.listing}>Listing {props.listing}</p>
+        <p className={classes.listing}>{props.listing} Listing</p>
       </FlexColumn>
     </div>
   );
