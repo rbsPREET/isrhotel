@@ -46,6 +46,64 @@ const PrevArrow = (props) => {
   );
 };
 
+function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: "block", right: 0, marginRight: "20px", zIndex: 1 }}
+            onClick={onClick}
+        />
+    );
+}
+
+function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: "block", left: 0, marginLeft: "20px", zIndex: 1 }}
+            onClick={onClick}
+        />
+    );
+}
+
+export default class CenterMode extends Component {
+    render() {
+        const settings = {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            autoplay: true,
+            speed: 1000,
+            autoplaySpeed: 2000,
+            cssEase: "linear",
+            nextArrow: <SampleNextArrow />,
+            prevArrow: <SamplePrevArrow />,
+            appendDots: dots => (
+                <div
+                    style={{
+                        padding: "15px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}
+                >
+                    <ul style={{ fontSize: "" }}> {dots} </ul>
+                </div>
+            ),
+            dots: true
+        };
+        return (
+            <div>
+                <Slider {...settings}>
+                    {mallsData.map((item) => (
+                        <Mall key={item} item={item} />
+                    ))}
+                </Slider>
+            </div >
+        );
+    }
+}
 const Carousel = () => {
   const settings = {
     dots: true,

@@ -1,4 +1,5 @@
 import React from 'react'
+import Carousel from "../../ui/Carousel"
 import classes from "../../css/MallPage/Header.module.css";
 import Section from '../../ui/Section';
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
