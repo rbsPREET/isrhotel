@@ -7,9 +7,7 @@ import Carousel from "../ui/Carousel"
 
 const MallsListSection = () => {
   return (
-    <Section>
-      <Carousel />
-    </Section>
+    <Carousel />
   );
 };
 
