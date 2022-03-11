@@ -1,0 +1,49 @@
+.TrendingCard {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  box-shadow: 0 3px 6px 0 rgba(105, 102, 102, 0.329);
+  margin: 0 10px;
+  position: relative;
+  border-radius: 15px;
+}
+
+.backgroundImage {
+  width: 100%;
+  position: absolute;
+  height: 300px;
+  background-size: 100% 100%;
+  transition: all 0.5s ease-in-out;
+  z-index: -1;
+}
+
+.hover {
+  transition: all 0.5s ease-in-out;
+  transform: scale(1.2);
+}
+
+.listing {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.12);
+  padding: 4px 12px;
+  margin-top: 4px;
+  line-height: 20px;
+  display: inline-block;
+  border-radius: 50px;
+  font-size: 16px;
+  text-align: center;
+  transition: 0.3s;
+  padding-bottom: 10px;
+}
+
+.cityName {
+  color: white;
+  margin-left: 5px;
+  font-size: 22px;
+}
+
+.wrapperDetails {
+  position: absolute;
+  top: 60%;
+  left: 4%;
+}

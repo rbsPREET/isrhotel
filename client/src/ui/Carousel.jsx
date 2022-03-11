@@ -1,11 +1,10 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { mallsData } from "../mockData";
 import classes from "../css/ui/Carousel.module.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import SingleHotelRoomCarousel from "../components/home/SingleHotelRoomCarousel";
+import SingleCard from "./SingleCard";
 
 const NextArrow = (props) => {
   const { style, onClick } = props;
@@ -65,7 +64,11 @@ const Carousel = (props) => {
     <div>
       <Slider {...settings}>
         {props.data.map((item) => (
-          <SingleHotelRoomCarousel item={item} borderRadius={true} />
+          <SingleCard
+            card={item}
+            template={props.template}
+            borderRadius={props.borderRadius}
+          />
         ))}
       </Slider>
     </div>

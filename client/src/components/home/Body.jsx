@@ -11,7 +11,7 @@ const Body = () => {
         <TrendingDestionationSection />
       </Section>
       <Section container={false} title="Malls">
-       <Carousel data={mallsData} borderRadius={true} />
+        <Carousel data={mallsData} borderRadius={true} template="home-hotels" />
       </Section>
     </div>
   );
