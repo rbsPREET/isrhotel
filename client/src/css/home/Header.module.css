@@ -6,7 +6,7 @@
   z-index: 200;
   background-size: cover !important;
   background-position: center !important;
-  background-image: url("../assets/images/header-photo.jpg");
+  background-image: url("/public/assets/images/header-photo.jpg");
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +21,7 @@
   opacity: 0.7;
 }
 .wrapper {
-    z-index: 2;
+  z-index: 2;
   text-align: center;
 }
 

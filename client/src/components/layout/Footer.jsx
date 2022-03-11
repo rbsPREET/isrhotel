@@ -1,8 +1,8 @@
 import React from "react";
-import classes from "../css/Footer.module.css";
+import classes from "../../css/layout/Footer.module.css";
 import { Facebook, Instagram, LinkedIn, MailOutline } from "@material-ui/icons";
-import { SingleLink as Link } from "../ui/Link";
-import { Links } from "../ui/Links";
+import { SingleLink as Link } from "../../ui/Link";
+import { Links } from "../../ui/Links";
 
 const Footer = () => {
   const usefulLinks = (

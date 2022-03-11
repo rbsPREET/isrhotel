@@ -1,8 +1,8 @@
 import React from "react";
-import Carousel from "../ui/Carousel";
-import Section from "../ui/Section";
+import Carousel from "../../ui/Carousel";
+import Section from "../../ui/Section";
 import TrendingDestionationSection from "./TrendingDestionationSection.jsx";
-import classes from "../css/Body.module.css";
+import classes from "../../css/home/Body.module.css";
 const Body = () => {
   return (
     <div>

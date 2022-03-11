@@ -1,4 +1,4 @@
-import classes from "../css/Section.module.css";
+import classes from "../css/ui/Section.module.css";
 const Section = (props) => {
   return (
     <div

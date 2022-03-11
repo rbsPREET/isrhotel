@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "../css/InputWrapper.module.css";
+import classes from "../css/ui/InputWrapper.module.css";
 export const InputWrapper = React.forwardRef((props, ref) => {
   return (
     <div

@@ -1,4 +1,4 @@
-import classes from "../css/DropDownLinks.module.css";
+import classes from "../css/ui/DropDownLinks.module.css";
 
 const DropDownLinks = (props) => {
   return (

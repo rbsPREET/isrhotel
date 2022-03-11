@@ -1,10 +1,10 @@
-import classes from "../css/Navbar.module.css";
+import classes from "../../css/layout/Navbar.module.css";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
-import DropDownWrapper from "../ui/DropDownWrapper";
+import DropDownWrapper from "../../ui/DropDownWrapper";
 import { useState } from "react";
-import DropDownLinks from "../ui/DropDownLinks";
-import LiNavLink from "../ui/LiNavLink";
-import { Modal } from "./Modal";
+import DropDownLinks from "../../ui/DropDownLinks";
+import LiNavLink from "../../ui/LiNavLink";
+import { Modal } from "../Modal";
 import Transition from "react-transition-group/Transition";
 
 const Navbar = () => {

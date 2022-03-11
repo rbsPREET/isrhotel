@@ -1,5 +1,5 @@
 import { InputWrapper } from "./InputWrapper";
-import classes from "../css/Select.module.css";
+import classes from "../css/ui/Select.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Transition from "react-transition-group/Transition";
 const Select = (props) => {

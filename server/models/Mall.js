@@ -14,10 +14,6 @@ const MallSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
-    guests: {
-        type: Array,
-        required: true
-    },
     rooms: { // will include rooms & available rooms (obj in arr) with relation between hotel table and rooms table
         roomIds: {
             type: Array,
@@ -27,9 +23,9 @@ const MallSchema = new mongoose.Schema({
             type: Number
         }
     },
-    price: {
-        type: Number,
-        required: true
+    aditionalObjects: {
+        type: Array,
+        default: [{}]
     },
     email: {
         type: String,

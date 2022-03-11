@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import "../css/Input.module.css";
+import "../css/ui/Input.module.css";
 import { InputWrapper } from "./InputWrapper";
 
 const Input = (props) => {

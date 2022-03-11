@@ -1,4 +1,4 @@
-import classes from "../css/SearchBarButton.module.css";
+import classes from "../css/ui/SearchBarButton.module.css";
 
 const SearchBarButton = () => {
   return (

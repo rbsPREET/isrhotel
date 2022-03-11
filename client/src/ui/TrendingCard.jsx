@@ -1,5 +1,5 @@
 import { useState } from "react";
-import classes from "../css/TrendingCard.module.css";
+import classes from "../css/ui/TrendingCard.module.css";
 import FlexColumn from "./FlexColumn";
 
 const TrendingCard = (props) => {

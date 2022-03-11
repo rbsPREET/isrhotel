@@ -1,6 +1,6 @@
-import FlexRow from "../ui/FlexRow";
-import classes from "../css/TrendingDestionationSection.module.css";
-import TrendingCard from "../ui/TrendingCard";
+import FlexRow from "../../ui/FlexRow";
+import classes from "../../css/home/TrendingDestionationSection.module.css";
+import TrendingCard from "../../ui/TrendingCard";
 const TrendingDestionationSection = (props) => {
   return (
     <>
