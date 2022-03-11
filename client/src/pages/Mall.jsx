@@ -7,8 +7,6 @@ const Mall = () => {
         <>
             <Header />
             <Link to='/mall/3'>Go There</Link>
-
-
         </>
     )
 }

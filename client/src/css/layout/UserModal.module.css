@@ -37,6 +37,11 @@
     align-items: center;
 }
 
+.formTitle {
+    display: flex;
+    justify-content: center;
+}
+
 
 button {
     padding: 10px 24px;

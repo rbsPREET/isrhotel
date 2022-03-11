@@ -1,5 +1,6 @@
 import SingleHotelRoomCarousel from "../components/home/SingleHotelRoomCarousel";
 import SingleTrendingDestinationCard from "../components/home/SingleTrendingDestinationCard";
+import HotelCarousel from "../components/malls/HotelCarousel";
 
 const SingleCard = (props) => {
   let template = "";
@@ -11,6 +12,11 @@ const SingleCard = (props) => {
       template = (
         <SingleHotelRoomCarousel item={props.card} borderRadius={true} />
       );
+      break;
+    case "mall-page":
+      template = (
+        <HotelCarousel item={props.card} borderRadius={true} />
+      )
       break;
     default:
       break;

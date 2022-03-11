@@ -33,7 +33,7 @@ const UserModal = (props) => {
       </div>
       <div className={classes.modalContentR}>
         <div>
-          <h1>@ISRHOTEL</h1>
+          <h1 className={classes.formTitle}>LOGIN</h1>
           <div>
             <form className={classes.formContent}>
               <Input
@@ -72,7 +72,7 @@ const UserModal = (props) => {
       </div>
       <div className={classes.modalContentR}>
         <div>
-          <h1>@ISRHOTEL</h1>
+          <h1 className={classes.formTitle}>REGISTER</h1>
           <div>
             <form className={classes.formContent}>
               <Input
