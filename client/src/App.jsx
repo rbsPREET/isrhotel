@@ -8,10 +8,10 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:location/:dates/:guests" element={<Home />} /> {/*filter search*/ }
-        <Route path="/malls" element={<Mall />} />{/*all malls*/ }
-        <Route path="/mall/:id" element={<Mall />} />{/*single mall*/ }
-        <Route path="/mall/:id/room/:roomId" element={<Mall />} />{/*room in single mall*/ }
+        <Route path="/:location/:dates/:guests" element={<Home />} /> {/*filter search*/}
+        <Route path="/malls" element={<Mall />} />{/*all malls*/}
+        <Route path="/malls/:id" element={<Mall />} />{/*single mall*/}
+        <Route path="/malls/:id/room/:roomId" element={<Mall />} />{/*room in single mall*/}
       </Routes>
     </Router>
   );

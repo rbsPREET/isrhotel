@@ -34,7 +34,7 @@ function SampleNextArrow(props) {
     return (
         <div
             className={className}
-            style={{ ...style, display: "block", right: 0, marginRight: "10px", zIndex: 1 }}
+            style={{ ...style, display: "block", right: 0, marginRight: "20px", zIndex: 1 }}
             onClick={onClick}
         />
     );
@@ -45,7 +45,7 @@ function SamplePrevArrow(props) {
     return (
         <div
             className={className}
-            style={{ ...style, display: "block", left: 0, marginLeft: "10px", zIndex: 1 }}
+            style={{ ...style, display: "block", left: 0, marginLeft: "20px", zIndex: 1 }}
             onClick={onClick}
         />
     );
@@ -57,11 +57,24 @@ export default class CenterMode extends Component {
             slidesToShow: 3,
             slidesToScroll: 1,
             autoplay: true,
-            speed: 2000,
+            speed: 1000,
             autoplaySpeed: 2000,
             cssEase: "linear",
             nextArrow: <SampleNextArrow />,
-            prevArrow: <SamplePrevArrow />
+            prevArrow: <SamplePrevArrow />,
+            appendDots: dots => (
+                <div
+                    style={{
+                        padding: "15px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}
+                >
+                    <ul style={{ fontSize: "" }}> {dots} </ul>
+                </div>
+            ),
+            dots: true
         };
         return (
             <div>
