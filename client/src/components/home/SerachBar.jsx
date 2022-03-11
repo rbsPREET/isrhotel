@@ -1,11 +1,11 @@
-import SearchBarButton from "../ui/SearchBarButton";
-import classes from "../css/home/SearchBar.module.css";
+import SearchBarButton from "../../ui/SearchBarButton";
+import classes from "../../css/home/SearchBar.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import DatesIcon from "@material-ui/icons/DateRangeOutlined";
 import PeopleIcon from "@material-ui/icons/EmojiPeopleOutlined";
-import Input from "../ui/Input";
-import Country from "./Country";
-import InputRangeDates from "../ui/InputRangeDates";
+import Input from "../../ui/Input";
+import Country from "../Country";
+import InputRangeDates from "../../ui/InputRangeDates";
 import { useEffect, useState } from "react";
 
 const SearchBar = (props) => {

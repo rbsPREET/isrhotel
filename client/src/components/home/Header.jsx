@@ -1,4 +1,4 @@
-import SearchBar from "../SerachBar";
+import SearchBar from "./SerachBar";
 import classes from '../../css/home/Header.module.css'
 
 const Header = ()=>{
