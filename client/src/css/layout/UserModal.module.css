@@ -1,0 +1,46 @@
+.modalContentR {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.8;
+    color: #141414;
+}
+
+.modalContentL {
+    display: flex;
+    background-color: rgb(118, 101, 196);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.8;
+    color: #141414;
+}
+
+
+.checkStatus {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+.checkStatus {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.formContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+button {
+    padding: 10px 24px;
+    background: #141414;
+    color: #fff;
+    border: none;
+}
