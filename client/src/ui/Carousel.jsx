@@ -1,9 +1,7 @@
-import { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { mallsData } from "../mockData";
-import Mall from "../components/Mall";
 import classes from "../css/Carousel.module.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -46,7 +44,7 @@ const PrevArrow = (props) => {
   );
 };
 
-const Carousel = () => {
+const Carousel = (props) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -66,7 +64,25 @@ const Carousel = () => {
     <div>
       <Slider {...settings}>
         {mallsData.map((item) => (
-          <Mall key={item} item={item} />
+          <div
+            className={classes.paddingAndRelative}
+          >
+            <div className={classes.wrapper}>
+              <div className={props.borderRadius && classes.item}>
+                <h1 className={classes.title}>{item.title}</h1>
+                <p className={classes.description}>{item.description}</p>
+                <img
+                  className={
+                    (props.borderRadius && classes.borderRadius) +
+                    " " +
+                    classes.img
+                  }
+                  src={item.img}
+                  alt="img"
+                />
+              </div>
+            </div>
+          </div>
         ))}
       </Slider>
     </div>

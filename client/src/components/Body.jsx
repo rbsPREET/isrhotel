@@ -10,7 +10,7 @@ const Body = () => {
         <TrendingDestionationSection />
       </Section>
       <Section container={false} title="Malls">
-        <Carousel />
+        <Carousel borderRadius={true} />
       </Section>
     </div>
   );

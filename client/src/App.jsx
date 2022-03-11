@@ -19,7 +19,8 @@ const App = () => {
         {/*single mall*/}
         <Route path="/mall/:id/room/:roomId" element={<Mall />} />
         {/*room in single mall*/}
-        <Route path="/:location/:dates/:guests" element={<Home />} /> {/*filter search*/}
+        <Route path="/:location/:dates/:guests" element={<Home />} />{" "}
+        {/*filter search*/}
       </Routes>
       <Footer />
     </BrowserRouter>

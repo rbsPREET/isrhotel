@@ -1,20 +1,61 @@
-
-.icons{
-    overflow: hidden;
+.icons {
+  overflow: hidden;
 }
 
-.prevIcon{
-    color: white !important;
-
+.prevIcon {
+  color: white !important;
 }
 
-.prevIcon::before{
-    content: unset !important;
+.prevIcon::before {
+  content: unset !important;
 }
 
 .SampleNextArrow,
-.SamplePrevArrow{
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
+.SamplePrevArrow {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+}
+
+.item {
+  cursor: pointer;
+  margin: 0px 15px 25px 15px;
+}
+
+.title {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 700;
+}
+
+.description {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 700;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.borderRadius {
+  border-radius: 10px;
+}
+.paddingAndRelative {
+  position: relative;
+  width: 100%;
 }

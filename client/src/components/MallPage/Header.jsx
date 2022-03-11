@@ -3,7 +3,7 @@ import Carousel from "../../ui/Carousel";
 
 
 const Header = () => {
-  return <Carousel />;
+  return <Carousel/>;
 };
 
 export default Header;

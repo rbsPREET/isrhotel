@@ -1,8 +1,6 @@
 import FlexRow from "../ui/FlexRow";
-import Section from "../ui/Section";
 import classes from "../css/TrendingDestionationSection.module.css";
 import TrendingCard from "../ui/TrendingCard";
-import { useState } from "react";
 const TrendingDestionationSection = (props) => {
   return (
     <>
