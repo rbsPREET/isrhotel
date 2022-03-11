@@ -1,8 +1,9 @@
 import React from "react";
-import MallCarousel from "../home/MallCarousel";
+import { mallsData } from "../../mockData";
+import Carousel from "../../ui/Carousel";
 
 const Header = () => {
-  return <MallCarousel />;
+  return <Carousel data={mallsData} borderRadius={true} />;
 };
 
 export default Header;

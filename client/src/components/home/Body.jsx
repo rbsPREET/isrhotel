@@ -1,9 +1,9 @@
 import React from "react";
-import Carousel from "../../ui/Carousel";
 import Section from "../../ui/Section";
 import TrendingDestionationSection from "./TrendingDestionationSection.jsx";
 import classes from "../../css/home/Body.module.css";
-import MallCarousel from "./MallCarousel";
+import Carousel from "../../ui/Carousel";
+import { mallsData } from "../../mockData";
 const Body = () => {
   return (
     <div>
@@ -11,7 +11,7 @@ const Body = () => {
         <TrendingDestionationSection />
       </Section>
       <Section container={false} title="Malls">
-        <MallCarousel borderRadius={true} />
+       <Carousel data={mallsData} borderRadius={true} />
       </Section>
     </div>
   );

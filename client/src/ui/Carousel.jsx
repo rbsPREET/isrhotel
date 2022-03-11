@@ -5,6 +5,7 @@ import { mallsData } from "../mockData";
 import classes from "../css/ui/Carousel.module.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import SingleHotelRoomCarousel from "../components/home/SingleHotelRoomCarousel";
 
 const NextArrow = (props) => {
   const { style, onClick } = props;
@@ -51,7 +52,7 @@ const Carousel = (props) => {
     speed: 2000,
     slidesToShow: 4,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     autoplaySpeed: 3000,
@@ -63,7 +64,9 @@ const Carousel = (props) => {
   return (
     <div>
       <Slider {...settings}>
-      {props.children}
+        {props.data.map((item) => (
+          <SingleHotelRoomCarousel item={item} borderRadius={true} />
+        ))}
       </Slider>
     </div>
   );
