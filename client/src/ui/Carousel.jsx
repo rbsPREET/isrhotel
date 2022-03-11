@@ -1,4 +1,3 @@
-
 import { Component } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -29,18 +28,40 @@ import Mall from "../components/Mall";
 // };
 
 // export default Carousel;
+
+function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: "block", right: 0, marginRight: "10px", zIndex: 1 }}
+            onClick={onClick}
+        />
+    );
+}
+
+function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+        <div
+            className={className}
+            style={{ ...style, display: "block", left: 0, marginLeft: "10px", zIndex: 1 }}
+            onClick={onClick}
+        />
+    );
+}
+
 export default class CenterMode extends Component {
     render() {
         const settings = {
-            className: "center",
-            centerMode: true,
-            centerPadding: '60px',
-            dots: false,
-            infinite: true,
-            speed: 300,
-            slidesToShow: 4,
+            slidesToShow: 3,
             slidesToScroll: 1,
-            arrows: true
+            autoplay: true,
+            speed: 2000,
+            autoplaySpeed: 2000,
+            cssEase: "linear",
+            nextArrow: <SampleNextArrow />,
+            prevArrow: <SamplePrevArrow />
         };
         return (
             <div>
