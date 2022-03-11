@@ -5,7 +5,7 @@ import TrendingCard from "../ui/TrendingCard";
 import { useState } from "react";
 const TrendingDestionationSection = (props) => {
   return (
-    <Section className={classes.container} title="Trending Destinations">
+    <>
       <FlexRow className={classes.top2Destinations}>
         <TrendingCard
           src="/assets/images/trending1.jpg"
@@ -35,7 +35,7 @@ const TrendingDestionationSection = (props) => {
           listing={2}
         />
       </FlexRow>
-    </Section>
+    </>
   );
 };
 export default TrendingDestionationSection;
