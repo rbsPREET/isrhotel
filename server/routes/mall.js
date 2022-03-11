@@ -36,7 +36,7 @@ router.delete("/:id", verifyTokenAndAdmin, async (req, res) => {
     }
 })
 
-// GET PRODUCT => Will use for Searching a Mall / TODO: need to add params on search
+// GET MALL => Will use for Searching a Mall / TODO: need to add params on search
 router.get("/:id", async (req, res) => {
     try {
         const mall = await Mall.findById(req.params.id)
@@ -46,9 +46,9 @@ router.get("/:id", async (req, res) => {
     }
 })
 
-// GET ALL PRODUCTS
+// GET FILTERED MALLS
 router.get("/", async (req, res) => {
-    // example: if "...mall/guests=2" => return all malls that has 2 guests option
+    // example: if "...mall/=2" => return all malls that has 2 guests option
     const queryGuests = req.query.guests
     const queryRooms = req.query.rooms
     try {
