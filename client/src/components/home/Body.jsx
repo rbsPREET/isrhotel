@@ -2,8 +2,7 @@ import React from "react";
 import Section from "../../ui/Section";
 import TrendingDestionationSection from "./TrendingDestionationSection.jsx";
 import classes from "../../css/home/Body.module.css";
-import Carousel from "../../ui/Carousel";
-import { mallsData } from "../../mockData";
+import MallSection from "./MallSection";
 const Body = () => {
   return (
     <div>
@@ -11,7 +10,7 @@ const Body = () => {
         <TrendingDestionationSection />
       </Section>
       <Section container={false} title="Malls">
-        <Carousel data={mallsData} borderRadius={true} template="home-hotels" />
+        <MallSection />
       </Section>
     </div>
   );
