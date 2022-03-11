@@ -8,7 +8,7 @@ import classes from "../css/Carousel.module.css";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-const SampleNextArrow = (props) => {
+const NextArrow = (props) => {
   const { style, onClick } = props;
   return (
     <div
@@ -27,7 +27,7 @@ const SampleNextArrow = (props) => {
   );
 };
 
-const SamplePrevArrow = (props) => {
+const PrevArrow = (props) => {
   const { style, onClick } = props;
   return (
     <div
@@ -54,8 +54,8 @@ const Carousel = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     autoplaySpeed: 3000,
     pauseOnHover: true,
     focusOnSelect: true,
