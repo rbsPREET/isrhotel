@@ -1,0 +1,20 @@
+
+.icons{
+    overflow: hidden;
+}
+
+.prevIcon{
+    color: white !important;
+
+}
+
+.prevIcon::before{
+    content: unset !important;
+}
+
+.SampleNextArrow,
+.SamplePrevArrow{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+}

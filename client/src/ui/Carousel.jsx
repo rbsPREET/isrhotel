@@ -4,73 +4,73 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { mallsData } from "../mockData";
 import Mall from "../components/Mall";
+import classes from "../css/Carousel.module.css";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
-// const Carousel = () => {
-//   const settings = {
-//     className: "center",
-//     centerMode: true,
-//     infinite: true,
-//     centerPadding: "60px",
-//     slidesToShow: 3,
-//     speed: 500,
-//   };
-//   return (
-//     <div>
-//       <Slider {...settings}>
-//         <div>
-//           {mallsData.map((item) => (
-//             <Mall key={item} item={item} />
-//           ))}
-//         </div>
-//       </Slider>
-//     </div>
-//   );
-// };
+const SampleNextArrow = (props) => {
+  const { style, onClick } = props;
+  return (
+    <div
+      className={classes.SampleNextArrow}
+      style={{
+        ...style,
+        display: "block",
+        right: 0,
+        marginRight: "10px",
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    >
+      <ArrowForwardIosIcon />
+    </div>
+  );
+};
 
-// export default Carousel;
+const SamplePrevArrow = (props) => {
+  const { style, onClick } = props;
+  return (
+    <div
+      className={classes.SamplePrevArrow}
+      style={{
+        ...style,
+        display: "block",
+        left: 0,
+        marginLeft: "10px",
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    >
+      <ArrowBackIosNewIcon />
+    </div>
+  );
+};
 
-function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", right: 0, marginRight: "10px", zIndex: 1 }}
-            onClick={onClick}
-        />
-    );
-}
+const Carousel = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 2000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    focusOnSelect: true,
+    cssEase: "linear",
+  };
 
-function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-        <div
-            className={className}
-            style={{ ...style, display: "block", left: 0, marginLeft: "10px", zIndex: 1 }}
-            onClick={onClick}
-        />
-    );
-}
+  return (
+    <div>
+      <Slider {...settings}>
+        {mallsData.map((item) => (
+          <Mall key={item} item={item} />
+        ))}
+      </Slider>
+    </div>
+  );
+};
 
-export default class CenterMode extends Component {
-    render() {
-        const settings = {
-            slidesToShow: 3,
-            slidesToScroll: 1,
-            autoplay: true,
-            speed: 2000,
-            autoplaySpeed: 2000,
-            cssEase: "linear",
-            nextArrow: <SampleNextArrow />,
-            prevArrow: <SamplePrevArrow />
-        };
-        return (
-            <div>
-                <Slider {...settings}>
-                    {mallsData.map((item) => (
-                        <Mall key={item} item={item} />
-                    ))}
-                </Slider>
-            </div >
-        );
-    }
-}
+export default Carousel;
