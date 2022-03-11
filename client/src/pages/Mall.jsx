@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../components/MallPage/Header'
+import Header from '../components/malls/Header'
 
 const Mall = () => {
     return (

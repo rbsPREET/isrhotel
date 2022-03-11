@@ -3,6 +3,7 @@ import Carousel from "../../ui/Carousel";
 import Section from "../../ui/Section";
 import TrendingDestionationSection from "./TrendingDestionationSection.jsx";
 import classes from "../../css/home/Body.module.css";
+import MallCarousel from "./MallCarousel";
 const Body = () => {
   return (
     <div>
@@ -10,7 +11,7 @@ const Body = () => {
         <TrendingDestionationSection />
       </Section>
       <Section container={false} title="Malls">
-        <Carousel borderRadius={true} />
+        <MallCarousel borderRadius={true} />
       </Section>
     </div>
   );

@@ -1,28 +1,8 @@
-import Input from "./Input";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import classes from "../css/ui/Modal.module.css";
-import { useDispatch } from "react-redux";
-import { storeUser } from "../store/user";
 
 const Modal = (props) => {
   const modalRef = useRef();
-
-  const [isLogin, setIsLogin] = useState(true);
-  const distpach = useDispatch();
-
-  const handleLoginAndRegister = () => {
-    distpach(
-      storeUser({
-        firstName: "dor",
-        lastName: "levy",
-        address: "address test",
-        phone: "0525938898",
-        email: "dorwgeqwsfsdr@dor.com",
-        password: "123456",
-      })
-    );
-    setIsLogin(!isLogin);
-  };
 
   const closeModal = (e) => {
     if (modalRef.current === e.target) {
@@ -30,13 +10,16 @@ const Modal = (props) => {
     }
   }; // Close Modal if clicking outside of it
 
+  const { setActiveModal, activeModal } = props;
+
+  
   const escPress = useCallback(
     (e) => {
-      if (e.key === "Escape" && props.activeModal) {
-        props.setActiveModal(!props.activeModal);
+      if (e.key === "Escape" && activeModal) {
+        setActiveModal(!activeModal);
       }
     },
-    [props.setActiveModal, props.activeModal]
+    [setActiveModal, activeModal] //
   ); // Close Modal when click "ESC" key
 
   useEffect(() => {
@@ -54,7 +37,7 @@ const Modal = (props) => {
         {props.changed ? props.isLogin : props.isNotLogin}
         <button
           className={classes.closeModal}
-          onClick={() => props.setActiveModal(!props.activeModal)}
+          onClick={() => setActiveModal(!activeModal)}
           aria-label="Close"
         >
           &#10005;

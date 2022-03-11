@@ -1,9 +1,8 @@
 import React from "react";
-import Carousel from "../../ui/Carousel";
-
+import MallCarousel from "../home/MallCarousel";
 
 const Header = () => {
-  return <Carousel/>;
+  return <MallCarousel />;
 };
 
 export default Header;

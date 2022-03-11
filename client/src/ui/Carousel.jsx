@@ -63,27 +63,7 @@ const Carousel = (props) => {
   return (
     <div>
       <Slider {...settings}>
-        {mallsData.map((item) => (
-          <div
-            className={classes.paddingAndRelative}
-          >
-            <div className={classes.wrapper}>
-              <div className={props.borderRadius && classes.item}>
-                <h1 className={classes.title}>{item.title}</h1>
-                <p className={classes.description}>{item.description}</p>
-                <img
-                  className={
-                    (props.borderRadius && classes.borderRadius) +
-                    " " +
-                    classes.img
-                  }
-                  src={item.img}
-                  alt="img"
-                />
-              </div>
-            </div>
-          </div>
-        ))}
+      {props.children}
       </Slider>
     </div>
   );

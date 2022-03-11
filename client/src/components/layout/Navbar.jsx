@@ -4,7 +4,6 @@ import DropDownWrapper from "../../ui/DropDownWrapper";
 import { useState } from "react";
 import DropDownLinks from "../../ui/DropDownLinks";
 import LiNavLink from "../../ui/LiNavLink";
-import { Modal } from "../../ui/Modal";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
 
