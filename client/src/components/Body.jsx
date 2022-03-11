@@ -9,7 +9,7 @@ const Body = () => {
       <Section className={classes.container} title="Trending Destinations">
         <TrendingDestionationSection />
       </Section>
-      <Section title="Trending Destinations">
+      <Section container={false} title="Malls">
         <Carousel />
       </Section>
     </div>
