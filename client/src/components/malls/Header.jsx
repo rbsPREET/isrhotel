@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "../../ui/Carousel";
 import { GetMall } from "../../store/mall";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "react-loader-spinner";
 import FlexRow from "../../ui/FlexRow";
+import classes from "../../css/malls/Header.module.css";
 
 const Header = () => {
   const location = useLocation(); // get the mall Id from the path
@@ -12,15 +13,14 @@ const Header = () => {
   const dispatch = useDispatch();
   const mallId = location.pathname.split("/")[2];
 
-  
   useEffect(() => {
     dispatch(GetMall(mallId));
   }, [dispatch, mallId]);
 
   return state.img ? (
-    <Carousel data={state.img} template="mall-page" />
+    <Carousel data={state.img} template="mall-page" /> // TODO: disable the dots by passing props of dots off
   ) : (
-    <FlexRow center={true}>
+    <FlexRow className={classes.oval} center={true}>
       <Oval color="#00BFFF" height={80} width={80} />
     </FlexRow>
   );
