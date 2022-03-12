@@ -14,9 +14,7 @@ const SingleCard = (props) => {
       );
       break;
     case "mall-page":
-      template = (
-        <HotelCarousel item={props.card} borderRadius={true} />
-      )
+      template = <HotelCarousel item={props.card} borderRadius={true} />;
       break;
     default:
       break;

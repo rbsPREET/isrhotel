@@ -1,20 +1,20 @@
-import React from "react";
-//import { mallsData } from "../../mockData";
+import React, { useEffect } from "react";
 import Carousel from "../../ui/Carousel";
-import { getMall } from "../../store/mall";
+import { GetMall } from "../../store/mall";
 import { useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
-  const location = useLocation() // get the mall Id from the path
-  const mallId = location.pathname.split("/")[2]
-  console.log(mallId)
-  const { data } = getMall(mallId) // <= not working | need to return data of a mall to display
-  console.log("data from getMall func: " + data)
-  return (
-    <>
-      <Carousel data={data} borderRadius={true} template="mall-page" />
-    </>
-  )
+  const location = useLocation(); // get the mall Id from the path
+  const state = useSelector((state) => state.mall);
+  const dispatch = useDispatch();
+  const mallId = location.pathname.split("/")[2];
+  useEffect(() => {
+    dispatch(GetMall(mallId));
+    return () => {};
+  }, [dispatch, mallId]);
+
+  return state.img && <Carousel data={state.img} borderRadius={true} template="mall-page" />;
 };
 
 export default Header;

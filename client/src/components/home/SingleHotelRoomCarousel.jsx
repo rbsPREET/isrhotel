@@ -11,15 +11,18 @@ const SingleHotelRoomCarousel = (props) => {
   const { item } = props;
 
   return (
-    <Link to={`/mall/${item._id}`} >
+    <Link to={`/mall/${item._id}`}>
       <div key={item.id} className={classes.paddingAndRelative}>
         <div className={classes.margin}>
           <div
-            className={`${props.borderRadius && classes.borderRadius} ${classes.item
-              } ${classes.relative}`}
-            style={{ backgroundImage: `url('${item.img}')` }}
+            className={`${props.borderRadius && classes.borderRadius} ${
+              classes.item
+            } ${classes.relative}`}
+            style={{ backgroundImage: `url('${item.img[0]}')` }}
           >
-            <FlexRow className={`${classes.spaceAround} ${classes.topRelative}`}>
+            <FlexRow
+              className={`${classes.spaceAround} ${classes.topRelative}`}
+            >
               <FlexColumn className={classes.description}>
                 <p className={classes.stars}>{item.stars}</p>
                 <h1 className={classes.title}>{item.title}</h1>
@@ -35,7 +38,7 @@ const SingleHotelRoomCarousel = (props) => {
           </div>
         </div>
       </div>
-    </Link >
+    </Link>
   );
 };
 
