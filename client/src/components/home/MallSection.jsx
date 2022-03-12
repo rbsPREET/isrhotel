@@ -3,7 +3,7 @@ import Carousel from "../../ui/Carousel";
 
 const MallSection = () => {
   return (
-    <Carousel data={mallsData} borderRadius={true} template="home-hotels" />
+    <Carousel data={mallsData} borderRadius={false} template="home-hotels" />
   );
 };
 

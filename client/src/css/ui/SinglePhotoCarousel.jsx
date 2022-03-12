@@ -1,22 +1,21 @@
-import classes from "../../css/home/SingleMallCarousel.module.css";
+import classes from "../../css/ui/SinglePhotoCarousel.module.css";
+import { Oval } from "react-loader-spinner";
 
-const HotelCarousel = (props) => {
+const SinglePhotoCarousel = (props) => {
   return (
     <div className={classes.paddingAndRelative}>
       <div className={classes.margin}>
-        {props.item ? (
+        {props.item && (
           <div
             className={`${props.borderRadius && classes.borderRadius} ${
               classes.item
             } ${classes.relative}`}
             style={{ backgroundImage: `url('${props.item}')` }}
           />
-        ) : (
-          "asassa"
-        )}
+        ) }
       </div>
     </div>
   );
 };
 
-export default HotelCarousel;
+export default SinglePhotoCarousel;

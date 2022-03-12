@@ -3,6 +3,8 @@ import Carousel from "../../ui/Carousel";
 import { GetMall } from "../../store/mall";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Oval } from "react-loader-spinner";
+import FlexRow from "../../ui/FlexRow";
 
 const Header = () => {
   const location = useLocation(); // get the mall Id from the path
@@ -12,10 +14,15 @@ const Header = () => {
   console.log(state);
   useEffect(() => {
     dispatch(GetMall(mallId));
-    return () => {};
-  }, [dispatch,mallId]);
+  }, [dispatch, mallId]);
 
-  return state.img && <Carousel data={state.img} template="mall-page" />;
+  return state.img ? (
+    <Carousel data={state.img} template="mall-page" />
+  ) : (
+    <FlexRow center={true}>
+      <Oval color="#00BFFF" height={80} width={80} />
+    </FlexRow>
+  );
 };
 
 export default Header;

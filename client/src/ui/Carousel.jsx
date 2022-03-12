@@ -49,7 +49,7 @@ const Carousel = (props) => {
     dots: true,
     infinite: true,
     speed: 2000,
-    slidesToShow: 2,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     nextArrow: <NextArrow />,
