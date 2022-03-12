@@ -2,7 +2,7 @@ export const mallsData = [{
     "_id": "6228e3be1b77fa7504fa67f5",
     "title": "Mall Page Test",
     "description": "mall1",
-    "stars": 5,
+    "stars": 3,
     "img": [
         "https://storage.googleapis.com/static-content-hc/sites/default/files/cataloina_porto_doble_balcon2_2.jpg"
     ],

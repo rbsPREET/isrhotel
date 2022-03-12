@@ -5,11 +5,15 @@ import classes from "../../css/home/SingleMallCarousel.module.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Link } from "react-router-dom";
+import StarIcon from "@mui/icons-material/Star";
 
 const SingleHotelRoomCarousel = (props) => {
   const [isLiked, setLike] = useState(false);
   const { item } = props;
-
+  let stars = [];
+  for (let index = 0; index < item.stars; index++) {
+    stars.push(<StarIcon />);
+  }
   return (
     <div
       key={item.id}
@@ -25,7 +29,7 @@ const SingleHotelRoomCarousel = (props) => {
         >
           <FlexRow className={`${classes.spaceAround} ${classes.topRelative}`}>
             <FlexColumn className={classes.description}>
-              <p className={classes.stars}>{item.stars}</p>
+              <p className={classes.stars}>{stars.map((star) => star)}</p>
               <h1 className={classes.title}>
                 <Link to={`/mall/${item._id}`}>{item.title} </Link>
               </h1>
