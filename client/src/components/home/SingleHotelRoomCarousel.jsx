@@ -12,7 +12,7 @@ const SingleHotelRoomCarousel = (props) => {
   const { item } = props;
   let stars = [];
   for (let index = 0; index < item.stars; index++) {
-    stars.push(<StarIcon />);
+    stars.push(<StarIcon htmlColor="gold" />);
   }
   return (
     <div
