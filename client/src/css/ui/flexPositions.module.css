@@ -1,3 +1,16 @@
-.center{
-    justify-content: center;
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.centerColumn {
+  align-items: center;
+}
+
+.fullSize {
+  width: 100%;
+}
+
+.wrap {
+  flex-wrap: wrap;
 }

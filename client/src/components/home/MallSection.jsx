@@ -1,9 +1,8 @@
-import { mallsData } from "../../mockData";
 import Carousel from "../../ui/Carousel";
 
-const MallSection = () => {
+const MallSection = (props) => {
   return (
-    <Carousel data={mallsData} borderRadius={false} template="home-hotels" />
+    <Carousel data={props.data} borderRadius={false} template="home-hotels" />
   );
 };
 

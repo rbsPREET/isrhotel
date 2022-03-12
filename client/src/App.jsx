@@ -4,6 +4,7 @@ import Mall from "./pages/Mall";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
+import Filter from "./pages/Filter";
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <Route exact path="/" element={<Home />} />
         {/*single mall*/}
         <Route path="/mall/:id" element={<Mall />} />
-        <Route path="/:location/:dates/:guests" element={<Home />} />
+        <Route path="/:location/:dates/:guests" element={<Filter />} />
         {/*filter search*/}
         <Route path="/malls" element={<Mall />} />
         {/*single mall with queries*/}
