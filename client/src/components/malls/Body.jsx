@@ -1,17 +1,24 @@
 import React from 'react'
-import Section from '../../ui/Section'
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
+import StarIcon from "@material-ui/icons/Star";
 import FlexRow from '../../ui/FlexRow';
 
 const Body = () => {
+    let stars = [];
+    for (let index = 0; index < 5; index++) {
+        stars.push(<StarIcon htmlColor='gold' />);
+    }
     return (
         <div className={classes.container}>
             <div className={classes.left}>
                 <h1 className={classes.title}>Zona Hotel</h1>
                 <FlexRow centerColumn>
-                    <LocationIcon />&nbsp;
+                    <LocationIcon style={{ marginLeft: "-5px" }} />&nbsp;
                     <p className={classes.addressTitle}>5555 Sharmuta Street, Tel-Aviv</p>
+                </FlexRow>
+                <FlexRow centerColumn>
+                    <p className={classes.stars}>{stars.map((star) => star)}</p>
                 </FlexRow>
             </div>
             <div className={classes.right}>
