@@ -11,7 +11,7 @@ const FlexRow = (props) => {
         props.center ? classes.justifyCenter : ""
       } ${props.fullSize ? classes.fullSize : ""} ${
         props.wrap ? classes.wrap : ""
-      } ${props.wrap ? classes.wrap : ""} ${
+      } ${props.centerColumn ? classes.centerColumn : ""} ${
         props.allCenter
           ? classes.justifyCenter + " " + classes.centerColumn
           : ""

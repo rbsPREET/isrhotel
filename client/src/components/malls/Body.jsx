@@ -9,7 +9,7 @@ const Body = () => {
         <div className={classes.container}>
             <div className={classes.left}>
                 <h1 className={classes.title}>Zona Hotel</h1>
-                <FlexRow>
+                <FlexRow centerColumn>
                     <LocationIcon />&nbsp;
                     <p className={classes.addressTitle}>5555 Sharmuta Street, Tel-Aviv</p>
                 </FlexRow>
