@@ -1,7 +1,7 @@
 .container {
     display: flex;
     width: 70vw;
-    height: 100vh;
+    height: 100%;
     margin: 50px auto;
 }
 
@@ -11,14 +11,27 @@
     flex-direction: column;
 }
 
+.top {
+    height: 60vh;
+}
+
+.mid {
+    height: 60vh;
+}
+
 .right {
     flex: 1;
     display: flex;
     justify-content: flex-end;
 }
 
-.title {
+.mainTitle {
     font-size: 24px;
+    font-weight: 100;
+}
+
+.title {
+    font-size: 20px;
     font-weight: 100;
 }
 
