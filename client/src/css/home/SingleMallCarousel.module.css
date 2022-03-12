@@ -41,8 +41,8 @@
   position: relative;
   top: 50%;
 }
-.desc,
-.title,
+.desc a,
+.title a,
 .like,
 .stars {
   color: white;
@@ -68,7 +68,7 @@
   transition: all 0.5s ease-in-out;
 }
 
-.isLiked{
+.isLiked {
   padding: 10px 10px 5px 10px;
   background: red;
   border-radius: 30px;

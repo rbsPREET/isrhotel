@@ -11,34 +11,34 @@ const SingleHotelRoomCarousel = (props) => {
   const { item } = props;
 
   return (
-    <Link to={`/mall/${item._id}`}>
-      <div key={item.id} className={classes.paddingAndRelative}>
-        <div className={classes.margin}>
-          <div
-            className={`${props.borderRadius && classes.borderRadius} ${
-              classes.item
-            } ${classes.relative}`}
-            style={{ backgroundImage: `url('${item.img[0]}')` }}
-          >
-            <FlexRow
-              className={`${classes.spaceAround} ${classes.topRelative}`}
+    <div key={item.id} className={classes.paddingAndRelative}>
+      <div className={classes.margin}>
+        <div
+          className={`${props.borderRadius && classes.borderRadius} ${
+            classes.item
+          } ${classes.relative}`}
+          style={{ backgroundImage: `url('${item.img[0]}')` }}
+        >
+          <FlexRow className={`${classes.spaceAround} ${classes.topRelative}`}>
+            <FlexColumn className={classes.description}>
+              <p className={classes.stars}>{item.stars}</p>
+              <h1 className={classes.title}>
+                <Link to={`/mall/${item._id}`}>{item.title} </Link>
+              </h1>
+              <p className={classes.desc}>
+                <Link to={`/mall/${item._id}`}>{item.description}</Link>
+              </p>
+            </FlexColumn>
+            <div
+              onClick={() => setLike(!isLiked)}
+              className={`${classes.like} ${isLiked && classes.isLiked}`}
             >
-              <FlexColumn className={classes.description}>
-                <p className={classes.stars}>{item.stars}</p>
-                <h1 className={classes.title}>{item.title}</h1>
-                <p className={classes.desc}>{item.description}</p>
-              </FlexColumn>
-              <div
-                onClick={() => setLike(!isLiked)}
-                className={`${classes.like} ${isLiked && classes.isLiked}`}
-              >
-                {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-              </div>
-            </FlexRow>
-          </div>
+              {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+            </div>
+          </FlexRow>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 
