@@ -1,16 +1,15 @@
-.center {
-  justify-content: center;
-  align-items: center;
+.justifyCenter{
+    justify-content: center;
 }
 
-.centerColumn {
-  align-items: center;
+.centerColumn{
+    align-items:center;
 }
 
-.fullSize {
-  width: 100%;
+.fullSize{
+    width: 100%;
 }
 
-.wrap {
-  flex-wrap: wrap;
+.wrap{
+    flex-wrap: wrap;
 }

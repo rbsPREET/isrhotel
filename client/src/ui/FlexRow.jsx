@@ -8,9 +8,13 @@ const FlexRow = (props) => {
         width: `${props.customWidth && props.customWidth}%`,
       }}
       className={`${props.className ? props.className : ""} ${
-        props.center ? classes.center : ""
+        props.center ? classes.justifyCenter : ""
       } ${props.fullSize ? classes.fullSize : ""} ${
         props.wrap ? classes.wrap : ""
+      } ${props.wrap ? classes.wrap : ""} ${
+        props.allCenter
+          ? classes.justifyCenter + " " + classes.centerColumn
+          : ""
       }`}
     >
       {props.children}
