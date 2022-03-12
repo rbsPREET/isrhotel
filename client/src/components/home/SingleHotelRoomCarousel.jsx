@@ -11,12 +11,16 @@ const SingleHotelRoomCarousel = (props) => {
   const { item } = props;
 
   return (
-    <div key={item.id} className={classes.paddingAndRelative}>
+    <div
+      key={item.id}
+      className={`${classes.paddingAndRelative}`}
+      style={{ width: `${props.customWidth ? props.customWidth : "100"}%` }}
+    >
       <div className={classes.margin}>
         <div
-          className={`${props.borderRadius && classes.borderRadius} ${
+          className={`${props.borderRadius ? classes.borderRadius : ""} ${
             classes.item
-          } ${classes.relative}`}
+          } ${classes.relative} `}
           style={{ backgroundImage: `url('${item.img[0]}')` }}
         >
           <FlexRow className={`${classes.spaceAround} ${classes.topRelative}`}>

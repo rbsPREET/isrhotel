@@ -10,7 +10,11 @@ const SingleCard = (props) => {
       break;
     case "home-hotels":
       template = (
-        <SingleHotelRoomCarousel item={props.card} borderRadius={true} />
+        <SingleHotelRoomCarousel
+          item={props.card}
+          borderRadius={true}
+          customWidth={props.customWidth}
+        />
       );
       break;
     case "mall-page":
