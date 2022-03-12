@@ -23,6 +23,11 @@ const MallSchema = new mongoose.Schema({
             type: Number
         }
     },
+    amenities: {
+        type: Array,
+        default: [{}],
+        required: true
+    },
     aditionalObjects: {
         type: Array,
         default: [{}]
