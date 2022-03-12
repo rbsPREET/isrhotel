@@ -2,14 +2,19 @@ import classes from "../css/ui/Section.module.css";
 const Section = (props) => {
   return (
     <div
-      className={`${props.container && classes.container} ${props.className && props.className} ${classes.margin}`}
+      className={`${props.container && classes.container} ${
+        props.className && props.className
+      } ${classes.margin}`}
     >
-      <div className={props.wrapper && classes.wrapper}>
-        <div>
-          <h1 className={props.title && classes.title}>{props.title}</h1>
+      {props.title && (
+        <div className={props.wrapper && classes.wrapper}>
+          <div>
+            <h1 className={classes.title}>{props.title}</h1>
+          </div>
+          {props.children}
         </div>
-        {props.children}
-      </div>
+      )}
+      {!props.title && props.children}
     </div>
   );
 };
