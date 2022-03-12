@@ -1,5 +1,4 @@
 import classes from "../../css/ui/SinglePhotoCarousel.module.css";
-import { Oval } from "react-loader-spinner";
 
 const SinglePhotoCarousel = (props) => {
   return (
