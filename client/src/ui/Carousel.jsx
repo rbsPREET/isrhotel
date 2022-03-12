@@ -65,7 +65,7 @@ const Carousel = (props) => {
       <Slider {...settings}>
         {props.data.map((item) => (
           <SingleCard
-            // key={item.id || item._id || item.title}
+            key={item.id || item._id || item.title || item}
             card={item}
             template={props.template}
             borderRadius={props.borderRadius}

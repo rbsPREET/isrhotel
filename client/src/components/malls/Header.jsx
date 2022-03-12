@@ -14,7 +14,11 @@ const Header = () => {
     return () => {};
   }, [dispatch, mallId]);
 
-  return state.img && <Carousel data={state.img} borderRadius={true} template="mall-page" />;
+  return (
+    state.img && (
+      <Carousel data={state.img} borderRadius={false} template="mall-page" />
+    )
+  );
 };
 
 export default Header;

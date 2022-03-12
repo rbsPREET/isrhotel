@@ -11,9 +11,7 @@ const HotelCarousel = (props) => {
                 classes.item
               } ${classes.relative}`}
               style={{ backgroundImage: `url('${props.item}')` }}
-            >
-              saas
-            </div>
+            />
           ) : (
             "asassa"
           )}
