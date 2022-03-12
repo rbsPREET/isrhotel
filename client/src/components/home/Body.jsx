@@ -6,10 +6,14 @@ import MallSection from "./MallSection";
 const Body = () => {
   return (
     <div>
-      <Section className={classes.container} title="Trending Destinations">
+      <Section
+        container={true}
+        className={classes.container}
+        title="Trending Destinations"
+      >
         <TrendingDestionationSection />
       </Section>
-      <Section container={false} title="Malls">
+      <Section title="Malls">
         <MallSection />
       </Section>
     </div>
