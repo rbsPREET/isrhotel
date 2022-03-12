@@ -1,8 +1,9 @@
 .btn{
     border-color: #ff5722;
-    padding: 35px 25px 35px 25px;
     text-align: center;
     background: #ff5722;
+    margin-right: 15px;
+    border-radius: 30px;
     white-space: nowrap;
     text-transform: uppercase!important;
     transition: all ease .4s;
@@ -13,7 +14,6 @@
     -webkit-user-select: none;
     user-select: none;
     cursor: pointer;
-    border-radius: 0 0.6rem 0.6rem 0!important;
     color: #ffffff !important;
 }
 .btn:hover{

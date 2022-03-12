@@ -7,6 +7,8 @@ import Input from "../../ui/Input";
 import Country from "../Country";
 import InputRangeDates from "../../ui/InputRangeDates";
 import { useEffect, useState } from "react";
+import Form from "../../css/ui/Form";
+import Section from "../../ui/Section";
 
 const SearchBar = (props) => {
   const [details, setDetails] = useState({
@@ -49,19 +51,18 @@ const SearchBar = (props) => {
   useEffect(() => {}, [details]);
 
   return (
-    <div className={classes.container}>
-      <form className="">
-        <div className={classes.wrapper}>
-          <Country
-            getDetails={getDetails}
-            icon={<LocationIcon />}
-            type="select"
-            label="Location"
-            nameId="location"
-            placeholder="Choose the location you wanna stay!"
-            mainDiv={classes.border__right}
-          />
-          <InputRangeDates
+    <Section className={classes.container}>
+      <Form className={classes.wrapper}>
+        <Country
+          getDetails={getDetails}
+          icon={<LocationIcon />}
+          type="select"
+          label="Location"
+          nameId="location"
+          placeholder="Choose the location you wanna stay!"
+          mainDiv={classes.border__right}
+        />
+        <InputRangeDates
             getDetails={getDetails}
             icon={<DatesIcon />}
             mainDiv={classes.border__right}
@@ -74,11 +75,11 @@ const SearchBar = (props) => {
             onChange={getDetails}
             nameId="guests"
             label="Guests"
-          />
-          <SearchBarButton />
-        </div>
-      </form>
-    </div>
+          /> 
+
+        <SearchBarButton>Book Now</SearchBarButton>
+      </Form>
+    </Section>
   );
 };
 

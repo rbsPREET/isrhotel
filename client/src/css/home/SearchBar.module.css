@@ -1,14 +1,15 @@
 .container {
   max-width: 1200px;
-  border-radius: 0.6rem;
+  border-radius: 100px;
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 12%);
+  overflow: hidden;
   background: #fff;
-  display: flex;
   z-index: 2;
 }
 .wrapper {
   width: 100%;
   padding-left: 1%;
-  height: 94px;
+  height: 68px;
   align-items: center;
   display: flex;
 }
@@ -16,7 +17,7 @@
   width: 80%;
 }
 .border__right {
-  border-right: 1px solid black;
+  border-right: 1px solid #0000000d;
 }
 .rs-icon {
   display: none !important;
