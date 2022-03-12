@@ -1,11 +1,11 @@
 import classes from "../css/ui/Section.module.css";
 const Section = (props) => {
+  const SectionClasses = `
+  ${props.container && classes.container} 
+  ${props.className && props.className} 
+  ${classes.margin}`;
   return (
-    <div
-      className={`${props.container && classes.container} ${
-        props.className && props.className
-      } ${classes.margin}`}
-    >
+    <div className={SectionClasses}>
       {props.title && (
         <div className={props.wrapper && classes.wrapper}>
           <div>
