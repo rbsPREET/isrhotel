@@ -9,16 +9,13 @@ const Header = () => {
   const state = useSelector((state) => state.mall);
   const dispatch = useDispatch();
   const mallId = location.pathname.split("/")[2];
+  console.log(state);
   useEffect(() => {
     dispatch(GetMall(mallId));
     return () => {};
-  }, [dispatch, mallId]);
+  }, [dispatch,mallId]);
 
-  return (
-    state.img && (
-      <Carousel data={state.img} borderRadius={false} template="mall-page" />
-    )
-  );
+  return state.img && <Carousel data={state.img} template="mall-page" />;
 };
 
 export default Header;
