@@ -25,15 +25,6 @@ const InputRangeDates = (props) => {
         value={dates}
         format={props.formant || "dd-MM-yyyy"}
       />
-      {/* <DateRangePicker showSelectionPreview={false} ranges={dates} onChange={calenderChangedHandler} /> */}
-      {/* <DateRangePicker
-              calendarClassName="dor-test"
-              className="test-dor"
-              clearIcon={null}
-              format="dd-MM-y"
-              onChange={calenderChangedHandler}
-              value={dates}
-            /> */}
     </InputWrapper>
   );
 };

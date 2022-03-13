@@ -64,9 +64,11 @@ const Select = (props) => {
         optionsOpen && classes.WrapperOptionItemOpen
       } `}
     >
-      <span className={classes.span} defaultValue={props.label}>
-        {props.label}
-      </span>
+      {props.label && (
+        <span className={classes.span} defaultValue={props.label}>
+          {props.label}
+        </span>
+      )}
       <div onClick={setOptionsOpen.bind(null, true)}>
         <input
           ref={(node) => {

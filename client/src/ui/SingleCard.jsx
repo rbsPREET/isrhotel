@@ -12,7 +12,7 @@ const SingleCard = (props) => {
       template = (
         <SingleHotelRoomCarousel
           item={props.card}
-          borderRadius={true}
+          borderRadius={props.borderRadius && props.borderRadius}
           customWidth={props.customWidth}
         />
       );
