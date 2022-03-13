@@ -18,7 +18,7 @@ const SingleCard = (props) => {
       );
       break;
     case "mall-page":
-      template = <SinglePhotoCarousel item={props.card} borderRadius={true} />;
+      template = <SinglePhotoCarousel item={props.card} borderRadius/>;
       break;
     default:
       break;
