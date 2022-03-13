@@ -6,32 +6,37 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import DateTimePicker from './ResponsiveDateTimePickers';
 import ResponsiveDateTimePickers from './ResponsiveDateTimePickers';
+import BasicSelect from './BasicSelect';
 import TextField from '@mui/material/TextField';
 
 
 export default function CardTemp(props) {
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
-            <CardActionArea>
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div" style={{ alignContent: "center" }}>
-                        <EventAvailableIcon />Booking
-                    </Typography>
-                    <hr />
+        <Card sx={{ minWidth: 275 }}>
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div" style={{ alignContent: "center" }}>
+                    <EventAvailableIcon />Booking
+                </Typography>
+                <hr />
+                {/* Card Content */}
+                <div>
                     <Typography variant="body2" color="text.secondary">
-                        {/* Card Content */}
                         <div>
                             <ResponsiveDateTimePickers />
+                            <br />
+                            <BasicSelect />
+                            <br />
+                            <BasicSelect />
                         </div>
                     </Typography>
-                </CardContent>
-            </CardActionArea>
+                </div>
+            </CardContent>
             <CardActions>
                 <Button fullWidth="100%" style={{ backgroundColor: "red", color: "white" }} size="large" color="warning">
                     Share
                 </Button>
             </CardActions>
-        </Card >
+        </Card>
     );
 }
