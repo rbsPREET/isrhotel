@@ -10,6 +10,8 @@ const FlexColumn = (props) => {
       }}
       className={`${props.className ? props.className : ""} ${
         props.center ? classes.centerColumn : ""
+      } ${
+        props.verticalCenter ? classes.justifyCenter : ""
       } ${props.fullSize ? classes.fullSize : ""}`}
     >
       {props.children}

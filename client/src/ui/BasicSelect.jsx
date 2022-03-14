@@ -26,12 +26,12 @@ const BasicSelect = (props) => {
           value={time || ""}
           onChange={handleChange}
           displayEmpty
-          MenuProps={{ disableScrollLock: true }}
+          MenuProps={{ disableScrollLock: true}}
           inputProps={{ "aria-label": "Without label" }}
         >
           <FlexColumn customWidth={100}>
             {props.dataOptions.map((option) => (
-              <MenuItem value={10}>{option.value}</MenuItem>
+              <MenuItem value={option.value}>{option.value}</MenuItem>
             ))}
           </FlexColumn>
         </Select>

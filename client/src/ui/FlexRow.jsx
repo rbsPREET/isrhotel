@@ -1,5 +1,13 @@
 import classes from "../css/ui/flexPositions.module.css";
 const FlexRow = (props) => {
+  const propsClasses = `${props.className ? props.className : ""} ${
+    props.center ? classes.justifyCenter : ""
+  } ${props.fullSize ? classes.fullSize : ""} ${
+    props.wrap ? classes.wrap : ""
+  } ${props.centerColumn ? classes.centerColumn : ""} ${
+    props.allCenter ? classes.justifyCenter + " " + classes.centerColumn : ""
+  }`;
+
   return (
     <div
       style={{
@@ -7,15 +15,7 @@ const FlexRow = (props) => {
         flexDirection: "row",
         width: `${props.customWidth && props.customWidth}%`,
       }}
-      className={`${props.className ? props.className : ""} ${
-        props.center ? classes.justifyCenter : ""
-      } ${props.fullSize ? classes.fullSize : ""} ${
-        props.wrap ? classes.wrap : ""
-      } ${props.centerColumn ? classes.centerColumn : ""} ${
-        props.allCenter
-          ? classes.justifyCenter + " " + classes.centerColumn
-          : ""
-      }`}
+      className={propsClasses}
     >
       {props.children}
     </div>
