@@ -24,6 +24,7 @@ const Input = (props) => {
       setInputClicked(false);
     }
   };
+
   return (
     <InputWrapper
       positionIcon={props.positionIcon}
@@ -62,26 +63,38 @@ const Input = (props) => {
           </div>
         )}
         {props.type === "select" && (
-          <select
-            name={props.nameId}
-            className={`${props.className} ${classes.select}`}
-            id={props.nameId}
-            onChange={inputChangeHandler}
-            onBlur={props.onBlur}
-            value={props.value}
-          >
-            <option>{props.placeholder}</option>
-            {props.data.map((data) => (
-              <option
-                data-chosen={data.name === props.value}
-                value={data.name}
-                id={data.id}
-                key={data.id}
+          <div onClick={inputChangeHandler} className={classes.divInput}>
+            {props.label && (
+              <label
+                htmlFor={props.nameId}
+                className={`${props.className} ${classes.label} ${
+                  inputClicked && classes.inputClicked
+                }`}
               >
-                {data.name}
-              </option>
-            ))}
-          </select>
+                {props.label}
+              </label>
+            )}
+            <select
+              name={props.nameId}
+              className={`${props.className} ${classes.select}`}
+              id={props.nameId}
+              onChange={inputChangeHandler}
+              onBlur={props.onBlur}
+              value={props.value}
+            >
+              <option>{props.placeholder}</option>
+              {/* {props.data.map((data) => (
+                <option
+                  data-chosen={data.name === props.value}
+                  value={data.name}
+                  id={data.id}
+                  key={data.id}
+                >
+                  {data.name}
+                </option>
+              ))} */}
+            </select>
+          </div>
         )}
       </FlexColumn>
     </InputWrapper>

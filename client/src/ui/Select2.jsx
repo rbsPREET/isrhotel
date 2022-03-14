@@ -1,6 +1,6 @@
 import { InputWrapper } from "./InputWrapper";
 import classes from "../css/ui/Select.module.css";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import Input from "./Input";
 import Transition from "react-transition-group/Transition";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
@@ -57,13 +57,22 @@ const Select2 = (props) => {
   }, [escPress, setOptionsData, props.options]);
 
   return (
-    <Input
+   <Fragment>
+      <Input
       label="Location"
       icon={<EventAvailableIcon />}
       positionIcon="left"
       type="text"
       nameId="location"
     ></Input>
+      <Input
+      label="Location"
+      icon={<EventAvailableIcon />}
+      positionIcon="left"
+      type="select"
+      nameId="location"
+    ></Input>
+   </Fragment>
   );
 };
 export default Select2;
