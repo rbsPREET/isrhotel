@@ -6,6 +6,7 @@ import DropDownLinks from "../../ui/DropDownLinks";
 import LiNavLink from "../../ui/LiNavLink";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpenDropDown, setIsOpen] = useState({
@@ -90,7 +91,9 @@ const Navbar = () => {
       {modal}
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <h1>ISRHOTEL</h1>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <h1>ISRHOTEL</h1>
+          </Link>
           <ul style={{ marginBottom: "unset" }}>
             <DropDownWrapper
               openDropDown={openDropDown}

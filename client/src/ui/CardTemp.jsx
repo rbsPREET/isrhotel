@@ -13,9 +13,7 @@ import TextField from "@mui/material/TextField";
 export default function CardTemp(props) {
   return (
     <React.Fragment>
-      <Card>
-        <Select2 />
-      </Card>
+
 
       <Card sx={{ minWidth: 275 }}>
         <CardContent>
