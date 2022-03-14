@@ -35,16 +35,16 @@ const Body = () => {
 
     const bookingTimes = [
         {
-            value: '9:00 am - 9:30 am',
+            value: "9:00 am - 9:30 am",
         },
         {
-            value: '10:00 am - 10:30 am',
+            value: "10:00 am - 10:30 am",
         },
         {
-            value: '11:00 am - 11:30 am',
+            value: "11:00 am - 11:30 am",
         },
         {
-            value: '13:00 pm - 13:30 pm',
+            value: "13:00 pm - 13:30 pm",
         },
     ];
 
@@ -89,19 +89,8 @@ const Body = () => {
                         ))}
                     </FlexRow>
                 </div>
-                {/* Left side => Amenities */}
-                <div className={classes.mid}>
-                    <h1 className={classes.title}>Amenities</h1>
-                    <FlexRow wrap customWidth={70}>
-                        {amenities.map((item) => (
-                            <FlexRow centerColumn customWidth={33}>
-                                <CheckBoxIcon htmlColor="red" /> &nbsp;
-                                {item}
-                            </FlexRow>
-                        ))}
-                    </FlexRow>
-                </div>
             </div>
+            {/* Right side */}
             <div className={classes.right}>
                 <div className={classes.card}>
                     <CardTemp bookingTimes={bookingTimes} />

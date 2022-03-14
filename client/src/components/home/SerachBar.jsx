@@ -51,31 +51,31 @@ const SearchBar = (props) => {
   useEffect(() => {}, [details]);
 
   return (
-    <Section className={classes.container}>
+    <Section customWidth={props.customWidth} className={classes.container}>
       <Form className={classes.wrapper}>
         <Country
           getDetails={getDetails}
           icon={<LocationIcon />}
           type="select"
-          label="Location"
+          label={props.country}
           nameId="location"
           placeholder="Choose the location you wanna stay!"
           mainDiv={classes.border__right}
         />
         <InputRangeDates
-            getDetails={getDetails}
-            icon={<DatesIcon />}
-            mainDiv={classes.border__right}
-            nameId="dates"
-            label="Dates"
-          />
-          <Input
-            icon={<PeopleIcon />}
-            type="text"
-            onChange={getDetails}
-            nameId="guests"
-            label="Guests"
-          /> 
+          getDetails={getDetails}
+          icon={<DatesIcon />}
+          mainDiv={classes.border__right}
+          nameId="dates"
+          label={props.dates}
+        />
+        <Input
+          icon={<PeopleIcon />}
+          type="text"
+          onChange={getDetails}
+          nameId="guests"
+          label={props.guests}
+        />
 
         <SearchBarButton>Book Now</SearchBarButton>
       </Form>

@@ -5,7 +5,7 @@ const Section = (props) => {
   ${props.className && props.className} 
   ${classes.margin}`;
   return (
-    <div className={SectionClasses}>
+    <div style={{width:`${props.customWidth && props.customWidth}px`}} className={SectionClasses}>
       {props.title && (
         <div className={props.wrapper && classes.wrapper}>
           <div>

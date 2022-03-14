@@ -22,9 +22,9 @@ const SingleHotelRoomCarousel = (props) => {
     >
       <div className={classes.margin}>
         <div
-          className={`${props.borderRadius ? classes.borderRadius : ""} ${
+          className={`${props.borderRadius ? classes.borderRadius : ""} ${ props.borderRadius &&
             classes.item
-          } ${classes.relative} `}
+          } ${!props.borderRadius && classes.itemNoBorder} ${classes.relative} `}
           style={{ backgroundImage: `url('${item.img[0]}')` }}
         >
           <FlexRow className={`${classes.spaceAround} ${classes.topRelative}`}>
