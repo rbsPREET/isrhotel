@@ -25,6 +25,7 @@ export default function CardTemp(props) {
                             <ResponsiveDateTimePickers />
 <<<<<<< Updated upstream
 =======
+                            <br />
                             <BasicSelect dataOptions={props.bookingTimes} />
                             <br />
                             <BasicSelect dataOptions={props.bookingTimes}/>
