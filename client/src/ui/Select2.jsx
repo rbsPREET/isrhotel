@@ -59,13 +59,15 @@ const Select2 = (props) => {
 
   return (
     <Input
+      customWidth={props.customWidth}
+      inBox={props.inBox}
       getData={getData}
       value={chosenOption.name}
       onChangeOption={changeOptionHandler}
       onClickOption={chosenOptionHandler}
       data={options}
       label={props.label}
-      icon={<EventAvailableIcon />}
+      icon={props.icon}
       positionIcon={props.positionIcon}
       type="select"
       noBorders={props.noBorders}

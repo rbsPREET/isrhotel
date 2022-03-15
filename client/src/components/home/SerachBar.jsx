@@ -55,16 +55,15 @@ const SearchBar = (props) => {
       <Form className={classes.wrapper}>
         <Country
           noBorders
-          getDetails={getDetails}
+          onChange={getDetails}
           icon={<LocationIcon />}
           type="select"
-          label={props.country}
+          label="Choose the location you wanna stay!"
           nameId="location"
-          placeholder="Choose the location you wanna stay!"
           mainDiv={classes.border__right}
         />
         <InputRangeDates
-          getDetails={getDetails}
+          onChange={getDetails}
           icon={<DatesIcon />}
           mainDiv={classes.border__right}
           nameId="dates"

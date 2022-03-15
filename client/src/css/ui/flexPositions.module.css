@@ -14,3 +14,8 @@
     flex-wrap: wrap;
 }
 
+
+.flexColumn{
+    flex-direction: column;
+}
+

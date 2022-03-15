@@ -12,18 +12,13 @@ import { Fragment } from "react";
 const SideBar = (props) => {
   return (
     <Fragment>
-      <Box>
-        <Input
-          label="Location"
-          icon={<EventAvailableIcon />}
-          positionIcon
-          type="text"
-          nameId="location"
-        ></Input>
-        <Country />
+      <Box maxWidth="330px">
+        <Country customWidth="90%" inBox nameId="location" label="Location" />
+        <ResponsiveDateTimePickers />
+
       </Box>
 
-      <Box minWidth="200px" marginTop="30px">
+      <Box marginTop="30px">
         <CardContent>
           <Typography
             gutterBottom
@@ -35,10 +30,7 @@ const SideBar = (props) => {
             Booking
           </Typography>
           <hr />
-          <ResponsiveDateTimePickers />
-          <br />
           <BasicSelect dataOptions={props.bookingTimes} />
-          <br />
           <BasicSelect dataOptions={props.bookingTimes} />
         </CardContent>
         <CardActions>

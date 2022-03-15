@@ -50,13 +50,13 @@ const Input = (props) => {
       icon={props.icon}
       mainDiv={props.mainDiv}
     >
-      <FlexColumn className={classes.relative} customWidth={100}>
+      <FlexColumn className={classes.relative} center customWidth={100}>
         {(props.type === "text" ||
           props.type === "number" ||
           props.type === "email" ||
           props.type === "tel" ||
           props.type === "password") && (
-          <div onClick={inputChangeHandler} className={classes.divInput}>
+          <div onClick={inputChangeHandler}  className={`${classes.divInput}`}>
             {props.label && (
               <label
                 htmlFor={props.nameId}
@@ -83,11 +83,12 @@ const Input = (props) => {
         )}
         {props.type === "select" && (
           <div
+            style={{ width: props.customWidth }}
             onBlur={selectBlurHandler}
             onClick={selectHandler}
-            className={`${classes.divInput} ${
-              props.noBorders && classes.noBorders
-            }`}
+            className={`${
+              props.inBox ? classes.divInputInBox : classes.divInput
+            } ${props.noBorders && classes.noBorders}`}
           >
             {props.label && (
               <label
