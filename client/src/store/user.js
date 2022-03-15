@@ -15,11 +15,11 @@ const userSlice = createSlice({
         password: null,
     },
     reducers: {
-        checkValidityForEmail(state, action) {},
-        checkValidityForPassword(state, action) {},
-        checkValidityForName(state, action) {},
-        checkValidityForAge(state, action) {},
-        comparePasswordConfirmation(state, action) {},
+        checkValidityForEmail(state, action) { },
+        checkValidityForPassword(state, action) { },
+        checkValidityForName(state, action) { },
+        checkValidityForAge(state, action) { },
+        comparePasswordConfirmation(state, action) { },
     }
 })
 
