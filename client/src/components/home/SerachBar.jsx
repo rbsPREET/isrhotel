@@ -58,7 +58,7 @@ const SearchBar = (props) => {
           onChange={getDetails}
           icon={<LocationIcon />}
           type="select"
-          label="Choose the location you wanna stay!"
+          label="Choose your location"
           nameId="location"
           mainDiv={classes.border__right}
         />

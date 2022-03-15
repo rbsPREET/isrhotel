@@ -5,6 +5,7 @@
 
 .input {
   padding: 8px;
+  margin-left: 10px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   margin-right: 50px;
@@ -19,16 +20,17 @@
   color: #707e9c;
   font-size: 15px;
   position: absolute;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   font-weight: 500;
-  top: 25%;
-  left: 8%;
+  top: 30%;
+  left: 5%;
 }
 
 .input:focus-visible {
   border: unset !important;
 }
 .divInput {
+  position: relative;
   padding: 8px;
   border-radius: 4px;
   margin: 10px 20px 10px 0px !important;
@@ -37,6 +39,7 @@
 
 .divInputInBox {
   padding: 8px;
+  position: relative;
   border-radius: 4px;
   border: 1px solid rgb(173 172 172 / 42%);
 }
@@ -55,11 +58,12 @@ input:focus {
 }
 
 .inputClicked {
-  left: 6%;
-  top: -2%;
+  left: 3%;
+  top: -16%;
   background-color: white;
-  font-size: 15px !important;
-  transition: all 0.5s ease-in-out;
+  font-size: 13px !important;
+  transition: all 0.3s ease-in-out;
+  padding: 0 8px;
 }
 
 .ul {
@@ -113,9 +117,20 @@ input:focus {
 
 .noBordersLabel {
   padding: 0 8px !important;
-  margin-top: 7px !important;
+  margin-top: 10px !important;
+}
+.noBorders > .label {
+  left: 13% !important;
+  top: 20% !important;
+}
+.noBorders > .input {
+  width: 100%;
+}
+.noBorders > .inputClicked {
+  left: 3% !important;
+  top: -20% !important;
 }
 
-.centerColumn{
+.centerColumn {
   align-items: center;
 }
