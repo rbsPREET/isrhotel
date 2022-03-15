@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Filter from "./pages/Filter";
+import Order from "./pages/Order";
 
 const App = () => {
   return (
@@ -20,8 +21,11 @@ const App = () => {
         {/*single mall with queries*/}
         <Route path="/mall/:id/room/:roomId" element={<Mall />} />
         {/*room in single mall*/}
-        <Route path="/:location/:dates/:guests" element={<Home />} />{" "}
+        <Route path="/:location/:dates/:guests" element={<Home />} />
         {/*filter search*/}
+
+        {/*order summary*/}
+        <Route path="/order/:userId" element={<Order />} />
       </Routes>
       <Footer />
     </BrowserRouter>
