@@ -1,20 +1,21 @@
-import React, { useRef, useState } from "react";
+import React, {useRef, useState } from "react";
+import Transition from "react-transition-group/Transition";
 import classes from "../css/ui/Input.module.css";
 import FlexColumn from "./FlexColumn";
 import { InputWrapper } from "./InputWrapper";
 
 const Input = (props) => {
   const [inputClicked, setInputClicked] = useState(false);
+  const [openSelect, setOpenSelect] = useState(false);
   const input = useRef();
 
   const inputChangeHandler = (e) => {
-    if (input.current.value.length > 0) {
-      setInputClicked(true);
-    } else if (e.target === input.current) {
+    if (input.current.value.length > 0 || e.target === input.current) {
       setInputClicked(true);
     } else {
       setInputClicked(false);
     }
+
     // props.onChange(e.target.value, props.nameId);
   };
   const resetLabelHandler = () => {
@@ -24,6 +25,24 @@ const Input = (props) => {
       setInputClicked(false);
     }
   };
+
+  const selectHandler = (e) => {
+    setOpenSelect(!openSelect);
+    if (e.target.textContent.length > 0) {
+      setInputClicked(true);
+      setOpenSelect(false);
+    } else if (e.target === input.current) {
+      setInputClicked(true);
+    } else {
+      setInputClicked(false);
+      openSelect && setOpenSelect(false);
+    }
+  };
+
+  const selectBlurHandler = () => {
+    openSelect && setOpenSelect(false);
+  };
+
 
   return (
     <InputWrapper
@@ -63,7 +82,11 @@ const Input = (props) => {
           </div>
         )}
         {props.type === "select" && (
-          <div onClick={inputChangeHandler} className={classes.divInput}>
+          <div
+            onBlur={selectBlurHandler}
+            onClick={selectHandler}
+            className={classes.divInput}
+          >
             {props.label && (
               <label
                 htmlFor={props.nameId}
@@ -74,26 +97,44 @@ const Input = (props) => {
                 {props.label}
               </label>
             )}
-            <select
+            <input
+              onClick={props.getData}
+              onTouchEnd={(e) => console.log(e.target)}
+              ref={input}
+              onChange={props.onChangeOption}
+              placeholder={props.placeholder}
+              type="text"
               name={props.nameId}
-              className={`${props.className} ${classes.select}`}
+              className={`${props.className} ${classes.input}`}
               id={props.nameId}
-              onChange={inputChangeHandler}
-              onBlur={props.onBlur}
+              onBlur={resetLabelHandler}
               value={props.value}
+            />
+            <Transition
+              timeout={400}
+              mountOnEnter
+              unmountOnExit
+              in={openSelect}
             >
-              <option>{props.placeholder}</option>
-              {/* {props.data.map((data) => (
-                <option
-                  data-chosen={data.name === props.value}
-                  value={data.name}
-                  id={data.id}
-                  key={data.id}
+              {(state) => (
+                <ul
+                  className={`${classes.ul} ${
+                    state === "entered" && classes.show
+                  }`}
                 >
-                  {data.name}
-                </option>
-              ))} */}
-            </select>
+                  {props.data.map((data) => (
+                    <li
+                      onClick={props.onClickOption}
+                      key={data.id}
+                      value={data.name}
+                      className={classes.li}
+                    >
+                      {data.name}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </Transition>
           </div>
         )}
       </FlexColumn>

@@ -1,26 +1,25 @@
-import { InputWrapper } from "./InputWrapper";
-import classes from "../css/ui/Select.module.css";
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Input from "./Input";
-import Transition from "react-transition-group/Transition";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import useHttp from "../api/http";
 const Select2 = (props) => {
-  const [optionsOpen, setOptionsOpen] = useState(false);
+  const { sendRequest, data } = useHttp(props.http, true);
+  // const [optionsOpen, setOptionsOpen] = useState(false);
   const [options, setOptionsData] = useState([]);
-  const select = useRef();
+  // const select = useRef();
   const [chosenOption, setChosenOption] = useState({
     id: null,
     name: "",
   });
 
-  const closeOptionsHandler = (e) => {
-    if (document.body !== e.target) {
-      setOptionsOpen(!optionsOpen);
-    }
-  };
+  // const closeOptionsHandler = (e) => {
+  //   if (document.body !== e.target) {
+  //     setOptionsOpen(!optionsOpen);
+  //   }
+  // };
 
   const changeOptionHandler = (e) => {
-    const availableCountries = options.filter((option) =>
+    const availableCountries = data.filter((option) =>
       option.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
     setOptionsData(availableCountries);
@@ -40,39 +39,37 @@ const Select2 = (props) => {
       };
     });
   };
-
-  const escPress = useCallback(
-    (e) => {
-      if (e.key === "Escape" && optionsOpen) {
-        setOptionsOpen(!optionsOpen);
-      }
-    },
-    [setOptionsOpen, optionsOpen]
-  ); // Close Modal when click "ESC" key
+  const getData = () => {
+    setOptionsData(data);
+  };
+  // const escPress = useCallback(
+  //   (e) => {
+  //     if (e.key === "Escape" && optionsOpen) {
+  //       setOptionsOpen(!optionsOpen);
+  //     }
+  //   },
+  //   [setOptionsOpen, optionsOpen]
+  // ); // Close Modal when click "ESC" key
 
   useEffect(() => {
-    setOptionsData(props.options);
-    document.addEventListener("keydown", escPress);
-    return () => document.removeEventListener("keydown", escPress);
-  }, [escPress, setOptionsData, props.options]);
+    sendRequest();
+    // document.addEventListener("keydown", escPress);
+    // return () => document.removeEventListener("keydown", escPress);
+  }, [sendRequest]);
 
   return (
-   <Fragment>
-      <Input
-      label="Location"
+    <Input
+      getData={getData}
+      value={chosenOption.name}
+      onChangeOption={changeOptionHandler}
+      onClickOption={chosenOptionHandler}
+      data={options}
+      label={props.label}
       icon={<EventAvailableIcon />}
-      positionIcon="left"
-      type="text"
-      nameId="location"
-    ></Input>
-      <Input
-      label="Location"
-      icon={<EventAvailableIcon />}
-      positionIcon="left"
+      positionIcon={props.positionIcon}
       type="select"
-      nameId="location"
-    ></Input>
-   </Fragment>
+      nameId={props.nameId}
+    />
   );
 };
 export default Select2;

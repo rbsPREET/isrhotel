@@ -5,6 +5,7 @@
 
 .input {
   padding: 8px;
+  cursor: pointer;
   transition: all 0.5s ease-in-out;
   width: 100%;
   border: unset !important;
@@ -53,3 +54,42 @@ input:focus {
   transition: all 0.5s ease-in-out;
 }
 
+.ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  width: 100%;
+  top: 86%;
+  z-index: 5;
+  padding-left: unset;
+  left: 0;
+  overflow-y: scroll;
+  height: 0px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+
+}
+
+.li {
+  padding: 15px;
+  cursor: pointer;
+  list-style: none;
+  margin-left: 0px !important;
+  transition: all 0.5s ease-in-out;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.144);
+}
+
+.li:hover {
+  transition: all 0.5s ease-in-out;
+  background-color: #a5a1a11f;
+}
+
+.show {
+  transition: all 0.5s ease-in-out;
+  height: 200px;
+}
