@@ -3,28 +3,22 @@ import SingleTrendingDestinationCard from "../components/home/SingleTrendingDest
 import SinglePhotoCarousel from "../css/ui/SinglePhotoCarousel";
 
 const SingleCard = (props) => {
-  let template = "";
   switch (props.template) {
     case "trending-destination":
-      template = <SingleTrendingDestinationCard card={props.card} />;
-      break;
+      return <SingleTrendingDestinationCard card={props.card} />;
     case "home-hotels":
-      template = (
+      return (
         <SingleHotelRoomCarousel
           item={props.card}
           borderRadius={props.borderRadius && props.borderRadius}
           customWidth={props.customWidth}
         />
       );
-      break;
     case "mall-page":
-      template = <SinglePhotoCarousel item={props.card} borderRadius={true} />;
-      break;
+      return <SinglePhotoCarousel item={props.card} borderRadius={true} />;
     default:
-      break;
+      return false;
   }
-
-  return template;
 };
 
 export default SingleCard;

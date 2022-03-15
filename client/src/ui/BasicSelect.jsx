@@ -30,7 +30,7 @@ const BasicSelect = (props) => {
         >
           <FlexColumn customWidth={100}>
             {props.dataOptions.map((option) => (
-              <MenuItem value={option.value}>{option.value}</MenuItem>
+              <MenuItem key={option.value} value={option.value}>{option.value}</MenuItem>
             ))}
           </FlexColumn>
         </Select>

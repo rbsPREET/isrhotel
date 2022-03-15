@@ -6,7 +6,7 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import FlexRow from "../../ui/FlexRow";
 import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
-import CardTemp from "../../ui/CardTemp";
+import Box from "../../ui/Box";
 
 const Body = () => {
     const tabSections = [
@@ -82,7 +82,7 @@ const Body = () => {
                     <h1 className={classes.title}>Amenities</h1>
                     <FlexRow wrap customWidth={70}>
                         {amenities.map((item) => (
-                            <FlexRow centerColumn customWidth={33}>
+                            <FlexRow key={item} centerColumn customWidth={33}>
                                 <CheckBoxIcon htmlColor="red" /> &nbsp;
                                 {item}
                             </FlexRow>
@@ -93,7 +93,7 @@ const Body = () => {
             {/* Right side */}
             <div className={classes.right}>
                 <div className={classes.card}>
-                    <CardTemp bookingTimes={bookingTimes} />
+                    <Box bookingTimes={bookingTimes} />
                 </div>
             </div>
         </Section>

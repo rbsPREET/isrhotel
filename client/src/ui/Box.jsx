@@ -35,21 +35,15 @@ export default function CardTemp(props) {
             Booking
           </Typography>
           <hr />
-          <div>
-            <Typography variant="body2" color="text.secondary">
-              <div>
-                <ResponsiveDateTimePickers />
-                <br />
-                <BasicSelect dataOptions={props.bookingTimes} />
-                <br />
-                <BasicSelect dataOptions={props.bookingTimes} />
-              </div>
-            </Typography>
-          </div>
+          <ResponsiveDateTimePickers />
+          <br />
+          <BasicSelect dataOptions={props.bookingTimes} />
+          <br />
+          <BasicSelect dataOptions={props.bookingTimes} />
         </CardContent>
         <CardActions>
           <Button
-            fullWidth="100%"
+            fullWidth
             style={{ backgroundColor: "red", color: "white" }}
             size="large"
             color="warning"

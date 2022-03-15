@@ -1,4 +1,4 @@
-import React, {useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Transition from "react-transition-group/Transition";
 import classes from "../css/ui/Input.module.css";
 import FlexColumn from "./FlexColumn";
@@ -27,7 +27,7 @@ const Input = (props) => {
   };
 
   const selectHandler = (e) => {
-    setOpenSelect(!openSelect);
+    setOpenSelect(true);
     if (e.target.textContent.length > 0) {
       setInputClicked(true);
       setOpenSelect(false);
@@ -42,7 +42,6 @@ const Input = (props) => {
   const selectBlurHandler = () => {
     openSelect && setOpenSelect(false);
   };
-
 
   return (
     <InputWrapper

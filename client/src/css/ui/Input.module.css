@@ -31,10 +31,13 @@
 
 .divInput {
   padding: 8px;
-  transition: all 0.5s ease-in-out;
   border-radius: 4px;
   margin: 10px 0 !important;
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  border: 1px solid rgb(173 172 172 / 42%);
+}
+
+.divInput:hover {
+  border: 1px solid rgba(0, 0, 0, 0.6) !important;
 }
 
 .relative {
@@ -72,7 +75,6 @@ input:focus {
   height: 0px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
-
 }
 
 .li {
@@ -92,4 +94,8 @@ input:focus {
 .show {
   transition: all 0.5s ease-in-out;
   height: 200px;
+}
+
+.ul::-webkit-scrollbar {
+  width: 0px;
 }
