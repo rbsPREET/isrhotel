@@ -1,14 +1,9 @@
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import ResponsiveDateTimePickers from "../../ui/ResponsiveDateTimePickers";
-import BasicSelect from "../../ui/BasicSelect";
 import Country from "../Country";
-import Input from "../../ui/Input";
 import Box from "../../ui/Box";
 import { Fragment } from "react";
-import { Link } from "react-router-dom";
 import FlexRow from "../../ui/FlexRow";
 
 const SideBar = (props) => {
@@ -17,7 +12,7 @@ const SideBar = (props) => {
     <Fragment>
       <Box maxWidth="330px">
         <FlexRow wrap allCenter>
-          <EventAvailableIcon/>
+          <EventAvailableIcon />
           <h3>Book {props.hotelName} Hotel</h3>
         </FlexRow>
         <hr />
@@ -36,8 +31,6 @@ const SideBar = (props) => {
           {/*</Link>*/}
         </CardActions>
       </Box>
-
-     
     </Fragment>
   );
 };

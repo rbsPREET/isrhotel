@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -6,7 +6,6 @@ import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import FlexRow from "../../ui/FlexRow";
 import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
-import Box from "../../ui/Box";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { GetMall } from "../../store/mall";

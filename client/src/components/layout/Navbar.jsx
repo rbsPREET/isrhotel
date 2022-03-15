@@ -1,12 +1,11 @@
 import classes from "../../css/layout/Navbar.module.css";
-import { KeyboardArrowDown, ShoppingCartOutlined } from "@material-ui/icons";
+import { KeyboardArrowDown } from "@material-ui/icons";
 import DropDownWrapper from "../../ui/DropDownWrapper";
 import { useState } from "react";
 import DropDownLinks from "../../ui/DropDownLinks";
 import LiNavLink from "../../ui/LiNavLink";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
-import { Badge } from "@material-ui/core"
 import { Link } from "react-router-dom";
 
 const Navbar = () => {

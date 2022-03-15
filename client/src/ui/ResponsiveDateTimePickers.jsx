@@ -3,7 +3,6 @@ import TextField from "@mui/material/TextField";
 import DateRangePicker from "@mui/lab/DateRangePicker";
 import DateFnsAdapter from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import Box from "@mui/material/Box";
 import FlexColumn from "./FlexColumn";
 
 export default function BasicDateRangePicker() {

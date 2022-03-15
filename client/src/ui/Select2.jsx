@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Input from "./Input";
-import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import useHttp from "../api/http";
 const Select2 = (props) => {
   const { sendRequest, data } = useHttp(props.http, true);

@@ -1,14 +1,9 @@
 import * as React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import classes from '../css/ui/MediaCard.module.css'
-
-// Icons Imports
-import EmailOutlined from '@material-ui/icons/EmailOutlined';
 
 
 export default function MediaCard() {
