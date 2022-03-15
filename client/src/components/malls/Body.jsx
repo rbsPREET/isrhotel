@@ -7,6 +7,7 @@ import FlexRow from "../../ui/FlexRow";
 import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
 import Box from "../../ui/Box";
+import SideBar from "./SideBar";
 
 const Body = () => {
     const tabSections = [
@@ -93,7 +94,7 @@ const Body = () => {
             {/* Right side */}
             <div className={classes.right}>
                 <div className={classes.card}>
-                    <Box bookingTimes={bookingTimes} />
+                    <SideBar bookingTimes={bookingTimes} />
                 </div>
             </div>
         </Section>

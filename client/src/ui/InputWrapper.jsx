@@ -7,7 +7,7 @@ export const InputWrapper = React.forwardRef((props, ref) => {
     //   onClick={props.onClick}
     //   className={`${classes.wrapper} ${props.mainDiv} ${props.customWidth}`}
     // >
-    <FlexRow centerColumn>
+    <FlexRow className={props.className} centerColumn>
         {props.positionIcon !== "right" && props.icon}
           {props.children}
         {props.positionIcon === "right" && props.icon}

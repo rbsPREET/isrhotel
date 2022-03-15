@@ -44,7 +44,7 @@ const Input = (props) => {
   };
 
   return (
-    <InputWrapper
+    <InputWrapper className={classes.padding}
       positionIcon={props.positionIcon}
       icon={props.icon}
       mainDiv={props.mainDiv}

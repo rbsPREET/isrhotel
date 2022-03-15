@@ -8,9 +8,12 @@
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   width: 100%;
+  margin-right: 50px;
   border: unset !important;
 }
-
+svg {
+  margin: 0 10px;
+}
 .input:hover {
 }
 
@@ -32,7 +35,7 @@
 .divInput {
   padding: 8px;
   border-radius: 4px;
-  margin: 10px 0 !important;
+  margin: 10px 20px 10px 0px !important;
   border: 1px solid rgb(173 172 172 / 42%);
 }
 
