@@ -1,6 +1,4 @@
 import React from "react";
-import classes from "../css/ui/InputWrapper.module.css";
-import FlexColumn from "./FlexColumn";
 import FlexRow from "./FlexRow";
 export const InputWrapper = React.forwardRef((props, ref) => {
   return (

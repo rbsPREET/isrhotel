@@ -17,8 +17,8 @@ const Header = () => {
     dispatch(GetMall(mallId));
   }, [dispatch, mallId]);
 
-  return state.img ? (
-    <Carousel data={state.img} template="mall-page" /> // TODO: disable the dots by passing props of dots off
+  return state.information.img ? (
+    <Carousel data={state.information.img} template="mall-page" /> // TODO: disable the dots by passing props of dots off
   ) : (
     <FlexRow className={classes.oval} center={true}>
       <Oval color="#00BFFF" height={80} width={80} />

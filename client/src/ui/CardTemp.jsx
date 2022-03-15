@@ -1,21 +1,29 @@
-import * as React from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Button, CardActions } from "@mui/material";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import DateTimePicker from "./ResponsiveDateTimePickers";
 import ResponsiveDateTimePickers from "./ResponsiveDateTimePickers";
 import BasicSelect from "./BasicSelect";
-import Select2 from './Select2'
-import TextField from "@mui/material/TextField";
+import Country from "../components/Country";
+import Input from "./Input";
 
 export default function CardTemp(props) {
   return (
     <React.Fragment>
+      <Card sx={{ overflow: "unset" }}>
+        <Input
+          label="Location"
+          icon={<EventAvailableIcon />}
+          positionIcon
+          type="text"
+          nameId="location"
+        ></Input>
+        <Country />
+      </Card>
 
-
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 275, marginTop: 30 }}>
         <CardContent>
           <Typography
             gutterBottom
@@ -27,7 +35,6 @@ export default function CardTemp(props) {
             Booking
           </Typography>
           <hr />
-          {/* Card Content */}
           <div>
             <Typography variant="body2" color="text.secondary">
               <div>
