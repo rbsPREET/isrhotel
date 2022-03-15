@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -8,12 +8,26 @@ import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
 import Box from "../../ui/Box";
 import SideBar from "./SideBar";
+import { useDispatch, useSelector } from "react-redux";
+import { GetMall } from "../../store/mall";
+import { useLocation } from "react-router-dom";
 
 const Body = () => {
+    const location = useLocation(); // get the mall Id from the path
+    const state = useSelector((state) => state.mall);
+    const dispatch = useDispatch();
+    const mallId = location.pathname.split("/")[2];
+
+    useEffect(() => {
+        dispatch(GetMall(mallId));
+    }, [dispatch, mallId]);
+
+    console.log(state)
+
     const tabSections = [
         {
             title: "Overview",
-            data: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam venenatis quam in felis vestibulum consequat. Ut eget est quis leo feugiat eleifend. Praesent dapibus gravida pharetra.",
+            data: `${state.information.description}`,
         },
         {
             title: "Pricing",
@@ -23,15 +37,6 @@ const Body = () => {
             title: "Location",
             data: "test3",
         },
-    ];
-
-    const amenities = [
-        "Elevator in building",
-        "Friendly workspace",
-        "Instant Book",
-        "Wireless Internet",
-        "Free parking on premises",
-        "Free Hookers",
     ];
 
     const bookingTimes = [
@@ -59,12 +64,12 @@ const Body = () => {
             <div className={classes.left}>
                 {/* Left side => Top */}
                 <div className={classes.top}>
-                    <h1 className={classes.mainTitle}>Zona Hotel</h1>
+                    <h1 className={classes.mainTitle}>{state.information.title} Hotel</h1>
                     <FlexRow centerColumn>
                         <LocationIcon style={{ marginLeft: "-5px" }} />
                         &nbsp;
                         <p className={classes.addressTitle}>
-                            5555 Sharmuta Street, Tel-Aviv
+                            {state.information.address}
                         </p>
                     </FlexRow>
                     <FlexRow centerColumn>
@@ -82,7 +87,7 @@ const Body = () => {
                 <div className={classes.mid}>
                     <h1 className={classes.title}>Amenities</h1>
                     <FlexRow wrap customWidth={70}>
-                        {amenities.map((item) => (
+                        {state.information.amenities?.map((item) => (
                             <FlexRow key={item} centerColumn customWidth={33}>
                                 <CheckBoxIcon htmlColor="red" /> &nbsp;
                                 {item}

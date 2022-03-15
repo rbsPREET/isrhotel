@@ -8,8 +8,10 @@ import Country from "../Country";
 import Input from "../../ui/Input";
 import Box from "../../ui/Box";
 import { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 const SideBar = (props) => {
+  const user = {}
   return (
     <Fragment>
       <Box>
@@ -42,6 +44,7 @@ const SideBar = (props) => {
           <BasicSelect dataOptions={props.bookingTimes} />
         </CardContent>
         <CardActions>
+          {/*<Link to={`/:${props._id}}/order?rooms=${props.rooms}&guests=${props.guests}`}>*/}
           <Button
             fullWidth
             style={{ backgroundColor: "red", color: "white" }}
@@ -50,6 +53,7 @@ const SideBar = (props) => {
           >
             Share
           </Button>
+          {/*</Link>*/}
         </CardActions>
       </Box>
     </Fragment>

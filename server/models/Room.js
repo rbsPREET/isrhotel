@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const RoomSchema = new mongoose.Schema({
-    hotelId: {
+    mallId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true
     },

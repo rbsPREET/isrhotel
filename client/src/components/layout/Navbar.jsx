@@ -124,13 +124,6 @@ const Navbar = () => {
         </div>
         {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
-          <Link to="/cart">
-            <div className={classes.cartMenu}>
-              <Badge badgeContent={2} color="primary">
-                <ShoppingCartOutlined />
-              </Badge>
-            </div>
-          </Link>
           <button onClick={openModal} className={classes.loginButton}>
             Login
           </button>
