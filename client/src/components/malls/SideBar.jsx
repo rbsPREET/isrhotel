@@ -9,32 +9,20 @@ import Input from "../../ui/Input";
 import Box from "../../ui/Box";
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
+import FlexRow from "../../ui/FlexRow";
 
 const SideBar = (props) => {
-  const user = {}
+  const user = {};
   return (
     <Fragment>
       <Box maxWidth="330px">
+        <FlexRow wrap allCenter>
+          <EventAvailableIcon/>
+          <h3>Book {props.hotelName} Hotel</h3>
+        </FlexRow>
+        <hr />
         <Country customWidth="90%" inBox nameId="location" label="Location" />
         <ResponsiveDateTimePickers />
-
-      </Box>
-
-      <Box marginTop="30px">
-        <CardContent>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            style={{ alignContent: "center" }}
-          >
-            <EventAvailableIcon />
-            Booking
-          </Typography>
-          <hr />
-          <BasicSelect dataOptions={props.bookingTimes} />
-          <BasicSelect dataOptions={props.bookingTimes} />
-        </CardContent>
         <CardActions>
           {/*<Link to={`/:${props._id}}/order?rooms=${props.rooms}&guests=${props.guests}`}>*/}
           <Button
@@ -48,6 +36,8 @@ const SideBar = (props) => {
           {/*</Link>*/}
         </CardActions>
       </Box>
+
+     
     </Fragment>
   );
 };

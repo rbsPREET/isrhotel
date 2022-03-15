@@ -21,26 +21,6 @@ const mallSlice = createSlice({
     reducers: {
         getCurrentMall(state, action) {
             state.information = action.payload;
-            // const {
-            //     aditionalObjects,
-            //     description,
-            //     email,
-            //     guests,
-            //     img,
-            //     price,
-            //     rooms,
-            //     title,
-            //     _id
-            // } = action.payload;
-            // state.information.aditionalObjects = aditionalObjects;
-            // state.information.description = description;
-            // state.information.email = email;
-            // state.information.img = img;
-            // state.information._id = _id;
-            // state.information.price = price;
-            // state.information.guests = guests;
-            // state.information.rooms = rooms;
-            // state.information.title = title;
         }
     }
 })
