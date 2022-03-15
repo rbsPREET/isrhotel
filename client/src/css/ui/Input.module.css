@@ -31,7 +31,6 @@ svg {
 .input:focus-visible {
   border: unset !important;
 }
-
 .divInput {
   padding: 8px;
   border-radius: 4px;
@@ -101,4 +100,15 @@ input:focus {
 
 .ul::-webkit-scrollbar {
   width: 0px;
+}
+
+.noBorders,
+.noBorders:hover {
+  border: unset !important;
+  padding: 4px 8px !important;
+}
+
+.noBordersLabel {
+  padding: 0 8px !important;
+  margin-top: 7px !important;
 }

@@ -44,7 +44,8 @@ const Input = (props) => {
   };
 
   return (
-    <InputWrapper className={classes.padding}
+    <InputWrapper
+      className={classes.padding}
       positionIcon={props.positionIcon}
       icon={props.icon}
       mainDiv={props.mainDiv}
@@ -84,7 +85,9 @@ const Input = (props) => {
           <div
             onBlur={selectBlurHandler}
             onClick={selectHandler}
-            className={classes.divInput}
+            className={`${classes.divInput} ${
+              props.noBorders && classes.noBorders
+            }`}
           >
             {props.label && (
               <label
@@ -104,7 +107,9 @@ const Input = (props) => {
               placeholder={props.placeholder}
               type="text"
               name={props.nameId}
-              className={`${props.className} ${classes.input}`}
+              className={`${props.className} ${classes.input} ${
+                props.noBorders && classes.noBordersLabel
+              }`}
               id={props.nameId}
               onBlur={resetLabelHandler}
               value={props.value}

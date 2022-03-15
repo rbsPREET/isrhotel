@@ -54,6 +54,7 @@ const SearchBar = (props) => {
     <Section customWidth={props.customWidth} className={classes.container}>
       <Form className={classes.wrapper}>
         <Country
+          noBorders
           getDetails={getDetails}
           icon={<LocationIcon />}
           type="select"

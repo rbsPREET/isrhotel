@@ -68,6 +68,7 @@ const Select2 = (props) => {
       icon={<EventAvailableIcon />}
       positionIcon={props.positionIcon}
       type="select"
+      noBorders={props.noBorders}
       nameId={props.nameId}
     />
   );

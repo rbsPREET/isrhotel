@@ -3,9 +3,15 @@ import React from "react";
 
 import Select2 from "../ui/Select2";
 
-const Country = () => {
+const Country = (props) => {
   return (
-    <Select2 positionIcon label="Location" nameId="location" http={Countries} />
+    <Select2
+      noBorders={props.noBorders}
+      positionIcon
+      label="Location"
+      nameId="location"
+      http={Countries}
+    />
   );
 };
 export default Country;
