@@ -1,11 +1,12 @@
 import classes from "../../css/layout/Navbar.module.css";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import { KeyboardArrowDown, ShoppingCartOutlined } from "@material-ui/icons";
 import DropDownWrapper from "../../ui/DropDownWrapper";
 import { useState } from "react";
 import DropDownLinks from "../../ui/DropDownLinks";
 import LiNavLink from "../../ui/LiNavLink";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
+import { Badge } from "@material-ui/core"
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -98,14 +99,14 @@ const Navbar = () => {
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Home"
-              icon={<KeyboardArrowDownIcon />}
+              icon={<KeyboardArrowDown />}
             >
               {homeIsOpen}
             </DropDownWrapper>
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Browse"
-              icon={<KeyboardArrowDownIcon />}
+              icon={<KeyboardArrowDown />}
             >
               {browseIsOpen}
             </DropDownWrapper>
@@ -113,7 +114,7 @@ const Navbar = () => {
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Pages"
-              icon={<KeyboardArrowDownIcon />}
+              icon={<KeyboardArrowDown />}
             >
               {pagesIsOpen}
             </DropDownWrapper>
@@ -123,6 +124,13 @@ const Navbar = () => {
         </div>
         {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
+          <Link to="/cart">
+            <div className={classes.cartMenu}>
+              <Badge badgeContent={2} color="primary">
+                <ShoppingCartOutlined />
+              </Badge>
+            </div>
+          </Link>
           <button onClick={openModal} className={classes.loginButton}>
             Login
           </button>
