@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
+import Box from './Box';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
@@ -8,7 +8,8 @@ import classes from '../css/ui/MediaCard.module.css'
 
 export default function MediaCard() {
     return (
-        <Card sx={{ maxWidth: 345, maxHeight: 345, boxShadow: "0px 0.5px 0.5px 4px rgb(0,0,0,7%)" }} className={classes.container}>
+
+        <Box margin="0 50px" maxWidth="345" maxHeight="345" boxShadow="0px 0.5px 0.5px 4px rgb(0,0,0,7%)" className={classes.container}>
             <CardMedia
                 style={{ objectFit: "cover", width: "100px", height: "100px", margin: "10% 0" }}
                 component="img"
@@ -24,6 +25,6 @@ export default function MediaCard() {
                     Proin dapibus nisl ornare diam varius tempus. Aenean a quam luctus, finibus tellus ut, convallis eros sollicitudin.
                 </Typography>
             </CardContent>
-        </Card>
+        </Box>
     );
 }
