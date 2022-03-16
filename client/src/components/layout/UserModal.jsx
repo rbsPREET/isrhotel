@@ -1,14 +1,13 @@
 import Modal from "../../ui/Modal";
 import classes from "../../css/layout/UserModal.module.css";
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { storeUser, loginHandler as loginUser } from "../../store/user";
 import Input from "../../ui/Input";
 
 const UserModal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
-  const state = useSelector((state) => state.user);
 
   const registerHandler = () => {
     distpach(
@@ -33,12 +32,6 @@ const UserModal = (props) => {
       })
     );
   };
-
-  useEffect(() => {
-    console.log(state);
-  }, []);
-
-  
   const SideisLogin = (
     <>
       <div className={classes.modalContentL}>
