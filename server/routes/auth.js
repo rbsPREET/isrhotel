@@ -2,6 +2,7 @@ const router = require("express").Router()
 const User = require("../models/User")
 const CryptoJS = require("crypto-js") // Hash the Password in the DB
 const jwt = require("jsonwebtoken")
+const Token = require("../models/Token")
 
 // Register
 router.post("/register", async (req, res) => {
@@ -50,6 +51,18 @@ router.post("/login", async (req, res) => {
                 expiresIn: "3d"
             }
         )
+        const userAlreadyLogged = await Token.findOne({
+            userId: user._id
+        })
+        if (userAlreadyLogged) {
+            return res.status(301).json({
+                message: 'user already logged in'
+            })
+        }
+        new Token({
+            userId: user._id,
+            token: accessToken,
+        }).save();
 
         res.status(200).json({
             success: true,
@@ -62,6 +75,30 @@ router.post("/login", async (req, res) => {
             success: false,
             error: err,
             token: null
+        })
+    }
+})
+
+//logout
+
+router.post("/logout", async (req, res) => {
+    try {
+        const token = await Token.findOne({
+                userId: req.body.id
+            })
+
+            !token && res.status(401).json("Wrong credentials")
+
+        token.remove().exec();
+
+        res.status(200).json({
+            success: true,
+            error: null,
+        })
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: err,
         })
     }
 })
