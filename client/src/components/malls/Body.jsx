@@ -21,7 +21,6 @@ const Body = () => {
     dispatch(GetMall(mallId));
   }, [dispatch, mallId]);
 
-  
   const tabSections = [
     {
       title: "Overview",
@@ -83,10 +82,10 @@ const Body = () => {
         <div className={classes.mid}>
           <h1 className={classes.title}>Amenities</h1>
           <FlexRow wrap customWidth={70}>
-            {state.amenities?.map((item) => (
-              <FlexRow key={item} centerColumn customWidth={33}>
-                <CheckBoxIcon htmlColor="red" /> &nbsp;
-                {item}
+            {Object.entries(state.amenities)?.map((item) => (
+              <FlexRow key={item[0]} centerColumn customWidth={33}>
+                {item[1].available && <CheckBoxIcon htmlColor="red" />}
+                {item[1].available && item[1].text}
               </FlexRow>
             ))}
           </FlexRow>
