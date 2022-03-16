@@ -1,5 +1,9 @@
 const Mall = require("../models/Mall")
-const { verifyTokenAndAuthorization, verifyTokenAndAdmin } = require("./verifyToken")
+const Review = require("../models/Review")
+const {
+    verifyTokenAndAuthorization,
+    verifyTokenAndAdmin
+} = require("./verifyToken")
 
 const router = require("express").Router()
 
@@ -14,12 +18,46 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
     }
 })
 
+router.post('/add_review', async (req, res) => {
+    const {
+        userId,
+        rating,
+        mallId
+    } = req.body;
+
+    const existReview = await Review.findOne({
+        mallId: mallId,
+        userId: userId
+    })
+
+    existReview && existReview.deleteOne();
+    try {
+        const newRating = new Review({
+            userId,
+            rating,
+            mallId
+        })
+        const saved = await newRating.save();
+
+        if (saved) {
+            res.status(201).json({
+                bool: true,
+                status: "Success",
+                message: `Hey!, Thank You for your review to ISRhotels`,
+            })
+        }
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 // UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
     try {
         const updatedMall = await Mall.findByIdAndUpdate(req.params.id, {
             $set: req.body
-        }, { new: true })
+        }, {
+            new: true
+        })
         res.status(200).json(updatedMall)
     } catch (err) {
         res.status(500).json(err)
@@ -55,15 +93,16 @@ router.get("/", async (req, res) => {
         let malls
         // TODO: switch case
         if (queryGuests)
-            malls = await Mall.find().sort({ createdAt: -1 }).limit(5)
+            malls = await Mall.find().sort({
+                createdAt: -1
+            }).limit(5)
         else if (queryRooms) {
             malls = await Mall.find({
                 rooms: {
                     $in: [queryRooms]
                 }
             })
-        }
-        else {
+        } else {
             malls = await Mall.find()
         }
         res.status(200).json(malls)
