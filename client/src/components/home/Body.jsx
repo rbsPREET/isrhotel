@@ -25,6 +25,13 @@ const Body = () => {
       >
         <CreditsSection />
       </Section>
+      <Section
+        container={true}
+        className={classes.container}
+        title="Plan The Vacation of Your Dreams"
+      >
+        <CreditsSection />
+      </Section>
     </div>
   );
 };
