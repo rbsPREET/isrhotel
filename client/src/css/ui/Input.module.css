@@ -124,7 +124,7 @@ input:focus {
   top: 20% !important;
 }
 .noBorders > .input {
-  width: 100%;
+  width: 100%`;
 }
 .noBorders > .inputClicked {
   left: 3% !important;
