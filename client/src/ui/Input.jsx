@@ -70,7 +70,6 @@ const Input = (props) => {
             <input
               onTouchEnd={(e) => console.log(e.target)}
               ref={input}
-              placeholder={props.placeholder}
               type={props.type}
               name={props.nameId}
               className={`${props.className} ${classes.input}`}

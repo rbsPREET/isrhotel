@@ -37,7 +37,9 @@ const UserModal = (props) => {
     <>
       <div className={classes.modalContentL}>
         Doesn't have an account?
-        <span className={classes.checkStatus}>register now</span>
+        <span className={classes.checkStatus} onClick={()=>setIsLogin(!isLogin)}>
+          register now
+        </span>
       </div>
       <div className={classes.modalContentR}>
         <div>
@@ -49,24 +51,18 @@ const UserModal = (props) => {
               className={classes.formContent}
             >
               <Input
-                placeholder="enter you email"
+                className={classes.input}
                 nameId="email"
                 type="text"
                 label="Email"
               />
               <Input
-                placeholder="password"
+                className={classes.input}
                 nameId="password"
                 type="password"
                 label="Password"
               />
-              <Input
-                placeholder="Confirm Pass"
-                nameId="confirm-password"
-                type="password"
-                label="Confirm Password"
-              />
-              <button>Register</button>
+              <button>Login</button>
             </Form>
           </div>
         </div>
@@ -78,7 +74,7 @@ const UserModal = (props) => {
     <>
       <div className={classes.modalContentL}>
         Already a User?
-        <span className={classes.checkStatus} onClick={registerHandler}>
+        <span className={classes.checkStatus} onClick={()=>setIsLogin(!isLogin)}>
           Login
         </span>
       </div>
@@ -86,20 +82,26 @@ const UserModal = (props) => {
         <div>
           <h1 className={classes.formTitle}>REGISTER</h1>
           <div>
-            <form className={classes.formContent}>
+            <form onSubmit={registerHandler} className={classes.formContent}>
               <Input
-                placeholder="enter you email"
+                className={classes.input}
                 nameId="email"
                 type="text"
                 label="Email"
               />
               <Input
-                placeholder="password"
+                className={classes.input}
                 nameId="password"
                 type="password"
                 label="Password"
               />
-              <button>Login</button>
+              <Input
+                className={classes.input}
+                nameId="confirm-password"
+                type="password"
+                label="Confirm Password"
+              />
+              <button>Register</button>
             </form>
           </div>
         </div>

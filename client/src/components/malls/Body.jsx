@@ -70,7 +70,6 @@ const Body = () => {
   );
 
   for (let index = 1; index <= 5; index++) {
-    console.log(state.reviews.stars.four.value);
     if (state.reviews.stars.four.value >= index)
       starsArr.push({
         value: index,
