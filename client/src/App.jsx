@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Filter from "./pages/Filter";
 import Order from "./pages/Order";
+import NaviArrow from "./components/layout/NaviArrow";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/order/:userId" element={<Order />} />
       </Routes>
       <Footer />
+      <NaviArrow />
     </BrowserRouter>
   );
 };
