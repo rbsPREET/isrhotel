@@ -4,7 +4,6 @@ const MallSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-        unique: true
     },
     description: {
         type: String,
@@ -16,7 +15,7 @@ const MallSchema = new mongoose.Schema({
     },
     roomIds: {
         type: Array,
-        ref: 'Room'
+        ref: 'Room',
     },
     amenities: {
         type: Object,
@@ -65,43 +64,6 @@ const MallSchema = new mongoose.Schema({
     },
     address: {
         type: String,
-        required: true
-    },
-    reviews: {
-        type: Object,
-        default: [{
-            count: {
-                type: Number,
-                default: 0
-            },
-            stars: {
-                type: Array,
-                default: [{
-                    one: {
-                        type: Number,
-                        required: true
-                    },
-                    two: {
-                        type: Number,
-                        required: true
-
-                    },
-                    three: {
-                        type: Number,
-                        required: true
-                    },
-                    four: {
-                        type: Number,
-                        required: true
-                    },
-                    five: {
-                        type: Number,
-                        required: true
-                    }
-                }],
-                required: true
-            }
-        }],
         required: true
     }
 }, {
