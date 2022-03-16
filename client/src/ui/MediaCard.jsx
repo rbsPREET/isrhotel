@@ -8,7 +8,7 @@ import classes from '../css/ui/MediaCard.module.css'
 
 export default function MediaCard() {
     return (
-        <Card sx={{ maxWidth: 345, maxHeight: 345 }} className={classes.container}>
+        <Card sx={{ maxWidth: 345, maxHeight: 345, boxShadow: "0px 0.5px 0.5px 4px rgb(0,0,0,7%)" }} className={classes.container}>
             <CardMedia
                 style={{ objectFit: "cover", width: "100px", height: "100px", margin: "10% 0" }}
                 component="img"
