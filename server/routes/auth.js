@@ -43,17 +43,18 @@ router.post("/login", async (req, res) => {
         userPassword !== req.body.password && res.status(401).json("Wrong credentials")
 
         const accessToken = jwt.sign({
-            id: user._id,
-            isAdmin: user.isAdmin,
-        },
+                id: user._id,
+                isAdmin: user.isAdmin,
+            },
             'random', {
-            expiresIn: "3d"
-        }
+                expiresIn: "3d"
+            }
         )
 
         res.status(200).json({
             success: true,
             error: null,
+            id: user._id,
             token: accessToken
         })
     } catch (err) {

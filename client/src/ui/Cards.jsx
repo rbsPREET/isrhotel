@@ -2,7 +2,7 @@ import SingleCard from "./SingleCard";
 
 const Cards = (props) => {
   return props.data.map((card) => (
-    <SingleCard key={card.id} card={card} {...props} />
+    <SingleCard key={card.title} card={card} {...props} />
   ));
 };
 

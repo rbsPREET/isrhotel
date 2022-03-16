@@ -36,7 +36,7 @@ export const GetMall = (props) => {
         }
         try {
             const data = await sendRequest();
-            dispatch(mallSlice.actions.getCurrentMall(data))
+            dispatch(mallActions.getCurrentMall(data))
 
         } catch (err) {
             const msg = err.message.split('status code')

@@ -2,14 +2,14 @@ import Modal from "../../ui/Modal";
 import classes from "../../css/layout/UserModal.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { storeUser } from "../../store/user";
+import { storeUser, loginHandler as loginUser } from "../../store/user";
 import Input from "../../ui/Input";
 
 const UserModal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
 
-  const handleLoginAndRegister = () => {
+  const registerHandler = () => {
     distpach(
       storeUser({
         firstName: "dor",
@@ -23,19 +23,30 @@ const UserModal = (props) => {
     setIsLogin(!isLogin);
   };
 
+  const loginHandler = (e) => {
+    e.preventDefault();
+    distpach(
+      loginUser({
+        email: "admi1n@admin.com",
+        password: "admin",
+      })
+    );
+  };
   const SideisLogin = (
     <>
       <div className={classes.modalContentL}>
         Doesn't have an account?
-        <span className={classes.checkStatus} onClick={handleLoginAndRegister}>
-          register now
-        </span>
+        <span className={classes.checkStatus}>register now</span>
       </div>
       <div className={classes.modalContentR}>
         <div>
           <h1 className={classes.formTitle}>LOGIN</h1>
           <div>
-            <form className={classes.formContent}>
+            <form
+              method="POST"
+              onSubmit={loginHandler}
+              className={classes.formContent}
+            >
               <Input
                 placeholder="enter you email"
                 nameId="email"
@@ -66,7 +77,7 @@ const UserModal = (props) => {
     <>
       <div className={classes.modalContentL}>
         Already a User?
-        <span className={classes.checkStatus} onClick={handleLoginAndRegister}>
+        <span className={classes.checkStatus} onClick={registerHandler}>
           Login
         </span>
       </div>
