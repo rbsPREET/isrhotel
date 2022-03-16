@@ -12,9 +12,6 @@
   border: unset !important;
 }
 
-.input:hover {
-}
-
 .label {
   pointer-events: none;
   color: #707e9c;
