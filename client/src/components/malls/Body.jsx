@@ -9,22 +9,23 @@ import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
-import { GetMall, UpdateMallReviewsStars } from "../../store/mall";
+import { GetMall, AddOrUpdateMallReviewsStars } from "../../store/mall";
 import { useLocation } from "react-router-dom";
 
 const Body = () => {
   const location = useLocation(); // get the mall Id from the path
   const state = useSelector((state) => state.mall.information);
+  const userId = useSelector((state) => state.user._id);
   const dispatch = useDispatch();
   const mallId = location.pathname.split("/")[2];
 
   // Redux Funcs Calls
   const handleStarsChange = (starValue) => {
     dispatch(
-      UpdateMallReviewsStars({
-        ...state.reviews,
-        starValue,
-        mallId,
+      AddOrUpdateMallReviewsStars({
+        userId: userId,
+        rating: starValue,
+        mallId: mallId,
       })
     );
   };
@@ -98,6 +99,7 @@ const Body = () => {
                 <StarIcon
                   onClick={() => handleStarsChange(star.value)}
                   key={star.value}
+                  value={star.value}
                   htmlColor={star.color}
                 />
               ))}

@@ -29,7 +29,7 @@ const mallSlice = createSlice({
         getCurrentMall(state, action) {
             state.information = action.payload;
         },
-        updateStars(state, action) {
+        addOrUpadteStars(state, action) {
             console.log(action.payload)
             state.information.reviews.stars.four.value = action.payload.starValue;
         }
@@ -56,11 +56,10 @@ export const GetMall = (props) => {
     }
 }
 
-export const UpdateMallReviewsStars = (props) => {
+export const AddOrUpdateMallReviewsStars = (data) => {
     return async (dispatch) => {
         const sendRequest = async () => {
-            console.log(props)
-            const res = await axios.get(`http://localhost:5000/api/v1/malls/${props.mallId}`);
+            const res = await axios.post(`http://localhost:5000/api/v1/malls/add_review`,data);
             if (res.status !== 200) {
                 return;
             }
@@ -69,7 +68,7 @@ export const UpdateMallReviewsStars = (props) => {
         try {
             const data = await sendRequest();
             console.log(data)
-            dispatch(mallActions.updateStars(data))
+            dispatch(mallActions.addOrUpadteStars(data))
 
         } catch (err) {
             const msg = err.message.split('status code')
