@@ -42,3 +42,7 @@
 .addressTitle {
     color: grey;
 }
+
+.stars {
+    cursor: pointer;
+}

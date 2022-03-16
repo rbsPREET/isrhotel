@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -9,7 +9,7 @@ import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
-import { GetMall } from "../../store/mall";
+import { GetMall, UpdateMallReviewsStars } from "../../store/mall";
 import { useLocation } from "react-router-dom";
 
 const Body = () => {
@@ -17,6 +17,15 @@ const Body = () => {
     const state = useSelector((state) => state.mall.information);
     const dispatch = useDispatch();
     const mallId = location.pathname.split("/")[2];
+
+    // Redux Funcs Calls
+    const handleStarsChange = (starValue) => {
+        dispatch(
+            UpdateMallReviewsStars({
+                ...state.reviews, starValue, mallId
+            })
+        )
+    }
 
     useEffect(() => {
         dispatch(GetMall(mallId));
@@ -52,12 +61,18 @@ const Body = () => {
         },
     ];
 
-    let stars = [];
-    for (let index = 0; index < 5; index++) {
-        if (state.reviews[0].count >= index - 1)
-            stars.push(<StarIcon key={index} htmlColor="gold" />)
+    let starsArr = []
+    for (let index = 1; index <= 5; index++) {
+        if (state.reviews.stars.four.value >= index)
+            starsArr.push({
+                value: index,
+                color: "gold"
+            })
         else
-            stars.push(<StarIcon key={index} htmlColor="gray" />)
+            starsArr.push({
+                value: index,
+                color: "gray"
+            })
     }
 
     return (
@@ -72,9 +87,13 @@ const Body = () => {
                         <p className={classes.addressTitle}>{state.address}</p>
                     </FlexRow>
                     <FlexRow centerColumn>
-                        <p className={classes.stars}>{stars.map((star) => star)}</p>
+                        <p className={classes.stars}>
+                            {Object.entries.starsArr.map((star) =>
+                                <StarIcon onClick={() => handleStarsChange(star.value)} key={star.value} htmlColor={star.color} />
+                            )}
+                        </p>
                         &nbsp;
-                        <span className={classes.addressTitle}>({state.reviews[0].count} reviews)</span>
+                        <span className={classes.addressTitle}>({state.reviews.stars} reviews)</span>
                     </FlexRow>
                     <div>
                         <FlexRow>
@@ -106,7 +125,7 @@ const Body = () => {
                 </div>
             </div>
         </Section>
-    );
-};
+    )
+}
 
 export default Body;
