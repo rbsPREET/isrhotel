@@ -1,5 +1,4 @@
 const mongoose = require("mongoose")
-const Room = require("./Room")
 
 const OrderSchema = new mongoose.Schema({
     userId: {
