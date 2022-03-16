@@ -8,7 +8,7 @@ export default function MediaCard() {
       margin="0 50px"
       maxWidth="345"
       maxHeight="345"
-      boxShadow="0px 0.5px 0.5px 4px rgb(0,0,0,7%)"
+      boxShadow="0px 2px 9px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%)"
       className={classes.container}
     >
       <img
