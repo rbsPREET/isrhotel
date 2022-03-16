@@ -66,6 +66,20 @@ const MallSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
+    },
+    reviews: {
+        type: Object,
+        default: [{
+            count: {
+                type: Number,
+                default: 0
+            },
+            stars: {
+                type: Number,
+                default: 0
+            }
+        }],
+        required: true
     }
 }, {
     timestamps: true
