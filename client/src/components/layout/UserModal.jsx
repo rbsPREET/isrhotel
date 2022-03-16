@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { storeUser, loginHandler as loginUser } from "../../store/user";
 import Input from "../../ui/Input";
+import Form from "../../ui/Form";
 
 const UserModal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
@@ -42,7 +43,7 @@ const UserModal = (props) => {
         <div>
           <h1 className={classes.formTitle}>LOGIN</h1>
           <div>
-            <form
+            <Form
               method="POST"
               onSubmit={loginHandler}
               className={classes.formContent}
@@ -66,7 +67,7 @@ const UserModal = (props) => {
                 label="Confirm Password"
               />
               <button>Register</button>
-            </form>
+            </Form>
           </div>
         </div>
       </div>

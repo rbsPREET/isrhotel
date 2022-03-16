@@ -7,14 +7,17 @@ import LiNavLink from "../../ui/LiNavLink";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutHandler } from "../../store/user";
 
 const Navbar = () => {
+  const state = useSelector((state) => state.user);
   const [isOpenDropDown, setIsOpen] = useState({
     browse: false,
     pages: false,
     home: false,
   });
-
+  const dispatch = useDispatch();
   // Login/Register Modal State
   const [activeModal, setActiveModal] = useState(false);
 
@@ -22,6 +25,9 @@ const Navbar = () => {
     setActiveModal(true);
   };
 
+  const lougoutHandler = () => {
+    dispatch(logoutHandler());
+  };
   const openDropDown = (isOpen, dropName) => {
     const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);
     setIsOpen((prev) => {
@@ -91,7 +97,7 @@ const Navbar = () => {
       {modal}
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <Link to="/" style={{ textDecoration: 'none' }}>
+          <Link to="/" style={{ textDecoration: "none" }}>
             <h1>ISRHOTEL</h1>
           </Link>
           <ul style={{ marginBottom: "unset" }}>
@@ -123,8 +129,11 @@ const Navbar = () => {
         </div>
         {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
-          <button onClick={openModal} className={classes.loginButton}>
-            Login
+          <button
+            onClick={state.isLoggedIn ? lougoutHandler : openModal}
+            className={classes.loginButton}
+          >
+            {state.isLoggedIn ? "Heyo Im Logged In" : "Login"}
           </button>
         </div>
       </div>

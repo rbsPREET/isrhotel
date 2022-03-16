@@ -1,6 +1,6 @@
 import {
     combineReducers,
-    configureStore
+    configureStore,
 } from '@reduxjs/toolkit';
 import mallSlice from './mall';
 import {
@@ -25,6 +25,9 @@ const persistedReducer = persistReducer(persisteConfig, reducers)
 const store = configureStore({
     reducer: persistedReducer,
     devTools: 'development',
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        serializableCheck: false
+    }),
     // middleware: [thunk] //think middleware by redux-thunk - basiclly we don't need it cause in @reduxjs/toolkit, the thunk middleware is already applied
 })
 
