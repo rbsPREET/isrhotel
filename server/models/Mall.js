@@ -75,8 +75,31 @@ const MallSchema = new mongoose.Schema({
                 default: 0
             },
             stars: {
-                type: Number,
-                default: 0
+                type: Array,
+                default: [{
+                    one: {
+                        type: Number,
+                        required: true
+                    },
+                    two: {
+                        type: Number,
+                        required: true
+
+                    },
+                    three: {
+                        type: Number,
+                        required: true
+                    },
+                    four: {
+                        type: Number,
+                        required: true
+                    },
+                    five: {
+                        type: Number,
+                        required: true
+                    }
+                }],
+                required: true
             }
         }],
         required: true
