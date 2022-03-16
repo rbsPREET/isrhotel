@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import FlexRow from "../../ui/FlexRow";
 import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
@@ -84,8 +85,12 @@ const Body = () => {
           <FlexRow wrap customWidth={70}>
             {Object.entries(state.amenities)?.map((item) => (
               <FlexRow key={item[0]} centerColumn customWidth={33}>
-                {item[1].available && <CheckBoxIcon htmlColor="red" />}
-                {item[1].available && item[1].text}
+                {item[1].available ? (
+                  <CheckBoxIcon htmlColor="green" />
+                ) : (
+                  <IndeterminateCheckBoxIcon htmlColor="red" />
+                )}
+                {item[1].text}
               </FlexRow>
             ))}
           </FlexRow>
