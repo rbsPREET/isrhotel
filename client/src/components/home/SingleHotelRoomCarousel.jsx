@@ -12,11 +12,11 @@ const SingleHotelRoomCarousel = (props) => {
   const { item } = props;
   let stars = [];
   for (let index = 0; index < item.stars; index++) {
-    stars.push(<StarIcon htmlColor="gold" />);
+    stars.push(<StarIcon key={index} htmlColor="gold" />);
   }
   return (
     <div
-      key={item.id}
+      key={item.title}
       className={`${classes.paddingAndRelative}`}
       style={{ width: `${props.customWidth ? props.customWidth : "100"}%` }}
     >

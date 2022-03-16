@@ -5,7 +5,11 @@ import classes from "../../css/home/Body.module.css";
 import MallSection from "./MallSection";
 import { mallsData } from "../../mockData";
 import CreditsSection from "./CreditsSection";
+import { useSelector } from "react-redux";
 const Body = () => {
+
+
+
   return (
     <div>
       <Section

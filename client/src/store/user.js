@@ -7,21 +7,53 @@ import axios from 'axios';
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        firstName: '',
-        lastName: '',
-        address: '',
-        phone: null,
-        email: null,
-        password: null,
+        _id: null,
+        isLoggedIn: false,
+        token: null,
     },
     reducers: {
-        checkValidityForEmail(state, action) { },
-        checkValidityForPassword(state, action) { },
-        checkValidityForName(state, action) { },
-        checkValidityForAge(state, action) { },
-        comparePasswordConfirmation(state, action) { },
+        login(state, action) {
+            state._id = action.payload._id;
+            state.isLoggedIn = action.payload.isLoggedIn;
+            state.token = action.payload.token;
+        },
+        logout(state, action) {
+            state._id = null;
+            state.isLoggedIn = false;
+            state.token = null
+        },
     }
 })
+
+export const loginHandler = (data) => {
+    return async (dispatch) => {
+        const sendRequest = async () => {
+            const response = await axios.post("http://localhost:5000/api/v1/auth/login", data);
+            if (response.status !== 200 && !response.success) {
+                return;
+            }
+            return response.data;
+        }
+        try {
+            const user = await sendRequest();
+            localStorage.setItem('token', user.token);
+            dispatch(userActions.login({
+                _id: user.id,
+                isLoggedIn: true,
+                token: localStorage.getItem('token')
+            }))
+        } catch (err) {
+            const msg = err.message.split('status code')
+            console.log('status code ' + msg[1].trim());
+        }
+    }
+};
+
+
+
+export const logoutHandler = () => {};
+
+
 
 export const storeUser = (data) => {
     return async () => {
