@@ -10,6 +10,9 @@ const bodyParger = require('body-parser');
 const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
 const mallRoute = require("./routes/mall")
+const reviewRoute = require("./routes/review")
+const cityRoute = require("./routes/city")
+const roomRoute = require("./routes/room")
 
 // Allow .env file
 dotenv.config()
@@ -39,7 +42,11 @@ app.use(cors())
 // Routes
 app.use("/api/v1/auth", authRoute)
 app.use("/api/v1/users", userRoute)
+app.use("/api/v1/reviews", reviewRoute)
+app.use("/api/v1/cities", cityRoute)
+app.use("/api/v1/rooms", roomRoute)
 app.use("/api/v1/malls", mallRoute)
+
 
 // Server
 app.listen(process.env.PORT || 5001, () => {
