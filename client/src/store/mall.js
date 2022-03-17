@@ -59,7 +59,7 @@ export const GetMall = (props) => {
 export const AddOrUpdateMallReviewsStars = (data) => {
     return async (dispatch) => {
         const sendRequest = async () => {
-            const res = await axios.post(`http://localhost:5000/api/v1/malls/add_review`,data);
+            const res = await axios.post(`http://localhost:5000/api/v1/malls/${data.mallId}/add/review`, data);
             if (res.status !== 200) {
                 return;
             }

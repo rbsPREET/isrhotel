@@ -18,11 +18,12 @@ router.post("/", verifyTokenAndAdmin, async (req, res) => {
     }
 })
 
-router.post('/add_review', async (req, res) => {
+// ADD REVIEW
+router.post('/:mallId/add/review', verifyTokenAndAuthorization, async (req, res) => {
     const {
         userId,
-        rating,
-        mallId
+        mallId,
+        rating
     } = req.body;
 
     const existReview = await Review.findOne({
@@ -34,22 +35,24 @@ router.post('/add_review', async (req, res) => {
     try {
         const newRating = new Review({
             userId,
-            rating,
-            mallId
+            mallId,
+            rating
         })
+
         const saved = await newRating.save();
 
         if (saved) {
             res.status(201).json({
                 bool: true,
                 status: "Success",
-                message: `Hey!, Thank You for your review to ISRhotels`,
+                message: `Hey!, Thank You for your review to ${mallId} hotel, ISRhotels`,
             })
         }
     } catch (err) {
         res.status(500).json(err)
     }
 })
+
 // UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
     try {
