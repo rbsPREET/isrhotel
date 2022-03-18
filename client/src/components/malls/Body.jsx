@@ -30,7 +30,7 @@ const Body = (props) => {
   const tabSections = [
     {
       title: "Overview",
-      data: state.description.replace(/\r\n/g, "<br>"),
+      data: state.description,
     },
     {
       title: "Pricing",
