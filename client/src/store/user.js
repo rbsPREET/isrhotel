@@ -36,11 +36,10 @@ export const loginHandler = (data) => {
         }
         try {
             const user = await sendRequest();
-            localStorage.setItem('token', user.token);
             dispatch(userActions.login({
                 _id: user.id,
                 isLoggedIn: true,
-                token: localStorage.getItem('token')
+                token: user.token
             }))
         } catch (err) {
             const msg = err.message.split('status code')
@@ -51,28 +50,21 @@ export const loginHandler = (data) => {
 
 
 
-export const logoutHandler = () => {
+export const logoutHandler = (id) => {
     return async (dispatch) => {
-        dispatch(userActions.logout());
-        // const sendRequest = async () => {
-        //     const response = await axios.post("http://localhost:5000/api/v1/auth/logout", data);
-        //     if (response.status !== 200 && !response.success) {
-        //         return;
-        //     }
-        //     return response.data;
-        // }
-        // try {
-        //     const user = await sendRequest();
-        //     localStorage.setItem('token', user.token);
-        //     dispatch(userActions.login({
-        //         _id: user.id,
-        //         isLoggedIn: true,
-        //         token: localStorage.getItem('token')
-        //     }))
-        // } catch (err) {
-        //     const msg = err.message.split('status code')
-        //     console.log('status code ' + msg[1].trim());
-        // }
+        const sendRequest = async () => {
+            const response = await axios.post("http://localhost:5000/api/v1/auth/logout", id);
+            if (response.status !== 200 && !response.success) {
+                return;
+            }
+        }
+        try {
+            await sendRequest();
+            dispatch(userActions.logout());
+        } catch (err) {
+            const msg = err.message.split('status code')
+            console.log('status code ' + msg[1].trim());
+        }
     }
 };
 

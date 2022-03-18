@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   const lougoutHandler = () => {
-    dispatch(logoutHandler());
+    dispatch(logoutHandler({id:state._id}));
   };
   const openDropDown = (isOpen, dropName) => {
     const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);

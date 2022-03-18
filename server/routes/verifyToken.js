@@ -1,17 +1,19 @@
 const jwt = require("jsonwebtoken")
+const Token = require("../models/Token")
 
 // Token when User login
-const verifyToken = (req, res, next) => {
-    const authHeader = req.headers.token
-    if (authHeader) {
-        const token = authHeader.split(" ")[1]
-        jwt.verify(token, 'random', (err, user) => {
+const verifyToken = async (req, res, next) => {
+    try {
+        const result = await Token.findOne({
+            userId: req.body.userId
+        }).exec();
+        jwt.verify(result.token, 'random', (err, user) => {
             if (err)
                 return res.status(403).json("Unvalid Token")
             req.user = user
             next()
         })
-    } else {
+    } catch (err) {
         return res.status(401).json("Not authenticated")
     }
 }

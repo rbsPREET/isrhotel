@@ -44,7 +44,7 @@ router.post("/login", async (req, res) => {
         userPassword !== req.body.password && res.status(401).json("Wrong credentials")
 
         const accessToken = jwt.sign({
-                id: user._id,
+                _id: user._id,
                 isAdmin: user.isAdmin,
             },
             'random', {
@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
             userId: user._id,
             token: accessToken,
         }).save();
-
+        req.user = user;
         res.status(200).json({
             success: true,
             error: null,
@@ -83,14 +83,9 @@ router.post("/login", async (req, res) => {
 
 router.post("/logout", async (req, res) => {
     try {
-        const token = await Token.findOne({
-                userId: req.body.id
-            })
-
-            !token && res.status(401).json("Wrong credentials")
-
-        token.remove().exec();
-
+        await Token.deleteOne({
+            userId: req.body.id
+        })
         res.status(200).json({
             success: true,
             error: null,
@@ -98,7 +93,7 @@ router.post("/logout", async (req, res) => {
     } catch (err) {
         res.status(500).json({
             success: false,
-            error: err,
+            error: "Wrong credentials",
         })
     }
 })
