@@ -20,23 +20,27 @@ router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
 
     existReview && existReview.deleteOne();
     try {
-        const review = await new Review({
+        await new Review({
             userId,
             mallId,
             rating
         }).save()
 
-        // const mallObject = mall.toObject()
-        await Mall.findByIdAndUpdate({
-            _id: mallId
-        }, {
+        const mall = await Mall.findById(mallId);
+        const mallObject = mall.toObject()
+        const updatedObj = mallObject.reviews.stars[rating] = mallObject.reviews.stars[rating] + 1;
+        await Mall.updateOne({
             $set: {
                 reviews: {
-                    count: count + 1
+                    count: mallObject.reviews.count + 1,
+                    stars: {
+                        ...mallObject.reviews.stars,
+                        ...mallObject.reviews.stars[updatedObj]
+                    }
                 }
             }
         })
-        //not working yet
+
         res.status(201).json({
             bool: true,
             status: "Success",

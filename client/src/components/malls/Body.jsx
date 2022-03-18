@@ -9,7 +9,7 @@ import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
-import {AddOrUpdateMallReviewsStars } from "../../store/mall";
+import { AddOrUpdateMallReviewsStars } from "../../store/mall";
 
 const Body = (props) => {
   const userId = useSelector((state) => state.user._id);
@@ -59,12 +59,13 @@ const Body = (props) => {
 
   let starsArr = [];
   let countReviews = 0;
+  console.log(state);
   const reduceReviews = Object.entries(state.reviews.stars).reduce(
-    (start, num) => (countReviews = countReviews + +num[1].count)
+    (start, num) => (countReviews = countReviews + +num[1])
   );
 
   for (let index = 1; index <= 5; index++) {
-    if (state.reviews.stars.four.value >= index)
+    if (state.reviews.stars["4"].value >= index)
       starsArr.push({
         value: index,
         color: "gold",
@@ -75,6 +76,8 @@ const Body = (props) => {
         color: "gray",
       });
   }
+
+  console.log(starsArr);
   return (
     <Section className={classes.container}>
       <div className={classes.left}>
