@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Carousel from "../../ui/Carousel";
-import { GetMall } from "../../store/mall";
-import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { Oval } from "react-loader-spinner";
 import FlexRow from "../../ui/FlexRow";
 import classes from "../../css/malls/Header.module.css";

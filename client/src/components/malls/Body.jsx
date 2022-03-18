@@ -27,10 +27,6 @@ const Body = (props) => {
     );
   };
 
-  useEffect(() => {
-    dispatch(GetMall(props.mallId));
-  }, [dispatch, props.mallId]);
-
   const tabSections = [
     {
       title: "Overview",
