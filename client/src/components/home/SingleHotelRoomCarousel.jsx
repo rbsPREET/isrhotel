@@ -29,7 +29,7 @@ const SingleHotelRoomCarousel = (props) => {
   };
   const detailsHotelHandler = () => {
     dispatch(
-      mallActions.getMallName({
+      mallActions.getMallDetails({
         _id: item._id,
         name: item.title,
         address: item.address,

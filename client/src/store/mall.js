@@ -32,7 +32,7 @@ const mallSlice = createSlice({
         }
     },
     reducers: {
-        getMallName(state, action) {
+        getMallDetails(state, action) {
             state.searchToDispatch = action.payload
         },
         getCurrentMall(state, action) {
