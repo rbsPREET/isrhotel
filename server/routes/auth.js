@@ -63,7 +63,7 @@ router.post("/login", async (req, res) => {
             userId: user._id,
             token: accessToken,
         }).save();
-
+        req.user = user;
         res.status(200).json({
             success: true,
             error: null,
