@@ -17,6 +17,12 @@ const MallSchema = new mongoose.Schema({
         type: Array,
         ref: 'Room',
     },
+    reviews: {
+        type: Object,
+        default: {
+            "count": 0
+        }
+    },
     amenities: {
         type: Object,
         default: {

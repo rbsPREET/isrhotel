@@ -32,7 +32,7 @@ router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
         }, {
             $set: {
                 reviews: {
-                    count: +1
+                    count: count + 1
                 }
             }
         })
