@@ -65,6 +65,10 @@ const MallSchema = new mongoose.Schema({
     address: {
         type: String,
         required: true
+    },
+    city: {
+        required: true,
+        type: String,
     }
 }, {
     timestamps: true

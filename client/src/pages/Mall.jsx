@@ -10,7 +10,7 @@ const Mall = () => {
   const dispatch = useDispatch();
   const location = useLocation(); // get the mall Id from the path
   const mallId = location.pathname.split("/")[2];
-
+    console.log(mallId);
   useEffect(() => {
     dispatch(GetMall(mallId));
   }, [dispatch, mallId]);
