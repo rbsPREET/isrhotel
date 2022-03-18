@@ -15,7 +15,7 @@ const Body = (props) => {
   const userId = useSelector((state) => state.user._id);
   const dispatch = useDispatch();
   const state = useMemo(() => props.data, [props.data]);
-  const totalReviewsStars = useRef(null);
+  const calculatedStars = useRef(null);
   // Redux Funcs Calls
   const handleStarsChange = (starValue) => {
     dispatch(
@@ -58,10 +58,10 @@ const Body = (props) => {
   ];
 
   let starsArr = [];
+  const totalStars = calculatedStars.current / state.reviews.count; // total stars
 
-  console.log(totalReviewsStars.current / state.reviews.count); // total stars
   for (let index = 1; index <= 5; index++) {
-    if (state.reviews.stars["4"].value >= index)
+    if (Math.round(totalStars) >= index)
       starsArr.push({
         value: index,
         color: "gold",
@@ -79,7 +79,7 @@ const Body = (props) => {
       (key) => (calculatedReviews[`'${key[0]}'`] = key[0] * key[1])
     );
     for (const key in calculatedReviews) {
-      totalReviewsStars.current += calculatedReviews[key];
+      calculatedStars.current += calculatedReviews[key];
     }
   }, [state.reviews.stars]);
   return (
