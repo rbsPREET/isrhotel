@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken")
 const Token = require("../models/Token")
 
 // Token when User login
-const verifyToken = async (req, res, next) => {
+const verifyIsLoggedIn = async (req, res, next) => {
     try {
         const result = await Token.findOne({
             userId: req.body.userId
@@ -17,18 +17,6 @@ const verifyToken = async (req, res, next) => {
         return res.status(401).json("Not authenticated")
     }
 }
-
-// Check if the Token belong to the User that request the call
-const verifyTokenAndAuthorization = (req, res, next) => {
-    verifyToken(req, res, () => {
-        if (req.user._id === req.params.id) {
-            next()
-        } else {
-            res.status(403).json("Not allowed")
-        }
-    })
-}
-
 // Check if the User is an Admin on the request (Dor && Rotem)
 const verifyTokenAndAdmin = (req, res, next) => {
     verifyToken(req, res, () => {
@@ -52,8 +40,7 @@ const verifyAdminOrSelfUser = (req, res, next) => {
 
 
 module.exports = {
-    verifyToken,
-    verifyTokenAndAuthorization,
+    verifyIsLoggedIn,
     verifyTokenAndAdmin,
     verifyAdminOrSelfUser
 }
