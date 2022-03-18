@@ -24,8 +24,8 @@ router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
             userId,
             mallId,
             rating
-        })
-        await review.save();
+        }).save()
+
         // const mallObject = mall.toObject()
         await Mall.findByIdAndUpdate({
             _id: mallId
@@ -36,7 +36,7 @@ router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
                 }
             }
         })
-            //not working yet
+        //not working yet
         res.status(201).json({
             bool: true,
             status: "Success",
