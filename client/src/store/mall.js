@@ -9,6 +9,7 @@ const mallSlice = createSlice({
     initialState: {
         information: {
             img: null,
+            address: null,
             description: null,
             email: null,
             guests: null,
@@ -23,9 +24,17 @@ const mallSlice = createSlice({
                 }
             },
             _id: null
+        },
+        searchToDispatch: {
+            _id: null,
+            name: null,
+            address: null
         }
     },
     reducers: {
+        getMallName(state, action) {
+            state.searchToDispatch = action.payload
+        },
         getCurrentMall(state, action) {
             state.information = action.payload;
         },
