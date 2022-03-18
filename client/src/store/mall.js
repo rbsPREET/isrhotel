@@ -32,6 +32,10 @@ const mallSlice = createSlice({
         }
     },
     reducers: {
+        getAmountOfRating(state,action){
+
+            state.information.reviews.count = action.payload
+        },
         getMallDetails(state, action) {
             state.searchToDispatch = action.payload
         },
@@ -66,6 +70,7 @@ export const GetMall = (props) => {
 }
 
 export const AddOrUpdateMallReviewsStars = (data) => {
+    console.log(data);
     return async (dispatch) => {
         const sendRequest = async () => {
             const res = await axios.post(`http://localhost:5000/api/v1/reviews/${data.mallId}/add`, data);

@@ -1,11 +1,12 @@
 const router = require("express").Router()
 const Review = require("../models/Review");
+const Mall = require("../models/Mall");
 const {
-    verifyTokenAndAuthorization,
+    verifyIsLoggedIn,
 } = require("./verifyToken")
 
 // ADD REVIEW
-router.post('/:mallId/add', verifyTokenAndAuthorization, async (req, res) => {
+router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
     const {
         userId,
         mallId,
@@ -19,21 +20,30 @@ router.post('/:mallId/add', verifyTokenAndAuthorization, async (req, res) => {
 
     existReview && existReview.deleteOne();
     try {
-        const newRating = new Review({
+        const review = await new Review({
             userId,
             mallId,
             rating
         })
+        await review.save();
+        // const mallObject = mall.toObject()
+        await Mall.findByIdAndUpdate({
+            _id: mallId
+        }, {
+            $set: {
+                reviews: {
+                    count: +1
+                }
+            }
+        })
+            //not working yet
+        res.status(201).json({
+            bool: true,
+            status: "Success",
+            message: `Hey!, Thank You for your review to ${mallObject.reviews.count} hotel, ISRhotels`,
+        })
 
-        const saved = await newRating.save();
 
-        if (saved) {
-            res.status(201).json({
-                bool: true,
-                status: "Success",
-                message: `Hey!, Thank You for your review to ${mallId} hotel, ISRhotels`,
-            })
-        }
     } catch (err) {
         res.status(500).json(err)
     }

@@ -1,6 +1,5 @@
 const User = require("../models/User")
 const {
-    verifyTokenAndAuthorization,
     verifyTokenAndAdmin,
     verifyAdminOrSelfUser
 } = require("./verifyToken")
@@ -35,7 +34,7 @@ router.get("/", verifyTokenAndAdmin, async (req, res) => {
 })
 
 // UPDATE
-router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
+router.put("/:id", verifyAdminOrSelfUser, async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
         if (req.body.password) {
             req.body.password = CryptoJS.AES.encrypt(req.body.password, process.env.PASS_SECRET).toString()
@@ -55,7 +54,7 @@ router.put("/:id", verifyTokenAndAuthorization, async (req, res) => {
 })
 
 // DELETE
-router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
+router.delete("/:id", verifyAdminOrSelfUser, async (req, res) => {
     try {
         await User.findByIdAndDelete(req.params.id)
         res.status(200).json("User " + req.params.id + " has been deleted")

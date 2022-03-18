@@ -1,7 +1,6 @@
 const Mall = require("../models/Mall")
 const Review = require("../models/Review")
 const {
-    verifyTokenAndAuthorization,
     verifyTokenAndAdmin
 } = require("./verifyToken")
 
