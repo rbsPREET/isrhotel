@@ -32,11 +32,11 @@ router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
         }, {
             $set: {
                 reviews: {
-                    count: +1
+                    count: count + 1
                 }
             }
         })
-            //not working yet
+        //not working yet
         res.status(201).json({
             bool: true,
             status: "Success",
