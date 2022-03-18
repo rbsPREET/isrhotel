@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -9,7 +9,7 @@ import Section from "../../ui/Section";
 import LabTabs from "../../ui/LabTabs";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
-import { GetMall, AddOrUpdateMallReviewsStars } from "../../store/mall";
+import {AddOrUpdateMallReviewsStars } from "../../store/mall";
 
 const Body = (props) => {
   const userId = useSelector((state) => state.user._id);
