@@ -59,7 +59,6 @@ const Body = (props) => {
 
   let starsArr = [];
   let countReviews = 0;
-  console.log(state);
   const reduceReviews = Object.entries(state.reviews.stars).reduce(
     (start, num) => (countReviews = countReviews + +num[1])
   );
