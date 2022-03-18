@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -30,7 +30,7 @@ const Body = (props) => {
   const tabSections = [
     {
       title: "Overview",
-      data: state.description,
+      data: state.description.replace(/\r\n/g, "<br>"),
     },
     {
       title: "Pricing",
@@ -77,7 +77,6 @@ const Body = (props) => {
       });
   }
 
-  console.log(starsArr);
   return (
     <Section className={classes.container}>
       <div className={classes.left}>
@@ -107,22 +106,31 @@ const Body = (props) => {
           </FlexRow>
           <div>
             <FlexRow>
-              <LabTabs tabSections={tabSections} />
+              <LabTabs
+                className={classes.description}
+                tabSections={tabSections}
+              />
             </FlexRow>
           </div>
         </div>
         {/* Left side => Amenities */}
         <div className={classes.mid}>
           <h1 className={classes.title}>Amenities</h1>
-          <FlexRow wrap customWidth={70}>
+          <FlexRow wrap customWidth={100}>
             {Object.entries(state.amenities)?.map((item) => (
               <FlexRow key={item[0]} centerColumn customWidth={33}>
                 {item[1].available ? (
-                  <CheckBoxIcon htmlColor="green" />
+                  <CheckBoxIcon
+                    sx={{ width: "1.6em", height: "2.5em" }}
+                    htmlColor="green"
+                  />
                 ) : (
-                  <IndeterminateCheckBoxIcon htmlColor="red" />
+                  <IndeterminateCheckBoxIcon
+                    sx={{ width: "1.6em", height: "2.5em" }}
+                    htmlColor="red"
+                  />
                 )}
-                {item[1].text}
+                <p className={classes.amenity_item}>{item[1].text}</p>
               </FlexRow>
             ))}
           </FlexRow>

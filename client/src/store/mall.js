@@ -32,8 +32,7 @@ const mallSlice = createSlice({
         }
     },
     reducers: {
-        getAmountOfRating(state,action){
-
+        getAmountOfRating(state, action) {
             state.information.reviews.count = action.payload
         },
         getMallDetails(state, action) {
@@ -43,8 +42,7 @@ const mallSlice = createSlice({
             state.information = action.payload;
         },
         addOrUpadteStars(state, action) {
-            console.log(action.payload)
-            state.information.reviews.stars.four.value = action.payload.starValue;
+            state.information.reviews = action.payload;
         }
     }
 })
@@ -74,14 +72,16 @@ export const AddOrUpdateMallReviewsStars = (data) => {
     return async (dispatch) => {
         const sendRequest = async () => {
             const res = await axios.post(`http://localhost:5000/api/v1/reviews/${data.mallId}/add`, data);
-            if (res.status !== 200) {
+
+            if (res.status !== 201) {
                 return;
             }
+
             return await res.data;
         }
         try {
             const data = await sendRequest();
-            dispatch(mallActions.addOrUpadteStars(data))
+            dispatch(mallActions.addOrUpadteStars(data.data.reviews))
 
         } catch (err) {
             const msg = err.message.split('status code')

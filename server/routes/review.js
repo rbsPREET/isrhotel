@@ -44,6 +44,7 @@ router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
         res.status(201).json({
             bool: true,
             status: "Success",
+            data:mallObject,
             message: `Hey!, Thank You for your review to ${mallObject.reviews.count} hotel, ISRhotels`,
         })
 

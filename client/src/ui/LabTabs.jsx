@@ -23,7 +23,7 @@ export default function LabTabs(props) {
           </TabList>
         </Box>
         {props.tabSections.map((item, index) => (
-          <TabPanel key={index} value={item.title}>
+          <TabPanel className={props.className} key={index} value={item.title}>
             {item.data}
           </TabPanel>
         ))}
