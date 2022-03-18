@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -14,8 +14,8 @@ import { AddOrUpdateMallReviewsStars } from "../../store/mall";
 const Body = (props) => {
   const userId = useSelector((state) => state.user._id);
   const dispatch = useDispatch();
-  const state = props.data;
-
+  const state = useMemo(() => props.data, [props.data]);
+  const totalReviewsStars = useRef(null);
   // Redux Funcs Calls
   const handleStarsChange = (starValue) => {
     dispatch(
@@ -58,11 +58,8 @@ const Body = (props) => {
   ];
 
   let starsArr = [];
-  let countReviews = 0;
-  const reduceReviews = Object.entries(state.reviews.stars).reduce(
-    (start, num) => (countReviews = countReviews + +num[1])
-  );
 
+  console.log(totalReviewsStars.current / state.reviews.count); // total stars
   for (let index = 1; index <= 5; index++) {
     if (state.reviews.stars["4"].value >= index)
       starsArr.push({
@@ -75,7 +72,16 @@ const Body = (props) => {
         color: "gray",
       });
   }
+  useEffect(() => {
+    let calculatedReviews = [];
 
+    Object.entries(state.reviews.stars).map(
+      (key) => (calculatedReviews[`'${key[0]}'`] = key[0] * key[1])
+    );
+    for (const key in calculatedReviews) {
+      totalReviewsStars.current += calculatedReviews[key];
+    }
+  }, [state.reviews.stars]);
   return (
     <Section className={classes.container}>
       <div className={classes.left}>
@@ -100,7 +106,7 @@ const Body = (props) => {
             </p>
             &nbsp;
             <span className={classes.addressTitle}>
-              ({reduceReviews} reviews)
+              ({state.reviews.count} reviews)
             </span>
           </FlexRow>
           <div>
