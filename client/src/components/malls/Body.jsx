@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -15,7 +15,6 @@ const Body = (props) => {
   const userId = useSelector((state) => state.user._id);
   const dispatch = useDispatch();
   const state = useMemo(() => props.data, [props.data]);
-  const calculatedStars = useRef(null);
   // Redux Funcs Calls
   const handleStarsChange = (starValue) => {
     dispatch(
@@ -58,7 +57,20 @@ const Body = (props) => {
   ];
 
   let starsArr = [];
-  const totalStars = calculatedStars.current / state.reviews.count; // total stars
+  let calculatedReviews = useMemo(() => [], []);
+
+  const calculateHandler = useCallback(() => {
+    let calculatedStars = 0;
+    Object.entries(state.reviews.stars).map(
+      (key) => (calculatedReviews[`'${key[0]}'`] = key[0] * key[1])
+    );
+    for (const key in calculatedReviews)
+      calculatedStars += calculatedReviews[key];
+
+    return calculatedStars;
+  }, [calculatedReviews, state.reviews.stars]);
+
+  const totalStars = calculateHandler() / state.reviews.count; // total stars
 
   for (let index = 1; index <= 5; index++) {
     if (Math.round(totalStars) >= index)
@@ -72,16 +84,11 @@ const Body = (props) => {
         color: "gray",
       });
   }
-  useEffect(() => {
-    let calculatedReviews = [];
 
-    Object.entries(state.reviews.stars).map(
-      (key) => (calculatedReviews[`'${key[0]}'`] = key[0] * key[1])
-    );
-    for (const key in calculatedReviews) {
-      calculatedStars.current += calculatedReviews[key];
-    }
-  }, [state.reviews.stars]);
+  useEffect(() => {
+    calculateHandler();
+  }, [calculateHandler]);
+
   return (
     <Section className={classes.container}>
       <div className={classes.left}>
