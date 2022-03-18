@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import classes from "../../css/malls/Body.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import StarIcon from "@material-ui/icons/Star";
@@ -10,14 +10,11 @@ import LabTabs from "../../ui/LabTabs";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { GetMall, AddOrUpdateMallReviewsStars } from "../../store/mall";
-import { useLocation } from "react-router-dom";
 
-const Body = () => {
-  const location = useLocation(); // get the mall Id from the path
-  const state = useSelector((state) => state.mall.information);
+const Body = (props) => {
   const userId = useSelector((state) => state.user._id);
   const dispatch = useDispatch();
-  const mallId = location.pathname.split("/")[2];
+  const state = props.data;
 
   // Redux Funcs Calls
   const handleStarsChange = (starValue) => {
@@ -25,14 +22,14 @@ const Body = () => {
       AddOrUpdateMallReviewsStars({
         userId: userId,
         rating: starValue,
-        mallId: mallId,
+        mallId: props.mallId,
       })
     );
   };
 
   useEffect(() => {
-    dispatch(GetMall(mallId));
-  }, [dispatch, mallId]);
+    dispatch(GetMall(props.mallId));
+  }, [dispatch, props.mallId]);
 
   const tabSections = [
     {

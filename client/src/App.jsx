@@ -15,7 +15,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         {/*single mall*/}
-        <Route path="/mall/:id" element={<Mall />} />
+        <Route path="/mall/:name" element={<Mall />} />
         <Route path="/:location/:dates/:guests" element={<Filter />} />
         {/*filter search*/}
         <Route path="/malls" element={<Mall />} />

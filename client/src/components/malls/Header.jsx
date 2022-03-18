@@ -7,18 +7,9 @@ import { Oval } from "react-loader-spinner";
 import FlexRow from "../../ui/FlexRow";
 import classes from "../../css/malls/Header.module.css";
 
-const Header = () => {
-  const location = useLocation(); // get the mall Id from the path
-  const state = useSelector((state) => state.mall);
-  const dispatch = useDispatch();
-  const mallId = location.pathname.split("/")[2];
-
-  useEffect(() => {
-    dispatch(GetMall(mallId));
-  }, [dispatch, mallId]);
-
-  return state.information.img ? (
-    <Carousel data={state.information.img} template="mall-page" /> // TODO: disable the dots by passing props of dots off
+const Header = (props) => {
+  return props.data.img ? (
+    <Carousel data={props.data.img} template="mall-page" /> // TODO: disable the dots by passing props of dots off
   ) : (
     <FlexRow className={classes.oval} center={true}>
       <Oval color="#00BFFF" height={80} width={80} />
