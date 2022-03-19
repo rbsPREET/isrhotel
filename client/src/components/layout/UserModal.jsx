@@ -9,6 +9,8 @@ import Form from "../../ui/Form";
 const UserModal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
+  const [loginEmail, setLoginEmail] = useState("")
+  const [loginPassword, setLoginPassword] = useState("")
 
   const registerHandler = () => {
     distpach(
@@ -24,13 +26,13 @@ const UserModal = (props) => {
     setIsLogin(!isLogin);
   };
 
-  
+
   const loginHandler = (e) => {
     e.preventDefault();
     distpach(
       loginUser({
-        email: "admi1n@admin.com",
-        password: "admin",
+        email: loginEmail,
+        password: loginPassword,
       })
     );
   };
@@ -55,7 +57,7 @@ const UserModal = (props) => {
               className={classes.formContent}
             >
               <Input
-                onChange={(e) => console.log(e.target.value)}
+                onChange={setLoginEmail}
                 className={classes.input}
                 nameId="email"
                 type="text"
@@ -63,6 +65,7 @@ const UserModal = (props) => {
                 length={3}
               />
               <Input
+                onChange={setLoginPassword}
                 className={classes.input}
                 nameId="password"
                 type="password"

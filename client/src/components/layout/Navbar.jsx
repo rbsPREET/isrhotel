@@ -137,7 +137,7 @@ const Navbar = () => {
             onClick={state.isLoggedIn ? lougoutHandler : openModal}
             className={classes.loginButton}
           >
-            {state.isLoggedIn ? "Heyo Im Logged In" : "Login"}
+            {state.isLoggedIn ? `Heyo User` : "Login"}
           </button>
         </div>
       </div>
