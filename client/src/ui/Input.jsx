@@ -56,48 +56,45 @@ const Input = (props) => {
           props.type === "email" ||
           props.type === "tel" ||
           props.type === "password") && (
-          <div onClick={inputChangeHandler} className={`${classes.divInput}`}>
-            {props.label && (
-              <label
-                htmlFor={props.nameId}
-                className={`${props.className} ${classes.label} ${
-                  inputClicked && classes.inputClicked
-                }`}
-              >
-                {props.label}
-              </label>
-            )}
-            <input
-              onTouchEnd={(e) => console.log(e.target)}
-              ref={input}
-              type={props.type}
-              name={props.nameId}
-              className={`${props.className} ${classes.input}`}
-              id={props.nameId}
-              onChange={(e) => {
-                inputChangeHandler(e);
-                props.onChange(e);
-              }}
-              onBlur={resetLabelHandler}
-              value={props.value}
-            />
-          </div>
-        )}
+            <div onClick={inputChangeHandler} className={`${classes.divInput}`}>
+              {props.label && (
+                <label
+                  htmlFor={props.nameId}
+                  className={`${props.className} ${classes.label} ${inputClicked && classes.inputClicked
+                    }`}
+                >
+                  {props.label}
+                </label>
+              )}
+              <input
+                onTouchEnd={(e) => console.log(e.target)}
+                ref={input}
+                type={props.type}
+                name={props.nameId}
+                className={`${props.className} ${classes.input}`}
+                id={props.nameId}
+                onChange={(e) => {
+                  inputChangeHandler(e);
+                  props.onChange(e.target.value);
+                }}
+                onBlur={resetLabelHandler}
+                value={props.value}
+              />
+            </div>
+          )}
         {props.type === "select" && (
           <div
             style={{ width: props.customWidth }}
             onBlur={selectBlurHandler}
             onClick={selectHandler}
-            className={`${
-              props.inBox ? classes.divInputInBox : classes.divInput
-            } ${props.noBorders && classes.noBorders}`}
+            className={`${props.inBox ? classes.divInputInBox : classes.divInput
+              } ${props.noBorders && classes.noBorders}`}
           >
             {props.label && (
               <label
                 htmlFor={props.nameId}
-                className={`${props.className} ${classes.label} ${
-                  inputClicked && classes.inputClicked
-                }`}
+                className={`${props.className} ${classes.label} ${inputClicked && classes.inputClicked
+                  }`}
               >
                 {props.label}
               </label>
@@ -110,9 +107,8 @@ const Input = (props) => {
               placeholder={props.placeholder}
               type="text"
               name={props.nameId}
-              className={`${props.className} ${classes.input} ${
-                props.noBorders && classes.noBordersLabel
-              }`}
+              className={`${props.className} ${classes.input} ${props.noBorders && classes.noBordersLabel
+                }`}
               id={props.nameId}
               onBlur={resetLabelHandler}
               value={props.value}
@@ -125,9 +121,8 @@ const Input = (props) => {
             >
               {(state) => (
                 <ul
-                  className={`${classes.ul} ${
-                    state === "entered" && classes.show
-                  }`}
+                  className={`${classes.ul} ${state === "entered" && classes.show
+                    }`}
                 >
                   {props.data.map((data) => (
                     <li
