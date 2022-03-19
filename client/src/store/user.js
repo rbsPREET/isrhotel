@@ -105,7 +105,7 @@ export const checkIfLoggedIn = (id) => {
         }
         try {
             const data = await sendRequest();
-            dispatch(userActions.checkIfLoggedIn({
+            dispatch(userActions.checkAuthenticated({
                 isAdmin: data.isAdmin,
                 _id: data._id,
                 token: data.token
