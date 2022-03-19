@@ -10,10 +10,13 @@ const userSlice = createSlice({
         _id: null,
         isLoggedIn: false,
         token: null,
+        isAdmin: false
     },
     reducers: {
         checkAuthenticated(state, action) {
-            console.log(action.payload);
+            state._id = action.payload._id;
+            state.isLoggedIn = action.payload.isLoggedIn;
+            state.token = action.payload.token;
         },
         login(state, action) {
             state._id = action.payload._id;
@@ -106,9 +109,9 @@ export const checkIfLoggedIn = (id) => {
         try {
             const data = await sendRequest();
             dispatch(userActions.checkAuthenticated({
-                isAdmin: data.isAdmin,
-                _id: data._id,
-                token: data.token
+                isLoggedIn: data.success && true,
+                _id: data.data.user._id,
+                token: data.data.token
             }))
         } catch (err) {
             dispatch(userActions.logout())
