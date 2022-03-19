@@ -43,7 +43,7 @@ const Navbar = () => {
   useEffect(() => {
     const interval = setInterval(
       () => dispatch(checkIfLoggedIn(state._id)),
-      5000
+      20000 //two minutes
     );
 
     return () => {
