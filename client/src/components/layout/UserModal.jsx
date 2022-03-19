@@ -24,6 +24,7 @@ const UserModal = (props) => {
     setIsLogin(!isLogin);
   };
 
+  
   const loginHandler = (e) => {
     e.preventDefault();
     distpach(
@@ -37,7 +38,10 @@ const UserModal = (props) => {
     <>
       <div className={classes.modalContentL}>
         Doesn't have an account?
-        <span className={classes.checkStatus} onClick={()=>setIsLogin(!isLogin)}>
+        <span
+          className={classes.checkStatus}
+          onClick={() => setIsLogin(!isLogin)}
+        >
           register now
         </span>
       </div>
@@ -51,10 +55,12 @@ const UserModal = (props) => {
               className={classes.formContent}
             >
               <Input
+                onChange={(e) => console.log(e.target.value)}
                 className={classes.input}
                 nameId="email"
                 type="text"
                 label="Email"
+                length={3}
               />
               <Input
                 className={classes.input}
@@ -74,7 +80,10 @@ const UserModal = (props) => {
     <>
       <div className={classes.modalContentL}>
         Already a User?
-        <span className={classes.checkStatus} onClick={()=>setIsLogin(!isLogin)}>
+        <span
+          className={classes.checkStatus}
+          onClick={() => setIsLogin(!isLogin)}
+        >
           Login
         </span>
       </div>

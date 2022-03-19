@@ -7,14 +7,20 @@ const verifyIsLoggedIn = async (req, res, next) => {
         const result = await Token.findOne({
             userId: req.body.userId
         }).exec();
+        console.log(result);
         jwt.verify(result.token, 'random', (err, user) => {
             if (err)
                 return res.status(403).json("Unvalid Token")
             req.user = user
+            req.token = result.token
             next()
         })
+
     } catch (err) {
-        return res.status(401).json("Not authenticated")
+        return res.status(401).json({
+            success: false,
+            message: "Not authenticated"
+        })
     }
 }
 // Check if the User is an Admin on the request (Dor && Rotem)

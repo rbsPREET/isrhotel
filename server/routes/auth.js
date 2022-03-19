@@ -3,6 +3,10 @@ const User = require("../models/User")
 const CryptoJS = require("crypto-js") // Hash the Password in the DB
 const jwt = require("jsonwebtoken")
 const Token = require("../models/Token")
+const {
+    verifyIsLoggedIn
+} = require("./verifyToken")
+const async = require("hbs/lib/async")
 
 // Register
 router.post("/register", async (req, res) => {
@@ -97,5 +101,15 @@ router.post("/logout", async (req, res) => {
         })
     }
 })
+
+router.post('/verify_token', verifyIsLoggedIn, async (req, res) => {
+    return res.status(200).json({
+        success: true,
+        data: {
+            user: req.user,
+            token: req.token
+        }
+    })
+});
 
 module.exports = router

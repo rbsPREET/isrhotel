@@ -12,6 +12,9 @@ const userSlice = createSlice({
         token: null,
     },
     reducers: {
+        checkAuthenticated(state, action) {
+            console.log(action.payload);
+        },
         login(state, action) {
             state._id = action.payload._id;
             state.isLoggedIn = action.payload.isLoggedIn;
@@ -84,6 +87,31 @@ export const storeUser = (data) => {
         } catch (err) {
             const msg = err.message.split('status code')
             console.log('status code ' + msg[1].trim());
+        }
+    }
+}
+
+
+export const checkIfLoggedIn = (id) => {
+    return async (dispatch) => {
+        const sendRequest = async () => {
+            const response = await axios.post('http://localhost:5000/api/v1/auth/verify_token', {
+                userId: id
+            });
+            // if (response.status !== 200 || ) {
+            //     return;
+            // }
+            return response.data;
+        }
+        try {
+            const data = await sendRequest();
+            dispatch(userActions.checkIfLoggedIn({
+                isAdmin: data.isAdmin,
+                _id: data._id,
+                token: data.token
+            }))
+        } catch (err) {
+            dispatch(userActions.logout())
         }
     }
 }

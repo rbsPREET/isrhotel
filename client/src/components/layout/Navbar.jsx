@@ -1,14 +1,14 @@
 import classes from "../../css/layout/Navbar.module.css";
 import { KeyboardArrowDown } from "@material-ui/icons";
 import DropDownWrapper from "../../ui/DropDownWrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropDownLinks from "../../ui/DropDownLinks";
 import LiNavLink from "../../ui/LiNavLink";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutHandler } from "../../store/user";
+import { checkIfLoggedIn, logoutHandler } from "../../store/user";
 
 const Navbar = () => {
   const state = useSelector((state) => state.user);
@@ -26,7 +26,7 @@ const Navbar = () => {
   };
 
   const lougoutHandler = () => {
-    dispatch(logoutHandler({id:state._id}));
+    dispatch(logoutHandler({ id: state._id }));
   };
   const openDropDown = (isOpen, dropName) => {
     const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);
@@ -38,6 +38,10 @@ const Navbar = () => {
     });
   };
 
+  useEffect(() => {
+    console.log(state);
+    dispatch(checkIfLoggedIn(state._id));
+  }, [state.user]);
   const browseIsOpen = (
     <Transition unmountOnExit in={isOpenDropDown.browse} timeout={150}>
       {(state) => (

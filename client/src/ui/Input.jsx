@@ -56,7 +56,7 @@ const Input = (props) => {
           props.type === "email" ||
           props.type === "tel" ||
           props.type === "password") && (
-          <div onClick={inputChangeHandler}  className={`${classes.divInput}`}>
+          <div onClick={inputChangeHandler} className={`${classes.divInput}`}>
             {props.label && (
               <label
                 htmlFor={props.nameId}
@@ -74,7 +74,10 @@ const Input = (props) => {
               name={props.nameId}
               className={`${props.className} ${classes.input}`}
               id={props.nameId}
-              onChange={inputChangeHandler}
+              onChange={(e) => {
+                inputChangeHandler();
+                props.onChange(e);
+              }}
               onBlur={resetLabelHandler}
               value={props.value}
             />
