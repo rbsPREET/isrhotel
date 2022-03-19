@@ -67,6 +67,7 @@ router.post("/login", async (req, res) => {
             token: accessToken,
         }).save();
         req.user = user;
+        req.token = accessToken
         res.status(200).json({
             success: true,
             error: null,

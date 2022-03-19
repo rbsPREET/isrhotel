@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Home from "./pages/Home";
 import Mall from "./pages/Mall";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -7,8 +7,22 @@ import Footer from "./components/layout/Footer";
 import Filter from "./pages/Filter";
 import Order from "./pages/Order";
 import NaviArrow from "./components/layout/NaviArrow";
-
+import socketIOClient from "socket.io-client";
+const ENDPOINT = "http://127.0.0.1:5000";
 const App = () => {
+  const [response, setReponse] = useState("");
+
+  useEffect(() => {
+    const socket = socketIOClient(ENDPOINT);
+    socket.on("FromAPI", (data) => {
+      setReponse(data);
+      console.log(response);
+    });
+
+    return()=>{
+      socket.disconnect();
+    }
+  }, [response]);
   return (
     <BrowserRouter>
       <Navbar />

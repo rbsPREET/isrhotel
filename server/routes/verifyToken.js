@@ -43,7 +43,6 @@ const verifyAdminOrSelfUser = (req, res, next) => {
     })
 }
 
-
 module.exports = {
     verifyIsLoggedIn,
     verifyTokenAndAdmin,
