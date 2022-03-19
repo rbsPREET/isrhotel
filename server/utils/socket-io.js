@@ -14,7 +14,7 @@ exports.socketConnection = (server, emit, seconds) => {
         if (interval) {
             clearInterval(interval);
         }
-        interval = setInterval(() => emit(socket), seconds || 1000);
+        // interval = setInterval(() => emit(), seconds || 1000);
 
         socket.on("disconnect", () => {
             console.log("Client disconnected");
@@ -23,34 +23,33 @@ exports.socketConnection = (server, emit, seconds) => {
     })
 }
 
-exports.verifyIsLoggedIn = (socket) => {
-    return async (req, res) => {
-        console.log('sdadsa');
-        const result = await Token.findOne({
-            token: req.token
-        }).exec();
-        if (result !== null) {
-            jwt.verify(result.token, 'random', (err, user) => {
-                if (err)
-                    return res.status(403).json("Unvalid Token")
-                req.user = user
-                req.token = result.token
-            })
-            socket.emit("FromAPI", {
-                user: user,
-                token: result.token
-            });
-        } else {
-            socket.emit("FromAPI", {
-                user: null,
-                token: null
-            });
-            return res.json({
-                success: false,
-                message: "Not authenticated"
-            })
-        }
+exports.verifyIsLoggedIn = () => {
+    // return async (req, res) => {
+    //     const result = await Token.findOne({
+    //         token: req.token
+    //     }).exec();
+    //     if (result !== null) {
+    //         jwt.verify(result.token, 'random', (err, user) => {
+    //             if (err)
+    //                 return res.status(403).json("Unvalid Token")
+    //             req.user = user
+    //             req.token = result.token
+    //         })
+    //         io.emit("FromAPI", {
+    //             user: user,
+    //             token: result.token
+    //         });
+    //     } else {
+    //         io.emit("FromAPI", {
+    //             user: null,
+    //             token: null
+    //         });
+    //         return res.json({
+    //             success: false,
+    //             message: "Not authenticated"
+    //         })
+    //     }
 
-    }
+    // }
 
 }

@@ -1,8 +1,10 @@
 // Imports - main
 const express = require("express")
+const session = require('express-session');
 const app = express()
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
+
 const cors = require("cors")
 const bodyParger = require('body-parser');
 // Imports - routes
@@ -12,6 +14,10 @@ const mallRoute = require("./routes/mall")
 const reviewRoute = require("./routes/review")
 const cityRoute = require("./routes/city")
 const roomRoute = require("./routes/room")
+const {
+    socketConnection,
+    verifyIsLoggedIn
+} = require('./utils/socket-io');
 
 // Allow .env file
 dotenv.config()
@@ -22,7 +28,6 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 }).catch((err) => {
     console.log(err)
 })
-
 // Server
 const server = app.listen(process.env.PORT || 5001, () => {
     console.log(`The server is running on port ${process.env.PORT}`)
@@ -34,12 +39,24 @@ const io = require('socket.io')(server, {
     }
 }); //applied the socket to the server
 
+const oneDay = 1000 * 60 * 60 * 24;
+
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    cookie: {
+        maxAge: oneDay
+    },
+    resave: false
+}))
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
     req.io = io;
+    console.log(req.session)
+    res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
     next();
 });
+socketConnection(server, verifyIsLoggedIn())
 
 app.use(bodyParger.urlencoded({
     extended: true
