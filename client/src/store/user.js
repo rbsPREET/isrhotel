@@ -101,9 +101,9 @@ export const checkIfLoggedIn = (id) => {
             const response = await axios.post('http://localhost:5000/api/v1/auth/verify_token', {
                 userId: id
             });
-            // if (response.status !== 200 || ) {
-            //     return;
-            // }
+            if (response.status !== 200) {
+                return;
+            }
             return response.data;
         }
         try {
