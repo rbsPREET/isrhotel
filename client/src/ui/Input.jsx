@@ -75,7 +75,7 @@ const Input = (props) => {
               className={`${props.className} ${classes.input}`}
               id={props.nameId}
               onChange={(e) => {
-                inputChangeHandler();
+                inputChangeHandler(e);
                 props.onChange(e);
               }}
               onBlur={resetLabelHandler}
