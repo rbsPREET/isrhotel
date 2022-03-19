@@ -47,12 +47,12 @@ router.post("/login", async (req, res) => {
         userPassword !== req.body.password && res.status(401).json("Wrong credentials")
 
         const accessToken = jwt.sign({
-            _id: user._id,
-            isAdmin: user.isAdmin,
-        },
+                _id: user._id,
+                isAdmin: user.isAdmin,
+            },
             'random', {
-            expiresIn: "3d"
-        }
+                expiresIn: "3d"
+            }
         )
         const userAlreadyLogged = await Token.findOne({
             userId: user._id
@@ -103,7 +103,7 @@ router.post("/logout", async (req, res) => {
 
 router.post('/verify_token', verifyIsLoggedIn, async (req, res) => {
     return res.status(200).json({
-        success: true,
+        success: req.body.userId ? true : false,
         data: {
             user: req.user,
             token: req.token

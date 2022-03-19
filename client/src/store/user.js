@@ -109,7 +109,7 @@ export const checkIfLoggedIn = (id) => {
         try {
             const data = await sendRequest();
             dispatch(userActions.checkAuthenticated({
-                isLoggedIn: data.success && true,
+                isLoggedIn: data.success,
                 _id: data.data.user._id,
                 token: data.data.token
             }))

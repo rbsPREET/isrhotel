@@ -8,7 +8,7 @@ import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutHandler } from "../../store/user";
+import { checkIfLoggedIn, logoutHandler } from "../../store/user";
 
 const Navbar = () => {
   const state = useSelector((state) => state.user);
@@ -39,6 +39,18 @@ const Navbar = () => {
       };
     });
   };
+
+  useEffect(() => {
+    const interval = setInterval(
+      () => dispatch(checkIfLoggedIn(state._id)),
+      5000
+    );
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [dispatch, state._id]);
+
   const browseIsOpen = (
     <Transition unmountOnExit in={isOpenDropDown.browse} timeout={150}>
       {(state) => (
