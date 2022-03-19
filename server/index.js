@@ -5,7 +5,6 @@ const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const cors = require("cors")
 const bodyParger = require('body-parser');
-
 // Imports - routes
 const userRoute = require("./routes/user")
 const authRoute = require("./routes/auth")
@@ -24,8 +23,21 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log(err)
 })
 
+// Server
+const server = app.listen(process.env.PORT || 5001, () => {
+    console.log(`The server is running on port ${process.env.PORT}`)
+})
+
+const io = require('socket.io')(server, {
+    cors: {
+        origins: ['*']
+    }
+}); //applied the socket to the server
+
+
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
+    req.io = io;
     next();
 });
 
@@ -46,9 +58,3 @@ app.use("/api/v1/reviews", reviewRoute)
 app.use("/api/v1/cities", cityRoute)
 app.use("/api/v1/rooms", roomRoute)
 app.use("/api/v1/malls", mallRoute)
-
-
-// Server
-app.listen(process.env.PORT || 5001, () => {
-    console.log("The server is running")
-})
