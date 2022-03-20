@@ -1,6 +1,7 @@
 // Imports - main
 const express = require("express")
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const app = express()
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
@@ -16,7 +17,7 @@ const cityRoute = require("./routes/city")
 const roomRoute = require("./routes/room")
 const {
     socketConnection,
-    verifyIsLoggedIn
+    verifyToken
 } = require('./utils/socket-io');
 
 // Allow .env file
@@ -39,24 +40,33 @@ const io = require('socket.io')(server, {
     }
 }); //applied the socket to the server
 
-const oneDay = 1000 * 60 * 60 * 24;
 
+const store = new MongoDBStore({
+    uri: process.env.MONGO_URL,
+    collection: 'sessions'
+})
 app.use(session({
-    secret: 'secret',
-    saveUninitialized: true,
-    cookie: {
-        maxAge: oneDay
-    },
-    resave: false
+    store: store,
+    secret: 'my secret',
+    resave: false,
+    saveUninitialized: false,
+    maxAge: Date.now() + (30 * 86400 * 1000),
 }))
+app.set('trust proxy', 1)
 
 app.use((req, res, next) => {
     req.io = io;
-    console.log(req.session)
+    require('events').EventEmitter.defaultMaxListeners = 0;
+    socketConnection({
+        server: server,
+        req: req,
+        res: res,
+        emit: verifyToken,
+        next: next
+    })
     res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
     next();
 });
-socketConnection(server, verifyIsLoggedIn())
 
 app.use(bodyParger.urlencoded({
     extended: true

@@ -1,8 +1,17 @@
-const Token = require('../models/Token');
+const {
+    verifyIsLoggedIn
+} = require('../routes/verifyToken');
 
 let interval;
 let io;
-exports.socketConnection = (server, emit, seconds) => {
+exports.socketConnection = ({
+    server,
+    emit,
+    seconds,
+    req,
+    res,
+    next
+}) => {
     io = require('socket.io')(server, {
         cors: {
             origins: ['*']
@@ -14,7 +23,7 @@ exports.socketConnection = (server, emit, seconds) => {
         if (interval) {
             clearInterval(interval);
         }
-        // interval = setInterval(() => emit(), seconds || 1000);
+        interval = setInterval(() => emit(socket, req, res, next), seconds || 1000);
 
         socket.on("disconnect", () => {
             console.log("Client disconnected");
@@ -23,33 +32,14 @@ exports.socketConnection = (server, emit, seconds) => {
     })
 }
 
-exports.verifyIsLoggedIn = () => {
-    // return async (req, res) => {
-    //     const result = await Token.findOne({
-    //         token: req.token
-    //     }).exec();
-    //     if (result !== null) {
-    //         jwt.verify(result.token, 'random', (err, user) => {
-    //             if (err)
-    //                 return res.status(403).json("Unvalid Token")
-    //             req.user = user
-    //             req.token = result.token
-    //         })
-    //         io.emit("FromAPI", {
-    //             user: user,
-    //             token: result.token
-    //         });
-    //     } else {
-    //         io.emit("FromAPI", {
-    //             user: null,
-    //             token: null
-    //         });
-    //         return res.json({
-    //             success: false,
-    //             message: "Not authenticated"
-    //         })
-    //     }
+exports.verifyToken = async (server, req, res, next) => {
+    const verify = await verifyIsLoggedIn(req, res, next)
+    console.log(verify);
+    console.log(req.sessionID);
+    server.emit("FromAPI", {
+        user: req.user,
+        token: req.token
+    });
 
-    // }
 
 }
