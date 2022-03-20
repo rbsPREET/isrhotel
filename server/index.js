@@ -5,6 +5,9 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const app = express()
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
+const {
+    v4: uuidv4
+} = require('uuid');
 
 const cors = require("cors")
 const bodyParger = require('body-parser');
@@ -29,30 +32,28 @@ mongoose.connect(process.env.MONGO_URL).then(() => {
 }).catch((err) => {
     console.log(err)
 })
-// Server
-const server = app.listen(process.env.PORT || 5001, () => {
-    console.log(`The server is running on port ${process.env.PORT}`)
-})
-
-const io = require('socket.io')(server, {
-    cors: {
-        origins: ['*']
-    }
-}); //applied the socket to the server
-
 
 const store = new MongoDBStore({
     uri: process.env.MONGO_URL,
     collection: 'sessions'
 })
+app.set('trust proxy', 1)
+
 app.use(session({
-    store: store,
+    genid: req => {
+        console.log(req.sessionID);
+        return uuidv4();
+    },
+        store: store,
     secret: 'my secret',
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        secure: true,
+        httpOnly: true
+    },
     maxAge: Date.now() + (30 * 86400 * 1000),
 }))
-app.set('trust proxy', 1)
 
 app.use((req, res, next) => {
     req.io = io;
@@ -85,3 +86,14 @@ app.use("/api/v1/reviews", reviewRoute)
 app.use("/api/v1/cities", cityRoute)
 app.use("/api/v1/rooms", roomRoute)
 app.use("/api/v1/malls", mallRoute)
+
+// Server
+const server = app.listen(process.env.PORT || 5001, () => {
+    console.log(`The server is running on port ${process.env.PORT}`)
+})
+
+const io = require('socket.io')(server, {
+    cors: {
+        origins: ['*']
+    }
+}); //applied the socket to the server
