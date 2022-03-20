@@ -7,22 +7,25 @@ import Footer from "./components/layout/Footer";
 import Filter from "./pages/Filter";
 import Order from "./pages/Order";
 import NaviArrow from "./components/layout/NaviArrow";
-import socketIOClient from "socket.io-client";
+import socketIOClient, { io } from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:5000";
 const App = () => {
   const [response, setReponse] = useState("");
-  const socket = socketIOClient(ENDPOINT);
+  const socket = socketIOClient(ENDPOINT, {
+    reconnectionDelayMax: 10000,
+  });
 
   useEffect(() => {
     socket.on("FromAPI", (data) => {
       setReponse(data);
-      console.log(response,'asas');
+      console.log(response, 'asas');
     });
+    io({ transports: ['websocket'] });
 
-    return()=>{
+    return () => {
       socket.disconnect();
     }
-  }, [response,socket]);
+  }, [response, socket]);
   return (
     <BrowserRouter>
       <Navbar />

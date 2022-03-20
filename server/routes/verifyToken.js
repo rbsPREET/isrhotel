@@ -40,7 +40,7 @@ const verifyAdminOrSelfUser = (req, res, next) => {
 
 const verifyIsLoggedIn = async (req, res, next) => {
     try {
-        console.log(req.session.user._id)
+        console.log("Session userId: " + req.session.user._id)
         const result = await Token.findOne({
             userId: req.session.user._id
         }).exec();

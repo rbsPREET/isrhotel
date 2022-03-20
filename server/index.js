@@ -5,9 +5,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const app = express()
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
-const {
-    v4: uuidv4
-} = require('uuid');
+const { v4: uuidv4 } = require('uuid')
 
 const cors = require("cors")
 const bodyParger = require('body-parser');
@@ -40,19 +38,19 @@ const store = new MongoDBStore({
 app.set('trust proxy', 1)
 
 app.use(session({
-    genid: req => {
-        console.log(req.sessionID);
-        return uuidv4();
-    },
-        store: store,
+    store: store,
     secret: 'my secret',
     resave: false,
     saveUninitialized: false,
     cookie: {
         secure: true,
-        httpOnly: true
+        httpOnly: true,
+        maxAge: Date.now() + (30 * 86400 * 1000)
     },
-    maxAge: Date.now() + (30 * 86400 * 1000),
+    genid: () => {
+        console.log("uuidv4(index.js): " + uuidv4());
+        return uuidv4();
+    }
 }))
 
 app.use((req, res, next) => {
@@ -92,8 +90,10 @@ const server = app.listen(process.env.PORT || 5001, () => {
     console.log(`The server is running on port ${process.env.PORT}`)
 })
 
-const io = require('socket.io')(server, {
+app.use(express.json())
+
+const io = require("socket.io")(server, {
     cors: {
         origins: ['*']
-    }
+    },
 }); //applied the socket to the server
