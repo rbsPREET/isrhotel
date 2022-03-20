@@ -9,6 +9,7 @@ import UserModal from "./UserModal";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { checkIfLoggedIn, logoutHandler } from "../../store/user";
+import AccountMenu from "../../ui/AccountMenu";
 
 const Navbar = () => {
   const state = useSelector((state) => state.user);
@@ -30,6 +31,7 @@ const Navbar = () => {
   const lougoutHandler = () => {
     dispatch(logoutHandler({ id: state._id }));
   };
+
   const openDropDown = (isOpen, dropName) => {
     const open = JSON.parse(`{"${dropName.toLowerCase()}":${isOpen}}`);
     setIsOpen((prev) => {
@@ -142,12 +144,16 @@ const Navbar = () => {
         </div>
         {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
-          <button
-            onClick={state.isLoggedIn ? lougoutHandler : openModal}
-            className={classes.loginButton}
-          >
-            {state.isLoggedIn ? `Heyo User` : "Login"}
-          </button>
+          {state.isLoggedIn ?
+            <AccountMenu username={state.currentUsername || "User"} />
+            :
+            <button
+              onClick={openModal}
+              className={classes.loginButton}
+            >
+              Login
+            </button>
+          }
         </div>
       </div>
     </div>
