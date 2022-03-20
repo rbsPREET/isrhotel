@@ -68,12 +68,13 @@ router.post("/login", async (req, res) => {
         }).save();
         req.session.user = user;
         req.session.token = accessToken
-
-        res.status(200).json({
-            success: true,
-            error: null,
-            id: user._id,
-            token: accessToken
+        return req.session.save(() => {
+            res.status(200).json({
+                success: true,
+                error: null,
+                id: user._id,
+                token: accessToken
+            })
         })
     } catch (err) {
         res.status(500).json({
@@ -91,9 +92,11 @@ router.post("/logout", async (req, res) => {
         await Token.deleteOne({
             userId: req.body.id
         })
-        res.status(200).json({
-            success: true,
-            error: null,
+        return req.session.destroy(() => {
+            res.status(200).json({
+                success: true,
+                error: null,
+            })
         })
     } catch (err) {
         res.status(500).json({

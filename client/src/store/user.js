@@ -89,7 +89,7 @@ export const storeUser = (data) => {
             await sendRequest();
         } catch (err) {
             const msg = err.message.split('status code')
-            console.log('status code ' + msg[1].trim());
+            console.log(err);
         }
     }
 }

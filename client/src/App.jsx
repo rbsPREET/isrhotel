@@ -11,18 +11,18 @@ import socketIOClient from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:5000";
 const App = () => {
   const [response, setReponse] = useState("");
+  const socket = socketIOClient(ENDPOINT);
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
     socket.on("FromAPI", (data) => {
       setReponse(data);
-      console.log(response);
+      console.log(response,'asas');
     });
 
     return()=>{
       socket.disconnect();
     }
-  }, [response]);
+  }, [response,socket]);
   return (
     <BrowserRouter>
       <Navbar />
