@@ -2,7 +2,6 @@
   width: 1200px;
   border-radius: 100px;
   box-shadow: 0 0 8px 0 rgb(0 0 0 / 12%);
-  overflow: hidden;
   background: #fff;
   z-index: 2;
 }

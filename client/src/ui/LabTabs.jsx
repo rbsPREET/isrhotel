@@ -9,7 +9,6 @@ export default function LabTabs(props) {
   const [value, setValue] = useState("Overview");
 
   const handleChange = (event, newValue) => {
-    console.log(newValue);
     setValue(newValue);
   };
 
@@ -17,14 +16,14 @@ export default function LabTabs(props) {
     <Box sx={{ width: "100%", typography: "body1" }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-          <TabList onChange={handleChange.bind(this)} aria-label="lab API tabs example">
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
             {props.tabSections.map((item, index) => (
                 <Tab key={index} label={item.title} value={item.title} />
             ))}
           </TabList>
         </Box>
         {props.tabSections.map((item, index) => (
-          <TabPanel key={index} value={item.title}>
+          <TabPanel className={props.className} key={index} value={item.title}>
             {item.data}
           </TabPanel>
         ))}

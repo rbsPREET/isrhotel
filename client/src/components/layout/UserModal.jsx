@@ -2,14 +2,17 @@ import Modal from "../../ui/Modal";
 import classes from "../../css/layout/UserModal.module.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { storeUser } from "../../store/user";
+import { storeUser, loginHandler as loginUser } from "../../store/user";
 import Input from "../../ui/Input";
+import Form from "../../ui/Form";
 
 const UserModal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
+  const [loginEmail, setLoginEmail] = useState("")
+  const [loginPassword, setLoginPassword] = useState("")
 
-  const handleLoginAndRegister = () => {
+  const registerHandler = () => {
     distpach(
       storeUser({
         firstName: "dor",
@@ -23,11 +26,24 @@ const UserModal = (props) => {
     setIsLogin(!isLogin);
   };
 
+
+  const loginHandler = (e) => {
+    e.preventDefault();
+    distpach(
+      loginUser({
+        email: loginEmail,
+        password: loginPassword,
+      })
+    );
+  };
   const SideisLogin = (
     <>
       <div className={classes.modalContentL}>
         Doesn't have an account?
-        <span className={classes.checkStatus} onClick={handleLoginAndRegister}>
+        <span
+          className={classes.checkStatus}
+          onClick={() => setIsLogin(!isLogin)}
+        >
           register now
         </span>
       </div>
@@ -35,27 +51,28 @@ const UserModal = (props) => {
         <div>
           <h1 className={classes.formTitle}>LOGIN</h1>
           <div>
-            <form className={classes.formContent}>
+            <Form
+              method="POST"
+              onSubmit={loginHandler}
+              className={classes.formContent}
+            >
               <Input
-                placeholder="enter you email"
+                onChange={setLoginEmail}
+                className={classes.input}
                 nameId="email"
                 type="text"
                 label="Email"
+                length={3}
               />
               <Input
-                placeholder="password"
+                onChange={setLoginPassword}
+                className={classes.input}
                 nameId="password"
                 type="password"
                 label="Password"
               />
-              <Input
-                placeholder="Confirm Pass"
-                nameId="confirm-password"
-                type="password"
-                label="Confirm Password"
-              />
-              <button>Register</button>
-            </form>
+              <button>Login</button>
+            </Form>
           </div>
         </div>
       </div>
@@ -66,7 +83,10 @@ const UserModal = (props) => {
     <>
       <div className={classes.modalContentL}>
         Already a User?
-        <span className={classes.checkStatus} onClick={handleLoginAndRegister}>
+        <span
+          className={classes.checkStatus}
+          onClick={() => setIsLogin(!isLogin)}
+        >
           Login
         </span>
       </div>
@@ -74,20 +94,26 @@ const UserModal = (props) => {
         <div>
           <h1 className={classes.formTitle}>REGISTER</h1>
           <div>
-            <form className={classes.formContent}>
+            <form onSubmit={registerHandler} className={classes.formContent}>
               <Input
-                placeholder="enter you email"
+                className={classes.input}
                 nameId="email"
                 type="text"
                 label="Email"
               />
               <Input
-                placeholder="password"
+                className={classes.input}
                 nameId="password"
                 type="password"
                 label="Password"
               />
-              <button>Login</button>
+              <Input
+                className={classes.input}
+                nameId="confirm-password"
+                type="password"
+                label="Confirm Password"
+              />
+              <button>Register</button>
             </form>
           </div>
         </div>

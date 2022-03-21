@@ -1,31 +1,19 @@
 import { Countries } from "../api/Countries";
-import React, { useEffect, useState } from "react";
-import useHttp from "../api/http";
-import Select from "../ui/Select";
+import React from "react";
+
+import Select2 from "../ui/Select2";
 
 const Country = (props) => {
-  const { sendRequest, data } = useHttp(Countries, true);
-  const [country, setCountry] = useState("");
-
-  const changeHandler = (value) => {
-    setCountry(value);
-    props.getDetails(value, props.nameId);
-  };
-
-  useEffect(() => {
-    sendRequest();
-  }, [sendRequest]);
-
   return (
-    <Select
-      placeholder="Choose the location you wanna stay!"
-      icon={props.icon}
-      options={data}
-      onChange={changeHandler}
-      onBlur={props.onBlur}
-      value={country}
+    <Select2
+    customWidth={props.customWidth}
+      inBox={props.inBox}
+      noBorders={props.noBorders}
+      positionIcon={props.positionIcon}
       label={props.label}
-      mainDiv={props.mainDiv}
+      nameId="location"
+      icon={props.icon}
+      http={Countries}
     />
   );
 };

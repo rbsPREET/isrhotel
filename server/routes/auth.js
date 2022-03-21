@@ -2,6 +2,10 @@ const router = require("express").Router()
 const User = require("../models/User")
 const CryptoJS = require("crypto-js") // Hash the Password in the DB
 const jwt = require("jsonwebtoken")
+const Token = require("../models/Token")
+const {
+    verifyIsLoggedIn
+} = require("./verifyToken")
 
 // Register
 router.post("/register", async (req, res) => {
@@ -43,18 +47,34 @@ router.post("/login", async (req, res) => {
         userPassword !== req.body.password && res.status(401).json("Wrong credentials")
 
         const accessToken = jwt.sign({
-            id: user._id,
-            isAdmin: user.isAdmin,
-        },
+                _id: user._id,
+                isAdmin: user.isAdmin,
+            },
             'random', {
-            expiresIn: "3d"
-        }
+                expiresIn: "3d"
+            }
         )
-
-        res.status(200).json({
-            success: true,
-            error: null,
-            token: accessToken
+        const userAlreadyLogged = await Token.findOne({
+            userId: user._id
+        })
+        if (userAlreadyLogged) {
+            return res.status(301).json({
+                message: 'user already logged in'
+            })
+        }
+        new Token({
+            userId: user._id,
+            token: accessToken,
+        }).save();
+        req.session.user = user;
+        req.session.token = accessToken
+        return req.session.save(() => {
+            res.status(200).json({
+                success: true,
+                error: null,
+                id: user._id,
+                token: accessToken
+            })
         })
     } catch (err) {
         res.status(500).json({
@@ -64,5 +84,36 @@ router.post("/login", async (req, res) => {
         })
     }
 })
+
+//logout
+
+router.post("/logout", async (req, res) => {
+    try {
+        await Token.deleteOne({
+            userId: req.body.id
+        })
+        return req.session.destroy(() => {
+            res.status(200).json({
+                success: true,
+                error: null,
+            })
+        })
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            error: "Wrong credentials",
+        })
+    }
+})
+
+router.post('/verify_token', verifyIsLoggedIn, async (req, res) => {
+    return res.status(200).json({
+        success: req.body.userId ? true : false,
+        data: {
+            user: req.user,
+            token: req.token
+        }
+    })
+});
 
 module.exports = router

@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    background-color: #2e3446;
+    background-color: #d1d5df;
     color: #858b9f;   
 }
 
@@ -107,6 +107,14 @@
 
 .payment {
     width: 50%;
+}
+
+.credits {
+    display: flex;
+    justify-content: center;
+    background-color: #d1d5df;
+    font-size: large;
+    padding-bottom: 50px;
 }
 
 @media only screen and (max-width: 380px) {

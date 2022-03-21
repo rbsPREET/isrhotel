@@ -7,7 +7,7 @@ import Input from "../../ui/Input";
 import Country from "../Country";
 import InputRangeDates from "../../ui/InputRangeDates";
 import { useEffect, useState } from "react";
-import Form from "../../css/ui/Form";
+import Form from "../../ui/Form";
 import Section from "../../ui/Section";
 
 const SearchBar = (props) => {
@@ -54,16 +54,16 @@ const SearchBar = (props) => {
     <Section customWidth={props.customWidth} className={classes.container}>
       <Form className={classes.wrapper}>
         <Country
-          getDetails={getDetails}
+          noBorders
+          onChange={getDetails}
           icon={<LocationIcon />}
           type="select"
-          label={props.country}
+          label="Choose your location"
           nameId="location"
-          placeholder="Choose the location you wanna stay!"
           mainDiv={classes.border__right}
         />
         <InputRangeDates
-          getDetails={getDetails}
+          onChange={getDetails}
           icon={<DatesIcon />}
           mainDiv={classes.border__right}
           nameId="dates"

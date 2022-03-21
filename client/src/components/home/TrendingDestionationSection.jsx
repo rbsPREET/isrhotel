@@ -22,8 +22,7 @@ const TrendingDestionationSection = (props) => {
         <Cards data={fakeData} template="trending-destination" />
       </FlexRow>
       <FlexRow className={classes.top3Destinations}>
-      <Cards data={fakeData2} template="trending-destination" />
-
+        <Cards data={fakeData2} template="trending-destination" />
       </FlexRow>
     </>
   );

@@ -1,32 +1,22 @@
 const jwt = require("jsonwebtoken")
+const Token = require("../models/Token")
 
 // Token when User login
-const verifyToken = (req, res, next) => {
-    const authHeader = req.headers.token
-    if (authHeader) {
-        const token = authHeader.split(" ")[1]
-        jwt.verify(token, 'random', (err, user) => {
+const verifyToken = async (req, res, next) => {
+    try {
+        const result = await Token.findOne({
+            userId: req.body.userId
+        }).exec();
+        jwt.verify(result.token, 'random', (err, user) => {
             if (err)
                 return res.status(403).json("Unvalid Token")
             req.user = user
             next()
         })
-    } else {
+    } catch (err) {
         return res.status(401).json("Not authenticated")
     }
 }
-
-// Check if the Token belong to the User that request the call
-const verifyTokenAndAuthorization = (req, res, next) => {
-    verifyToken(req, res, () => {
-        if (req.user._id === req.params.id) {
-            next()
-        } else {
-            res.status(403).json("Not allowed")
-        }
-    })
-}
-
 // Check if the User is an Admin on the request (Dor && Rotem)
 const verifyTokenAndAdmin = (req, res, next) => {
     verifyToken(req, res, () => {
@@ -48,10 +38,31 @@ const verifyAdminOrSelfUser = (req, res, next) => {
     })
 }
 
+const verifyIsLoggedIn = async (req, res, next) => {
+    try {
+        console.log(req.session.user._id)
+        const result = await Token.findOne({
+            userId: req.session.user._id
+        }).exec();
+        console.log(result);
+        jwt.verify(result.token, 'random', (err, user) => {
+            if (err)
+                return res.status(403).json("Unvalid Token")
+            req.user = user
+            req.token = result.token
+            return res.status(200).json({
+                user: user,
+                token: result.token
+            })
+        })
 
+    } catch (err) {
+        return false;
+    }
+}
 module.exports = {
     verifyToken,
-    verifyTokenAndAuthorization,
+    verifyIsLoggedIn,
     verifyTokenAndAdmin,
     verifyAdminOrSelfUser
 }

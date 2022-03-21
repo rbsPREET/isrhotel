@@ -1,43 +1,32 @@
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DateTimePicker from '@mui/lab/DateTimePicker';
-import MobileDateTimePicker from '@mui/lab/MobileDateTimePicker';
-import DesktopDateTimePicker from '@mui/lab/DesktopDateTimePicker';
-import Stack from '@mui/material/Stack';
+import * as React from "react";
+import TextField from "@mui/material/TextField";
+import DateRangePicker from "@mui/lab/DateRangePicker";
+import DateFnsAdapter from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import FlexColumn from "./FlexColumn";
 
-export default function ResponsiveDateTimePickers() {
-    const [value, setValue] = React.useState(new Date());
+export default function BasicDateRangePicker() {
+  const [value, setValue] = React.useState([null, null]);
 
-    return (
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <Stack spacing={3}>
-                {/* 
-                <MobileDateTimePicker
-                    value={value}
-                    onChange={(newValue) => {
-                        setValue(newValue);
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                
-                <DesktopDateTimePicker
-                    value={value}
-                    onChange={(newValue) => {
-                        setValue(newValue);
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-                */}
-                <DateTimePicker
-                    renderInput={(params) => <TextField {...params} />}
-                    value={value}
-                    onChange={(newValue) => {
-                        setValue(newValue);
-                    }}
-                />
-            </Stack>
-        </LocalizationProvider>
-    );
+  return (
+    <LocalizationProvider dateAdapter={DateFnsAdapter}>
+      <DateRangePicker
+        startText="Check-in"
+        endText="Check-out"
+        value={value}
+        onChange={(newValue) => {
+          setValue(newValue);
+        }}
+        renderInput={(startProps, endProps) => (
+          <React.Fragment>
+            <FlexColumn center customWidth="100">
+              <TextField sx={{ width: "90%",marginTop:'15px' }} {...startProps} />
+              {/* <Box sx={{ mx: 2 }}> to </Box> */}
+              <TextField sx={{ width: "90%",marginTop:'15px',marginBottom:'5px' }} {...endProps} />
+            </FlexColumn>
+          </React.Fragment>
+        )}
+      />
+    </LocalizationProvider>
+  );
 }

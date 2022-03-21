@@ -1,24 +1,35 @@
 import classes from "../../css/layout/Navbar.module.css";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
+import { KeyboardArrowDown } from "@material-ui/icons";
 import DropDownWrapper from "../../ui/DropDownWrapper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropDownLinks from "../../ui/DropDownLinks";
 import LiNavLink from "../../ui/LiNavLink";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { checkIfLoggedIn, logoutHandler } from "../../store/user";
+import AccountMenu from "../../ui/AccountMenu";
 
 const Navbar = () => {
+  const state = useSelector((state) => state.user);
+
   const [isOpenDropDown, setIsOpen] = useState({
     browse: false,
     pages: false,
     home: false,
   });
+  const dispatch = useDispatch();
 
   // Login/Register Modal State
   const [activeModal, setActiveModal] = useState(false);
 
   const openModal = () => {
     setActiveModal(true);
+  };
+
+  const lougoutHandler = () => {
+    dispatch(logoutHandler({ id: state._id }));
   };
 
   const openDropDown = (isOpen, dropName) => {
@@ -30,6 +41,17 @@ const Navbar = () => {
       };
     });
   };
+
+  useEffect(() => {
+    const interval = setInterval(
+      () => dispatch(checkIfLoggedIn(state._id)),
+      20000 //two minutes
+    );
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [dispatch, state._id]);
 
   const browseIsOpen = (
     <Transition unmountOnExit in={isOpenDropDown.browse} timeout={150}>
@@ -90,19 +112,21 @@ const Navbar = () => {
       {modal}
       <div className={classes.wrapper}>
         <div className={classes.left}>
-          <h1>ISRHOTEL</h1>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <h1>ISRHOTEL</h1>
+          </Link>
           <ul style={{ marginBottom: "unset" }}>
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Home"
-              icon={<KeyboardArrowDownIcon />}
+              icon={<KeyboardArrowDown />}
             >
               {homeIsOpen}
             </DropDownWrapper>
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Browse"
-              icon={<KeyboardArrowDownIcon />}
+              icon={<KeyboardArrowDown />}
             >
               {browseIsOpen}
             </DropDownWrapper>
@@ -110,7 +134,7 @@ const Navbar = () => {
             <DropDownWrapper
               openDropDown={openDropDown}
               name="Pages"
-              icon={<KeyboardArrowDownIcon />}
+              icon={<KeyboardArrowDown />}
             >
               {pagesIsOpen}
             </DropDownWrapper>
@@ -120,9 +144,16 @@ const Navbar = () => {
         </div>
         {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
-          <button onClick={openModal} className={classes.loginButton}>
-            Login
-          </button>
+          {state.isLoggedIn ?
+            <AccountMenu username={state.currentUsername || "User"} />
+            :
+            <button
+              onClick={openModal}
+              className={classes.loginButton}
+            >
+              Login
+            </button>
+          }
         </div>
       </div>
     </div>

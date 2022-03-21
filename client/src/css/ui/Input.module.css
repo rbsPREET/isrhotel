@@ -1,24 +1,133 @@
-select {
+.select {
   padding: 10px;
   border: unset;
 }
 
-input {
-  margin-top: 10px;
-  padding: 5px;
-  border: unset;
-}
-
-label {
-  margin-left: 15px;
-  margin-top: 15px;
-  color: #707e9c;
-  font-size: 14px;
-  font-weight: 500;
-  opacity: 0.8;
-  display: block;
-}
-
-input:focus-visible {
+.input {
+  padding: 8px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  margin-right: 50px;
   border: unset !important;
+}
+
+.label {
+  pointer-events: none;
+  color: #707e9c;
+  font-size: 15px;
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  top: 30%;
+  left: 5%;
+}
+
+.input:focus-visible {
+  border: unset !important;
+}
+.divInput {
+  position: relative;
+  padding: 8px;
+  border-radius: 4px;
+  margin: 10px 20px 10px 0px !important;
+  border: 1px solid rgb(173 172 172 / 42%);
+}
+
+.divInputInBox {
+  padding: 8px;
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid rgb(173 172 172 / 42%);
+}
+
+.divInput:hover {
+  border: 1px solid rgba(0, 0, 0, 0.6) !important;
+}
+
+.relative {
+  position: relative;
+}
+
+select:focus,
+input:focus {
+  outline: none;
+}
+
+.inputClicked {
+  left: 3%;
+  top: -16%;
+  background-color: white;
+  font-size: 13px !important;
+  transition: all 0.3s ease-in-out;
+  padding: 0 8px;
+}
+
+.ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  width: 100%;
+  top: 86%;
+  z-index: 5;
+  padding-left: unset;
+  left: 0;
+  overflow-y: scroll;
+  height: 0px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.li {
+  padding: 15px;
+  cursor: pointer;
+  list-style: none;
+  margin-left: 0px !important;
+  transition: all 0.5s ease-in-out;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.144);
+}
+
+.li:hover {
+  transition: all 0.5s ease-in-out;
+  background-color: #a5a1a11f;
+}
+
+.show {
+  transition: all 0.5s ease-in-out;
+  height: 200px;
+}
+
+.ul::-webkit-scrollbar {
+  width: 0px;
+}
+
+.noBorders,
+.noBorders:hover {
+  border: unset !important;
+  padding: 4px 8px !important;
+}
+
+.noBordersLabel {
+  padding: 0 8px !important;
+  margin-top: 10px !important;
+}
+.noBorders > .label {
+  left: 13% !important;
+  top: 20% !important;
+}
+.noBorders > .input {
+  width: 100%;
+}
+.noBorders > .inputClicked {
+  left: 3% !important;
+  top: -20% !important;
+}
+
+.centerColumn {
+  align-items: center;
 }
