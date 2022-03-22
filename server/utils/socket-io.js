@@ -34,12 +34,16 @@ exports.socketConnection = ({
 
 exports.verifyToken = async (server, req, res, next) => {
     const verify = await verifyIsLoggedIn(req, res, next)
-    console.log(verify);
-    console.log(req.sessionID);
+try{
+    console.log(verify ,'//38line socket-io.js');
+    console.log(req.sessionID,'//39line socket-io.js');
     server.emit("FromAPI", {
-        user: req.user,
-        token: req.token
+        user: verify.user,
+        token: verify.token
     });
 
+}catch(err){
+    console.log(err ,'//46line socket-io')
+}
 
 }
