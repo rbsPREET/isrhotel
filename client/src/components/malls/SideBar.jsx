@@ -7,7 +7,6 @@ import { Fragment } from "react";
 import FlexRow from "../../ui/FlexRow";
 
 const SideBar = (props) => {
-  const user = {};
   return (
     <Fragment>
       <Box maxWidth="330px">

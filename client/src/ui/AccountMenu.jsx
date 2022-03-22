@@ -6,13 +6,11 @@ import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from "react-redux";
-import { checkIfLoggedIn, logoutHandler } from "../store/user";
+import { logoutHandler } from "../store/user";
 
 export default function AccountMenu(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);

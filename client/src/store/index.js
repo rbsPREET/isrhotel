@@ -6,11 +6,10 @@ import mallSlice from './mall';
 import {
     persistReducer
 } from "redux-persist";
-import storage from 'redux-persist/lib/storage'
+import storageSession from 'redux-persist/lib/storage/session'
 // import thunk from 'redux-thunk';
 
 import userSlice from './user';
-
 const reducers = combineReducers({
     user: userSlice.reducer,
     mall: mallSlice.reducer
@@ -18,7 +17,7 @@ const reducers = combineReducers({
 
 const persisteConfig = {
     key: 'root',
-    storage,
+    storage:storageSession,
 }
 const persistedReducer = persistReducer(persisteConfig, reducers)
 

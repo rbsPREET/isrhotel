@@ -13,6 +13,8 @@ exports.socketConnection = ({
     next
 }) => {
     io = require('socket.io')(server, {
+        autoConnect:false,
+        reconnection:false,
         cors: {
             origins: ['*']
         }
@@ -29,6 +31,11 @@ exports.socketConnection = ({
             console.log("Client disconnected");
             clearInterval(interval);
         });
+        socket.on("connect_error", (err)=>{
+            console.log(err)
+        })
+
+        
     })
 }
 

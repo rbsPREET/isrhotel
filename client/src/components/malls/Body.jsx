@@ -129,7 +129,7 @@ const Body = (props) => {
         <div className={classes.mid}>
           <h1 className={classes.title}>Amenities</h1>
           <FlexRow wrap customWidth={100}>
-            {Object.entries(state.amenities)?.map((item) => (
+            {state.amenities && Object.entries(state.amenities)?.map((item) => (
               <FlexRow key={item[0]} centerColumn customWidth={33}>
                 {item[1].available ? (
                   <CheckBoxIcon
