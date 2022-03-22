@@ -38,36 +38,9 @@ const verifyAdminOrSelfUser = (req, res, next) => {
     })
 }
 
-const verifyIsLoggedIn = async (req, res, next) => {
-    try {
-        const result = await Token.findOne({
-            userId: req.session.user._id
-        }).exec();
-        jwt.verify(result.token, 'random', (err, user) => {
-            if (err)
-                return {
-                    message: "Unvalid Token"
-                }
-            req.user = user
-            req.token = result.token
-        })
-        return {
-            user: req.user,
-            token: req.token
-        }
 
-    } catch (err) {
-        return {
-            user: null,
-            token: null,
-            message: 'Not Saved in tokens table'
-        }
-    }
-
-}
 module.exports = {
     verifyToken,
-    verifyIsLoggedIn,
     verifyTokenAndAdmin,
     verifyAdminOrSelfUser
 }

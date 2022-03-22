@@ -25,7 +25,7 @@ exports.socketConnection = ({
         if (interval) {
             clearInterval(interval);
         }
-        interval = setInterval(() => emit(socket, req, res, next), seconds || 1000);
+        interval = setInterval(() => emit(socket, req, res, next), seconds || 30000);
 
         socket.on("disconnect", () => {
             console.log("Client disconnected");
@@ -40,17 +40,28 @@ exports.socketConnection = ({
 }
 
 exports.verifyToken = async (server, req, res, next) => {
-    const verify = await verifyIsLoggedIn(req, res, next)
-try{
-    console.log(verify ,'//38line socket-io.js');
-    console.log(req.sessionID,'//39line socket-io.js');
-    server.emit("FromAPI", {
-        user: verify.user,
-        token: verify.token
-    });
+    try {
+        const result = await Token.findOne({
+            userId: req.session.user._id
+        }).exec();
+        jwt.verify(result.token, 'random', (err, user) => {
+            if (err)
+                return {
+                    message: "Unvalid Token"
+                }
+            req.user = user
+            req.token = result.token
+        })
+        server.emit("FromAPI", {
+            user: req.user,
+            token: req.token
+        });
 
-}catch(err){
-    console.log(err ,'//46line socket-io')
-}
-
+    } catch (err) {
+        server.emit("FromAPI", {
+            user: null,
+            token: null,
+            message: 'Not Saved in tokens table'
+        })
+    }
 }

@@ -2,11 +2,11 @@ const router = require("express").Router()
 const Review = require("../models/Review");
 const Mall = require("../models/Mall");
 const {
-    verifyIsLoggedIn,
+    verifyToken,
 } = require("./verifyToken")
 
 // ADD REVIEW
-router.post('/:id/add', verifyIsLoggedIn, async (req, res) => {
+router.post('/:id/add', verifyToken, async (req, res) => {
     const {
         userId,
         mallId,

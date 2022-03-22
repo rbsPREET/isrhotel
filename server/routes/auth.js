@@ -4,7 +4,7 @@ const CryptoJS = require("crypto-js") // Hash the Password in the DB
 const jwt = require("jsonwebtoken")
 const Token = require("../models/Token")
 const {
-    verifyIsLoggedIn
+    verifyToken
 } = require("./verifyToken")
 
 // Register
@@ -106,7 +106,7 @@ router.post("/logout", async (req, res) => {
     }
 })
 
-router.post('/verify_token', verifyIsLoggedIn, async (req, res) => {
+router.post('/verify_token', verifyToken, async (req, res) => {
     return res.status(200).json({
         success: req.body.userId ? true : false,
         data: {

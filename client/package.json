@@ -33,6 +33,7 @@
     "react-slick": "^0.28.1",
     "react-transition-group": "^4.4.2",
     "redux-persist": "^6.0.0",
+    "redux-persist-expire": "^1.1.0",
     "rsuite": "^5.6.3",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.4.1",

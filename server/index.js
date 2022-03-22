@@ -18,10 +18,10 @@ const mallRoute = require("./routes/mall")
 const reviewRoute = require("./routes/review")
 const cityRoute = require("./routes/city")
 const roomRoute = require("./routes/room")
-const {
-    socketConnection,
-    verifyToken
-} = require('./utils/socket-io');
+// const {
+//     socketConnection,
+//     verifyToken
+// } = require('./utils/socket-io');
 
 // Allow .env file
 dotenv.config()
@@ -37,7 +37,7 @@ const store = new MongoDBStore({
     uri: process.env.MONGO_URL,
     collection: 'sessions'
 })
-app.set('trust proxy', 1)
+// app.set('trust proxy', 1)
 
 app.use(session({
     genid: req => {
@@ -55,15 +55,15 @@ app.use(session({
 }))
 
 app.use((req, res, next) => {
-    req.io = io;
-    require('events').EventEmitter.defaultMaxListeners = 0;
-    socketConnection({
-        server: server,
-        req: req,
-        res: res,
-        emit: verifyToken,
-        next: next
-    })
+    // req.io = io;
+    // require('events').EventEmitter.defaultMaxListeners = 0;
+    // socketConnection({
+    //     server: server,
+    //     req: req,
+    //     res: res,
+    //     emit: verifyToken,
+    //     next: next
+    // })
     res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
     next();
 });
@@ -91,8 +91,8 @@ const server = app.listen(process.env.PORT || 5001, () => {
     console.log(`The server is running on port ${process.env.PORT}`)
 })
 
-const io = require('socket.io')(server, {
-    cors: {
-        origins: ['*']
-    }
-}); //applied the socket to the server
+// const io = require('socket.io')(server, {
+//     cors: {
+//         origins: ['*']
+//     }
+// }); //applied the socket to the server

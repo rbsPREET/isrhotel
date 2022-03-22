@@ -11,29 +11,27 @@ import socketIOClient from "socket.io-client";
 
 const ENDPOINT = "http://localhost:5000";
 const App = () => {
-  const [response, setReponse] = useState({});
-  const socket = socketIOClient(ENDPOINT);
-  const hash = CryptoJS.AES.decrypt(window.sessionStorage.getItem('persist:root'), 'random')
-  const res = hash.toString()
-  console.log(res) 
-  useEffect(() => {
+  // const [response, setReponse] = useState({});
+  // const socket = socketIOClient(ENDPOINT);
+  // useEffect(() => {
 
-    socket.on('connect',()=>{
-      console.log(socket.id)
-    })
-    socket.on("FromAPI", (data) => {
-      setReponse(data);
-      console.log(response,'asas');
-    });
+  //   socket.on('connect',()=>{
+  //     console.log(socket.id)
+  //   })
 
-    socket.on('disconnect',()=>{
-      console.log('disconnected')
-    })
+  //   socket.on("FromAPI", (data) => {
+  //     setReponse(data);
+  //     console.log(response,'asas');
+  //   });
 
-    return()=>{
-      socket.disconnect();
-    }
-  }, [response,socket]);
+  //   socket.on('disconnect',()=>{
+  //     console.log('disconnected')
+  //   })
+
+  //   return()=>{
+  //     socket.disconnect();
+  //   }
+  // }, [response,socket]);
   return (
     <BrowserRouter>
       <Navbar />
