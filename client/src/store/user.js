@@ -9,24 +9,19 @@ const userSlice = createSlice({
     initialState: {
         _id: null,
         isLoggedIn: false,
-        token: null,
-        isAdmin: false
     },
     reducers: {
         checkAuthenticated(state, action) {
             state._id = action.payload._id;
             state.isLoggedIn = action.payload.isLoggedIn;
-            state.token = action.payload.token;
         },
         login(state, action) {
             state._id = action.payload._id;
             state.isLoggedIn = action.payload.isLoggedIn;
-            state.token = action.payload.token;
         },
         logout(state, action) {
             state._id = null;
             state.isLoggedIn = false;
-            state.token = null
         },
     }
 })
@@ -45,11 +40,10 @@ export const loginHandler = (data) => {
             dispatch(userActions.login({
                 _id: user.id,
                 isLoggedIn: true,
-                token: user.token
             }))
         } catch (err) {
-            const msg = err.message.split('status code')
-            console.log('status code ' + msg[1].trim());
+            // const msg = err.message.split('status code')
+            console.log(err);
         }
     }
 };
@@ -88,7 +82,7 @@ export const storeUser = (data) => {
         try {
             await sendRequest();
         } catch (err) {
-            const msg = err.message.split('status code')
+            // const msg = err.message.split('status code')
             console.log(err);
         }
     }
@@ -111,7 +105,6 @@ export const checkIfLoggedIn = (id) => {
             dispatch(userActions.checkAuthenticated({
                 isLoggedIn: data.success,
                 _id: data.data.user._id,
-                token: data.data.token
             }))
         } catch (err) {
             dispatch(userActions.logout())

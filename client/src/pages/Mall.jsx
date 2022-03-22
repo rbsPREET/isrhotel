@@ -7,6 +7,7 @@ import { GetMall } from "../store/mall";
 const Mall = () => {
   const state = useSelector((state) => state.mall);
   const dispatch = useDispatch();
+  console.log(state.searchToDispatch._id);
   useEffect(() => {
     dispatch(GetMall(state.searchToDispatch._id));
   }, [dispatch,state.searchToDispatch._id]);

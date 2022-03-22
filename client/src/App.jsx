@@ -8,21 +8,27 @@ import Filter from "./pages/Filter";
 import Order from "./pages/Order";
 import NaviArrow from "./components/layout/NaviArrow";
 import socketIOClient from "socket.io-client";
-import CryptoJS from 'crypto-js';
 
-const ENDPOINT = "http://127.0.0.1:5000";
+const ENDPOINT = "http://localhost:5000";
 const App = () => {
-  const [response, setReponse] = useState("");
+  const [response, setReponse] = useState({});
   const socket = socketIOClient(ENDPOINT);
   const hash = CryptoJS.AES.decrypt(window.sessionStorage.getItem('persist:root'), 'random')
   const res = hash.toString()
   console.log(res) 
   useEffect(() => {
- 
+
+    socket.on('connect',()=>{
+      console.log(socket.id)
+    })
     socket.on("FromAPI", (data) => {
       setReponse(data);
       console.log(response,'asas');
     });
+
+    socket.on('disconnect',()=>{
+      console.log('disconnected')
+    })
 
     return()=>{
       socket.disconnect();

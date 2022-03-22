@@ -1,14 +1,13 @@
 import classes from "../../css/layout/Navbar.module.css";
 import { KeyboardArrowDown } from "@material-ui/icons";
 import DropDownWrapper from "../../ui/DropDownWrapper";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import DropDownLinks from "../../ui/DropDownLinks";
 import LiNavLink from "../../ui/LiNavLink";
 import Transition from "react-transition-group/Transition";
 import UserModal from "./UserModal";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { checkIfLoggedIn, logoutHandler } from "../../store/user";
+import { useSelector } from "react-redux";
 import AccountMenu from "../../ui/AccountMenu";
 
 const Navbar = () => {
@@ -19,17 +18,12 @@ const Navbar = () => {
     pages: false,
     home: false,
   });
-  const dispatch = useDispatch();
 
   // Login/Register Modal State
   const [activeModal, setActiveModal] = useState(false);
 
   const openModal = () => {
     setActiveModal(true);
-  };
-
-  const lougoutHandler = () => {
-    dispatch(logoutHandler({ id: state._id }));
   };
 
   const openDropDown = (isOpen, dropName) => {
