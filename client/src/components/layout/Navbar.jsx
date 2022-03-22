@@ -42,16 +42,16 @@ const Navbar = () => {
     });
   };
 
-  useEffect(() => {
-    const interval = setInterval(
-      () => dispatch(checkIfLoggedIn(state._id)),
-      20000 //two minutes
-    );
+  // useEffect(() => {
+  //   const interval = setInterval(
+  //     () => dispatch(checkIfLoggedIn(state._id)),
+  //     20000 //two minutes
+  //   );
 
-    return () => {
-      clearInterval(interval);
-    };
-  }, [dispatch, state._id]);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [dispatch, state._id]);
 
   const browseIsOpen = (
     <Transition unmountOnExit in={isOpenDropDown.browse} timeout={150}>
