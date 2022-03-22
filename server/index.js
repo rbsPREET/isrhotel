@@ -41,10 +41,9 @@ app.set('trust proxy', 1)
 
 app.use(session({
     genid: req => {
-        console.log(req.sessionID);
         return uuidv4();
     },
-        store: store,
+    store: store,
     secret: 'my secret',
     resave: false,
     saveUninitialized: false,
@@ -52,7 +51,7 @@ app.use(session({
         secure: true,
         httpOnly: true
     },
-    maxAge: Date.now() + (30 * 86400 * 1000),
+    maxAge: (new Date().getDate() + 1),
 }))
 
 app.use((req, res, next) => {
