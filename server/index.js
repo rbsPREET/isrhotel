@@ -49,9 +49,9 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: true,
-        httpOnly: true
+        httpOnly: true,
+        expires: (new Date().getDate() + 1),
     },
-    maxAge: (new Date().getDate() + 1),
 }))
 
 app.use((req, res, next) => {
