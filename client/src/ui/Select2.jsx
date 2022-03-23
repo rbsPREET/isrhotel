@@ -1,33 +1,26 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import Input from "./Input";
-import useHttp from "../api/http";
-const Select2 = (props) => {
-  const { sendRequest, data } = useHttp(props.http, true);
-  // const [optionsOpen, setOptionsOpen] = useState(false);
+import { useDispatch } from "react-redux";
+const Select2 = forwardRef((props,ref) => {
+  const dispatch = useDispatch();
   const [options, setOptionsData] = useState([]);
-  // const select = useRef();
   const [chosenOption, setChosenOption] = useState({
     id: null,
     name: "",
   });
 
-  // const closeOptionsHandler = (e) => {
-  //   if (document.body !== e.target) {
-  //     setOptionsOpen(!optionsOpen);
-  //   }
-  // };
-
   const changeOptionHandler = (e) => {
-    const availableCountries = data.filter((option) =>
+    const availableOptions = props.state.filter((option) =>
       option.name.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    setOptionsData(availableCountries);
+    setOptionsData(availableOptions);
     setChosenOption((prev) => {
       return {
         ...prev,
         name: e.target.value,
       };
     });
+    props.data(chosenOption)
   };
 
   const chosenOptionHandler = (e) => {
@@ -37,27 +30,20 @@ const Select2 = (props) => {
         id: e.target.id,
       };
     });
+    props.dataValue(props.dataValueName,chosenOption.name)
+
   };
   const getData = () => {
-    setOptionsData(data);
+    setOptionsData(props.state);
   };
-  // const escPress = useCallback(
-  //   (e) => {
-  //     if (e.key === "Escape" && optionsOpen) {
-  //       setOptionsOpen(!optionsOpen);
-  //     }
-  //   },
-  //   [setOptionsOpen, optionsOpen]
-  // ); // Close Modal when click "ESC" key
 
   useEffect(() => {
-    sendRequest();
-    // document.addEventListener("keydown", escPress);
-    // return () => document.removeEventListener("keydown", escPress);
-  }, [sendRequest]);
+    dispatch(props.data);
+  }, [dispatch]);
 
   return (
     <Input
+      ref={ref}
       customWidth={props.customWidth}
       inBox={props.inBox}
       getData={getData}
@@ -73,5 +59,5 @@ const Select2 = (props) => {
       nameId={props.nameId}
     />
   );
-};
+});
 export default Select2;

@@ -11,9 +11,12 @@ import expireReducer from 'redux-persist-expire'
 // import thunk from 'redux-thunk';
 
 import userSlice from './user';
+import citySlice from './city';
 const reducers = combineReducers({
     user: userSlice.reducer,
-    mall: mallSlice.reducer
+    mall: mallSlice.reducer,
+    cities: citySlice.reducer
+
 })
 
 const persisteConfig = {

@@ -6,18 +6,22 @@ import PeopleIcon from "@material-ui/icons/EmojiPeopleOutlined";
 import Input from "../../ui/Input";
 import Country from "../Country";
 import InputRangeDates from "../../ui/InputRangeDates";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Form from "../../ui/Form";
 import Section from "../../ui/Section";
 
 const SearchBar = (props) => {
+  const location = useRef();
+  const dates = useRef();
+  const guests = useRef();
+
   const [details, setDetails] = useState({
-    location: null,
-    dates: null,
-    guests: null,
+    location: location.current,
+    dates: dates.current,
+    guests: guests.current,
   });
 
-  const getDetails = (value, name) => {
+  const getDetails = (name,value) => {
     switch (name) {
       case "guests":
         setDetails((prev) => {
@@ -48,14 +52,18 @@ const SearchBar = (props) => {
     }
   };
 
-  useEffect(() => {}, [details]);
+  useEffect(() => {
+    console.log(details)
+  }, [details,]);
 
   return (
     <Section customWidth={props.customWidth} className={classes.container}>
       <Form className={classes.wrapper}>
         <Country
+        dataValue={getDetails}
+        dataValueName="location"
           noBorders
-          onChange={getDetails}
+          ref={location}
           icon={<LocationIcon />}
           type="select"
           label="Choose your location"
@@ -63,16 +71,20 @@ const SearchBar = (props) => {
           mainDiv={classes.border__right}
         />
         <InputRangeDates
-          onChange={getDetails}
+          dataValue={getDetails}
+          dataValueName="dates"
+          ref={dates}
           icon={<DatesIcon />}
           mainDiv={classes.border__right}
           nameId="dates"
           label={props.dates}
         />
         <Input
+                dataValue={getDetails}
+                dataValueName="guests"
           icon={<PeopleIcon />}
           type="text"
-          onChange={getDetails}
+          ref={guests}
           nameId="guests"
           label={props.guests}
         />
