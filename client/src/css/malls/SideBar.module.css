@@ -1,0 +1,9 @@
+.openingHours {
+    margin-bottom: 10px;
+    color: #888;
+}
+
+.openingHours:hover {
+    color: #444;
+    cursor: default;
+}
