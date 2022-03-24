@@ -1,8 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-
 const Body = (props) => {
-    const user = useSelector((state) => state.user);
+    // const user = useSelector((state) => state.user);
     // redux => state the price depends on the room price and how many guests / state.amount
     return (
         <>

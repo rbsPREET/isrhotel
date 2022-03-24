@@ -5,19 +5,20 @@
 import { DateRangePicker } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
 import { InputWrapper } from "./InputWrapper";
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 
-const InputRangeDates = (props) => {
+const InputRangeDates = forwardRef((props,ref) => {
   const [dates, setDates] = useState([new Date(), new Date()]);
 
   const datesHandler = (value) => {
     setDates(value);
-    props.getDetails(value, props.nameId);
+    props.dataValue(props.dataValueName,value);
   };
   return (
     <InputWrapper icon={props.icon} mainDiv={props.mainDiv}>
       <label htmlFor={props.nameId}>{props.label}</label>
       <DateRangePicker
+      ref={ref}
         size={props.size || "md"}
         block={props.block || true}
         onChange={datesHandler}
@@ -27,6 +28,6 @@ const InputRangeDates = (props) => {
       />
     </InputWrapper>
   );
-};
+});
 
 export default InputRangeDates;

@@ -1,11 +1,15 @@
-import { Countries } from "../api/Countries";
-import React from "react";
+import React, { forwardRef } from "react";
 
 import Select2 from "../ui/Select2";
+import { getCities } from "../store/city";
+import { useSelector } from "react-redux";
 
-const Country = (props) => {
+const Country = forwardRef((props,ref) => {
+  const state = useSelector(state=>state.cities)
+
   return (
     <Select2
+    ref={ref}
     customWidth={props.customWidth}
       inBox={props.inBox}
       noBorders={props.noBorders}
@@ -13,8 +17,11 @@ const Country = (props) => {
       label={props.label}
       nameId="location"
       icon={props.icon}
-      http={Countries}
+      data={getCities()}
+      dataValue={props.dataValue}
+      dataValueName={props.dataValueName}
+      state={state.names}
     />
   );
-};
+});
 export default Country;

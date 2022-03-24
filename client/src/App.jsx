@@ -7,6 +7,7 @@ import Footer from "./components/layout/Footer";
 import Filter from "./pages/Filter";
 import Order from "./pages/Order";
 import NaviArrow from "./components/layout/NaviArrow";
+<<<<<<< HEAD
 import socketIOClient, { io } from "socket.io-client";
 const ENDPOINT = "http://127.0.0.1:5000";
 const App = () => {
@@ -26,6 +27,33 @@ const App = () => {
       socket.disconnect();
     }
   }, [response, socket]);
+=======
+import socketIOClient from "socket.io-client";
+
+const ENDPOINT = "http://localhost:5000";
+const App = () => {
+  // const [response, setReponse] = useState({});
+  // const socket = socketIOClient(ENDPOINT);
+  // useEffect(() => {
+
+  //   socket.on('connect',()=>{
+  //     console.log(socket.id)
+  //   })
+
+  //   socket.on("FromAPI", (data) => {
+  //     setReponse(data);
+  //     console.log(response,'asas');
+  //   });
+
+  //   socket.on('disconnect',()=>{
+  //     console.log('disconnected')
+  //   })
+
+  //   return()=>{
+  //     socket.disconnect();
+  //   }
+  // }, [response,socket]);
+>>>>>>> 15d34695f1ba9aa006ebff2877c0fd9f26984c79
   return (
     <BrowserRouter>
       <Navbar />

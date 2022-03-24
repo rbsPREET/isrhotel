@@ -16,10 +16,10 @@ const mallRoute = require("./routes/mall")
 const reviewRoute = require("./routes/review")
 const cityRoute = require("./routes/city")
 const roomRoute = require("./routes/room")
-const {
-    socketConnection,
-    verifyToken
-} = require('./utils/socket-io');
+// const {
+//     socketConnection,
+//     verifyToken
+// } = require('./utils/socket-io');
 
 // Allow .env file
 dotenv.config()
@@ -35,9 +35,15 @@ const store = new MongoDBStore({
     uri: process.env.MONGO_URL,
     collection: 'sessions'
 })
-app.set('trust proxy', 1)
+// app.set('trust proxy', 1)
 
 app.use(session({
+<<<<<<< HEAD
+=======
+    genid: req => {
+        return uuidv4();
+    },
+>>>>>>> 15d34695f1ba9aa006ebff2877c0fd9f26984c79
     store: store,
     secret: 'my secret',
     resave: false,
@@ -45,24 +51,29 @@ app.use(session({
     cookie: {
         secure: true,
         httpOnly: true,
+<<<<<<< HEAD
         maxAge: Date.now() + (30 * 86400 * 1000)
     },
     genid: () => {
         console.log("uuidv4(index.js): " + uuidv4());
         return uuidv4();
     }
+=======
+        expires: (new Date().getDate() + 1),
+    },
+>>>>>>> 15d34695f1ba9aa006ebff2877c0fd9f26984c79
 }))
 
 app.use((req, res, next) => {
-    req.io = io;
-    require('events').EventEmitter.defaultMaxListeners = 0;
-    socketConnection({
-        server: server,
-        req: req,
-        res: res,
-        emit: verifyToken,
-        next: next
-    })
+    // req.io = io;
+    // require('events').EventEmitter.defaultMaxListeners = 0;
+    // socketConnection({
+    //     server: server,
+    //     req: req,
+    //     res: res,
+    //     emit: verifyToken,
+    //     next: next
+    // })
     res.setHeader('Access-Control-Allow-Headers', 'Content-type,Authorization');
     next();
 });
@@ -90,6 +101,7 @@ const server = app.listen(process.env.PORT || 5001, () => {
     console.log(`The server is running on port ${process.env.PORT}`)
 })
 
+<<<<<<< HEAD
 app.use(express.json())
 
 const io = require("socket.io")(server, {
@@ -97,3 +109,10 @@ const io = require("socket.io")(server, {
         origins: ['*']
     },
 }); //applied the socket to the server
+=======
+// const io = require('socket.io')(server, {
+//     cors: {
+//         origins: ['*']
+//     }
+// }); //applied the socket to the server
+>>>>>>> 15d34695f1ba9aa006ebff2877c0fd9f26984c79

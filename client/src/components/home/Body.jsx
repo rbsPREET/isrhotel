@@ -9,7 +9,7 @@ const Body = () => {
   return (
     <div>
       <Section
-        container={true}
+        container
         className={classes.container}
         title="Trending Destinations"
       >

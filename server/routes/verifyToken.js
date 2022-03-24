@@ -38,6 +38,7 @@ const verifyAdminOrSelfUser = (req, res, next) => {
     })
 }
 
+<<<<<<< HEAD
 const verifyIsLoggedIn = async (req, res, next) => {
     try {
         console.log("Session userId: " + req.session.user._id)
@@ -55,14 +56,11 @@ const verifyIsLoggedIn = async (req, res, next) => {
                 token: result.token
             })
         })
+=======
+>>>>>>> 15d34695f1ba9aa006ebff2877c0fd9f26984c79
 
-    } catch (err) {
-        return false;
-    }
-}
 module.exports = {
     verifyToken,
-    verifyIsLoggedIn,
     verifyTokenAndAdmin,
     verifyAdminOrSelfUser
 }

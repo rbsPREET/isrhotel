@@ -1,16 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 import Transition from "react-transition-group/Transition";
 import classes from "../css/ui/Input.module.css";
 import FlexColumn from "./FlexColumn";
 import { InputWrapper } from "./InputWrapper";
 
-const Input = (props) => {
+const Input = forwardRef((props,ref) => {
   const [inputClicked, setInputClicked] = useState(false);
   const [openSelect, setOpenSelect] = useState(false);
-  const input = useRef();
 
   const inputChangeHandler = (e) => {
-    if (input.current.value.length > 0 || e.target === input.current) {
+    if (ref.current.value.length > 0 || e.target === ref.current) {
       setInputClicked(true);
     } else {
       setInputClicked(false);
@@ -19,7 +18,7 @@ const Input = (props) => {
     // props.onChange(e.target.value, props.nameId);
   };
   const resetLabelHandler = () => {
-    if (input.current.value.length > 0) {
+    if (ref.current.value.length > 0) {
       setInputClicked(true);
     } else {
       setInputClicked(false);
@@ -31,7 +30,7 @@ const Input = (props) => {
     if (e.target.textContent.length > 0) {
       setInputClicked(true);
       setOpenSelect(false);
-    } else if (e.target === input.current) {
+    } else if (e.target === ref.current) {
       setInputClicked(true);
     } else {
       setInputClicked(false);
@@ -68,14 +67,14 @@ const Input = (props) => {
               )}
               <input
                 onTouchEnd={(e) => console.log(e.target)}
-                ref={input}
+                ref={ref}
                 type={props.type}
                 name={props.nameId}
                 className={`${props.className} ${classes.input}`}
                 id={props.nameId}
                 onChange={(e) => {
                   inputChangeHandler(e);
-                  props.onChange(e.target.value);
+                  props.dataValue(props.dataValueName,e.target.value);
                 }}
                 onBlur={resetLabelHandler}
                 value={props.value}
@@ -102,7 +101,7 @@ const Input = (props) => {
             <input
               onClick={props.getData}
               onTouchEnd={(e) => console.log(e.target)}
-              ref={input}
+              ref={ref}
               onChange={props.onChangeOption}
               placeholder={props.placeholder}
               type="text"
@@ -142,6 +141,6 @@ const Input = (props) => {
       </FlexColumn>
     </InputWrapper>
   );
-};
+});
 
 export default Input;

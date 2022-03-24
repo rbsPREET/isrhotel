@@ -8,7 +8,7 @@ const Header = (props) => {
   return props.data.img ? (
     <Carousel data={props.data.img} template="mall-page" /> // TODO: disable the dots by passing props of dots off
   ) : (
-    <FlexRow className={classes.oval} center={true}>
+    <FlexRow className={classes.oval} center>
       <Oval color="#00BFFF" height={80} width={80} />
     </FlexRow>
   );
