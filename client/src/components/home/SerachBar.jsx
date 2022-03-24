@@ -4,11 +4,14 @@ import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import DatesIcon from "@material-ui/icons/DateRangeOutlined";
 import PeopleIcon from "@material-ui/icons/EmojiPeopleOutlined";
 import Input from "../../ui/Input";
+import ResponsiveDateTimePickers from "../../ui/ResponsiveDateTimePickers";
+
 import Country from "../Country";
 import InputRangeDates from "../../ui/InputRangeDates";
 import { useEffect, useRef, useState } from "react";
 import Form from "../../ui/Form";
 import Section from "../../ui/Section";
+import { InputWrapper } from "../../ui/InputWrapper";
 
 const SearchBar = (props) => {
   const location = useRef();
@@ -21,7 +24,7 @@ const SearchBar = (props) => {
     guests: guests.current,
   });
 
-  const getDetails = (name,value) => {
+  const getDetails = (name, value) => {
     switch (name) {
       case "guests":
         setDetails((prev) => {
@@ -53,15 +56,15 @@ const SearchBar = (props) => {
   };
 
   useEffect(() => {
-    console.log(details)
-  }, [details,]);
+    console.log(details);
+  }, [details]);
 
   return (
     <Section customWidth={props.customWidth} className={classes.container}>
       <Form className={classes.wrapper}>
         <Country
-        dataValue={getDetails}
-        dataValueName="location"
+          dataValue={getDetails}
+          dataValueName="location"
           noBorders
           ref={location}
           icon={<LocationIcon />}
@@ -70,7 +73,7 @@ const SearchBar = (props) => {
           nameId="location"
           mainDiv={classes.border__right}
         />
-        <InputRangeDates
+        {/* <InputRangeDates
           dataValue={getDetails}
           dataValueName="dates"
           ref={dates}
@@ -78,10 +81,13 @@ const SearchBar = (props) => {
           mainDiv={classes.border__right}
           nameId="dates"
           label={props.dates}
-        />
+        /> */}
+        <InputWrapper className={classes.border__right} icon={<DatesIcon />} left>
+          <ResponsiveDateTimePickers className={classes.inputTime} row />
+        </InputWrapper>
         <Input
-                dataValue={getDetails}
-                dataValueName="guests"
+          dataValue={getDetails}
+          dataValueName="guests"
           icon={<PeopleIcon />}
           type="text"
           ref={guests}

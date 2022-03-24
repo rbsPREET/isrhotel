@@ -44,8 +44,10 @@ const Select2 = forwardRef((props,ref) => {
   return (
     <Input
       ref={ref}
+      mainDiv={props.mainDiv}
       customWidth={props.customWidth}
       inBox={props.inBox}
+      className={props.className}
       getData={getData}
       value={chosenOption.name}
       onChangeOption={changeOptionHandler}

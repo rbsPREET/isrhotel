@@ -16,7 +16,7 @@ const SideBar = (props) => {
         </FlexRow>
         <hr />
         <Country customWidth="90%" inBox nameId="location" label="Location" />
-        <ResponsiveDateTimePickers />
+        <ResponsiveDateTimePickers column />
         <CardActions>
           {/*<Link to={`/:${props._id}}/order?rooms=${props.rooms}&guests=${props.guests}`}>*/}
           <Button
