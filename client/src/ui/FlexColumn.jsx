@@ -2,9 +2,10 @@ import classes from "../css/ui/flexPositions.module.css";
 
 const FlexColumn = (props) => {
   return (
-    <div
+    <div onClick={props.onClick}
       style={{
         display: "flex",
+        position:'relative',
         flexDirection: "column",
         width: `${props.customWidth && props.customWidth}%`,
       }}
