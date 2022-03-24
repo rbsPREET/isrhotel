@@ -1,23 +1,28 @@
 import { Button, CardActions } from "@mui/material";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ResponsiveDateTimePickers from "../../ui/ResponsiveDateTimePickers";
 import Country from "../Country";
 import Box from "../../ui/Box";
 import { Fragment, useState } from "react";
 import FlexRow from "../../ui/FlexRow";
 import FlexColumn from "../../ui/FlexColumn";
 import classes from "../../css/malls/SideBar.module.css";
-
+// Icons
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ResponsiveDateTimePickers from "../../ui/ResponsiveDateTimePickers";
+import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
 
 const SideBar = (props) => {
 
-   const [details, setDetails] = useState({
+  const [details, setDetails] = useState({
     location: '',
     dates: [],
     guests: {},
   });
-  
+
   const getDetails = (name, value) => {
     switch (name) {
       case "guests":
@@ -48,7 +53,7 @@ const SideBar = (props) => {
         break;
     }
   };
-  
+
   // Need to add opening hours to DB (Mall Model) or create 7 days and times dynamic
   const openingHoursArr = [
     { day: "Monday", time: "9AM - 5PM" },
@@ -69,7 +74,7 @@ const SideBar = (props) => {
             <h3>Book {props.hotelName} Hotel</h3>
           </FlexRow>
           <hr />
-          <Country dataValue={getDetails}  customWidth="90%" inBox nameId="location" label="Location" />
+          <Country dataValue={getDetails} customWidth="90%" inBox nameId="location" label="Location" />
           <ResponsiveDateTimePickers />
           <CardActions>
             {/*<Link to={`/:${props._id}}/order?rooms=${props.rooms}&guests=${props.guests}`}>*/}
@@ -102,6 +107,42 @@ const SideBar = (props) => {
                   </FlexRow>
                 )
               })}
+            </FlexColumn>
+          </CardActions>
+        </Box>
+
+        {/* Hotel Admin Card */}
+        <Box maxWidth="330px" marginTop={5}>
+          <FlexRow justifyBetween>
+            <FlexColumn wrap>
+              <p>Hotel Manager</p>
+              <span>temp temp</span>
+            </FlexColumn>
+            <img src={""} alt="userIcon" />
+          </FlexRow>
+          <hr />
+          <CardActions>
+            <FlexColumn customWidth={100}>
+              <div>
+                <LocalPhoneOutlinedIcon />
+                <span>052666666</span>
+              </div>
+              <div>
+                <EmailOutlinedIcon />
+                <span>email@email.com</span>
+              </div>
+              <div>
+                <FacebookIcon />
+                <span>Facebook</span>
+              </div>
+              <div>
+                <LinkedInIcon />
+                <span>Linkedin</span>
+              </div>
+              <button>
+                <SendOutlinedIcon />
+                Send Message
+              </button>
             </FlexColumn>
           </CardActions>
         </Box>
