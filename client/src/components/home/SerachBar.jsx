@@ -12,6 +12,9 @@ import { useEffect, useRef, useState } from "react";
 import Form from "../../ui/Form";
 import Section from "../../ui/Section";
 import { InputWrapper } from "../../ui/InputWrapper";
+import Transition from "react-transition-group/Transition";
+import GuestModal from "./GuestModal";
+import Guest from "./Guest";
 
 const SearchBar = (props) => {
   const location = useRef();
@@ -23,6 +26,12 @@ const SearchBar = (props) => {
     dates: dates.current,
     guests: guests.current,
   });
+
+  const [activeModal, setActiveModal] = useState(false);
+
+  const openModal = () => {
+    setActiveModal(true);
+  };
 
   const getDetails = (name, value) => {
     switch (name) {
@@ -55,6 +64,17 @@ const SearchBar = (props) => {
     }
   };
 
+  const modal = (
+    <Transition unmountOnExit in={activeModal} timeout={150}>
+      {(state) => (
+        <GuestModal
+          activeModal={state === "entered" && activeModal}
+          setActiveModal={setActiveModal}
+        />
+      )}
+    </Transition>
+  );
+
   useEffect(() => {
     console.log(details);
   }, [details]);
@@ -85,7 +105,7 @@ const SearchBar = (props) => {
         <InputWrapper className={classes.border__right} icon={<DatesIcon />} left>
           <ResponsiveDateTimePickers className={classes.inputTime} row />
         </InputWrapper>
-        <Input
+        {/* <Input
           dataValue={getDetails}
           dataValueName="guests"
           icon={<PeopleIcon />}
@@ -93,8 +113,9 @@ const SearchBar = (props) => {
           ref={guests}
           nameId="guests"
           label={props.guests}
-        />
-
+        /> */}
+       <Guest icon={<PeopleIcon />}/>
+      
         <SearchBarButton>Book Now</SearchBarButton>
       </Form>
     </Section>
