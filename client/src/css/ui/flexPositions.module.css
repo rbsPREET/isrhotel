@@ -2,6 +2,10 @@
   justify-content: center;
 }
 
+.justifyBetween {
+  justify-content: space-between;
+}
+
 .centerColumn {
   align-items: center;
 }
