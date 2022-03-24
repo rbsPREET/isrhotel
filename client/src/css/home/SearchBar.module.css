@@ -17,8 +17,15 @@
   width: 80%;
 }
 .border__right {
+  margin-left: 20px;
+  margin-right: 10px;
   border-right: 1px solid #0000000d;
 }
 .rs-icon {
   display: none !important;
+}
+
+
+.inputTime div fieldset{
+  border: unset;
 }

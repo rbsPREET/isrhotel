@@ -10,6 +10,7 @@ const Country = forwardRef((props,ref) => {
   return (
     <Select2
     ref={ref}
+    mainDiv={props.mainDiv}
     customWidth={props.customWidth}
       inBox={props.inBox}
       noBorders={props.noBorders}

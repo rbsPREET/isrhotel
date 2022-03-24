@@ -58,7 +58,6 @@ const UserModal = (props) => {
             >
               <Input
                 ref={email}
-                dataValueName="Email"
                 className={classes.input}
                 nameId="email"
                 type="text"
@@ -70,7 +69,6 @@ const UserModal = (props) => {
                 className={classes.input}
                 nameId="password"
                 type="password"
-                dataValueName="Password"
                 label="Password"
               />
               <button>Login</button>
@@ -102,16 +100,12 @@ const UserModal = (props) => {
                 className={classes.input}
                 nameId="email"
                 type="text"
-                dataValueName="Email"
-
                 label="Email"
               />
               <Input
                 ref={password}
                 className={classes.input}
                 nameId="password"
-                dataValueName="Password"
-
                 type="password"
                 label="Password"
               />
@@ -120,8 +114,6 @@ const UserModal = (props) => {
                 className={classes.input}
                 nameId="confirm-password"
                 type="password"
-                dataValueName="Confirm Password"
-
                 label="Confirm Password"
               />
               <button>Register</button>

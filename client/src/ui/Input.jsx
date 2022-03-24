@@ -126,7 +126,7 @@ const Input = forwardRef((props,ref) => {
                   {props.data.map((data) => (
                     <li
                       onClick={props.onClickOption}
-                      key={data.id}
+                      key={data._id}
                       value={data.name}
                       className={classes.li}
                     >
