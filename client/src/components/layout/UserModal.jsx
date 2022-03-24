@@ -1,6 +1,6 @@
 import Modal from "../../ui/Modal";
 import classes from "../../css/layout/UserModal.module.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { storeUser, loginHandler as loginUser } from "../../store/user";
 import Input from "../../ui/Input";
@@ -9,9 +9,12 @@ import Form from "../../ui/Form";
 const UserModal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
-  const [loginEmail, setLoginEmail] = useState("")
-  const [loginPassword, setLoginPassword] = useState("")
-
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const email = useRef();
+  const password = useRef();
+  const verifyPSW = useRef();
+  
   const registerHandler = () => {
     distpach(
       storeUser({
@@ -25,7 +28,6 @@ const UserModal = (props) => {
     );
     setIsLogin(!isLogin);
   };
-
 
   const loginHandler = (e) => {
     e.preventDefault();
@@ -57,6 +59,7 @@ const UserModal = (props) => {
               className={classes.formContent}
             >
               <Input
+                ref={email}
                 onChange={setLoginEmail}
                 className={classes.input}
                 nameId="email"
@@ -65,6 +68,7 @@ const UserModal = (props) => {
                 length={3}
               />
               <Input
+                ref={password}
                 onChange={setLoginPassword}
                 className={classes.input}
                 nameId="password"
@@ -96,18 +100,21 @@ const UserModal = (props) => {
           <div>
             <form onSubmit={registerHandler} className={classes.formContent}>
               <Input
+                ref={email}
                 className={classes.input}
                 nameId="email"
                 type="text"
                 label="Email"
               />
               <Input
+                ref={password}
                 className={classes.input}
                 nameId="password"
                 type="password"
                 label="Password"
               />
               <Input
+                ref={verifyPSW}
                 className={classes.input}
                 nameId="confirm-password"
                 type="password"
