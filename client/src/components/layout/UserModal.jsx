@@ -9,8 +9,6 @@ import Form from "../../ui/Form";
 const UserModal = (props) => {
   const [isLogin, setIsLogin] = useState(true);
   const distpach = useDispatch();
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
   const email = useRef();
   const password = useRef();
   const verifyPSW = useRef();
@@ -60,7 +58,7 @@ const UserModal = (props) => {
             >
               <Input
                 ref={email}
-                onChange={setLoginEmail}
+                dataValueName="Email"
                 className={classes.input}
                 nameId="email"
                 type="text"
@@ -69,10 +67,10 @@ const UserModal = (props) => {
               />
               <Input
                 ref={password}
-                onChange={setLoginPassword}
                 className={classes.input}
                 nameId="password"
                 type="password"
+                dataValueName="Password"
                 label="Password"
               />
               <button>Login</button>
@@ -104,12 +102,16 @@ const UserModal = (props) => {
                 className={classes.input}
                 nameId="email"
                 type="text"
+                dataValueName="Email"
+
                 label="Email"
               />
               <Input
                 ref={password}
                 className={classes.input}
                 nameId="password"
+                dataValueName="Password"
+
                 type="password"
                 label="Password"
               />
@@ -118,6 +120,8 @@ const UserModal = (props) => {
                 className={classes.input}
                 nameId="confirm-password"
                 type="password"
+                dataValueName="Confirm Password"
+
                 label="Confirm Password"
               />
               <button>Register</button>

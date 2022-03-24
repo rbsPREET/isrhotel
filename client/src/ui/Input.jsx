@@ -74,7 +74,7 @@ const Input = forwardRef((props,ref) => {
                 id={props.nameId}
                 onChange={(e) => {
                   inputChangeHandler(e);
-                  props.dataValue(props.dataValueName,e.target.value);
+                  props.dataValue && props.dataValue(props.dataValueName,e.target.value);
                 }}
                 onBlur={resetLabelHandler}
                 value={props.value}
