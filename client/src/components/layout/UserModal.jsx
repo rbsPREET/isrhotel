@@ -14,7 +14,7 @@ const UserModal = (props) => {
   const email = useRef();
   const password = useRef();
   const verifyPSW = useRef();
-  
+
   const registerHandler = () => {
     distpach(
       storeUser({
@@ -33,8 +33,8 @@ const UserModal = (props) => {
     e.preventDefault();
     distpach(
       loginUser({
-        email: loginEmail,
-        password: loginPassword,
+        email: email.current.value,
+        password: password.current.value,
       })
     );
   };

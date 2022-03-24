@@ -40,7 +40,7 @@ const store = new MongoDBStore({
 // app.set('trust proxy', 1)
 
 app.use(session({
-    genid: req => {
+    genid: () => {
         return uuidv4();
     },
     store: store,
@@ -87,7 +87,7 @@ app.use("/api/v1/rooms", roomRoute)
 app.use("/api/v1/malls", mallRoute)
 
 // Server
-const server = app.listen(process.env.PORT || 5001, () => {
+ app.listen(process.env.PORT || 5001, () => {
     console.log(`The server is running on port ${process.env.PORT}`)
 })
 
