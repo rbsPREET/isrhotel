@@ -2,18 +2,19 @@ import classes from "../css/ui/flexPositions.module.css";
 
 const FlexColumn = (props) => {
   return (
-    <div onClick={props.onClick}
+    <div
+      onClick={props.onClick}
       style={{
         display: "flex",
-        position:'relative',
+        position: `${props.relative && "relative"}`,
         flexDirection: "column",
         width: `${props.customWidth && props.customWidth}%`,
       }}
       className={`${props.className ? props.className : ""} ${
         props.center ? classes.centerColumn : ""
-      } ${
-        props.verticalCenter ? classes.justifyCenter : ""
-      } ${props.fullSize ? classes.fullSize : ""}`}
+      } ${props.verticalCenter ? classes.justifyCenter : ""} ${
+        props.fullSize ? classes.fullSize : ""
+      }`}
     >
       {props.children}
     </div>

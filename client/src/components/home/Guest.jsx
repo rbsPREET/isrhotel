@@ -26,7 +26,7 @@ const Guest = (props) => {
   );
   return (
     <InputWrapper icon={props.icon} mainDiv={props.mainDiv}>
-      <FlexColumn onClick={()=>setActiveModal(!activeModal)}>
+      <FlexColumn relative onClick={()=>setActiveModal(!activeModal)}>
       {modal}
         <h4>1 Guest</h4>
         <p>Click to add more</p>
