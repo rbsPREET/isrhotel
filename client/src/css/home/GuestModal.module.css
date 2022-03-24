@@ -14,6 +14,7 @@
 }
 .icon{
     margin: 0 5px;
+    cursor: pointer;
     background: #c9c6c626;
     border: 1px solid #c9c6c661;
     border-radius: 30px;
