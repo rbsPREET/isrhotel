@@ -1,5 +1,6 @@
 import classes from "../../css/layout/Navbar.module.css";
 import { KeyboardArrowDown } from "@material-ui/icons";
+import LoginIcon from '@mui/icons-material/Login';
 import DropDownWrapper from "../../ui/DropDownWrapper";
 import { useState } from "react";
 import DropDownLinks from "../../ui/DropDownLinks";
@@ -145,6 +146,7 @@ const Navbar = () => {
               onClick={openModal}
               className={classes.loginButton}
             >
+              <LoginIcon style={{ marginRight: "5px" }} />
               Login
             </button>
           }
