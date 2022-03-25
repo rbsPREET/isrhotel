@@ -1,0 +1,50 @@
+.container {
+
+}
+
+.userLogo {
+    height: 70px;
+    width: 70px;
+    object-fit: contain;
+}
+
+.userDetails {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user_name {
+    padding-top: 10px;
+    padding-bottom: 7px;
+    font-weight: 700;
+    font-size: large;
+}
+
+.user_createdAt {
+    margin-bottom: 20px;
+    color: gray;
+}
+
+.user_description {
+    margin-bottom: 20px;
+}
+
+.img_item {
+    margin-bottom: 20px;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+}
+
+.thumbup_icon {
+    cursor: pointer;
+}
+
+.stars {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+}

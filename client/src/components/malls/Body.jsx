@@ -153,6 +153,7 @@ const Body = (props) => {
         </div>
         {/* Left side => Comments */}
         <FlexColumn customWidth={100}>
+          <h1 className={classes.title}>Reviews</h1>
           <CommentsList comments={mallComments} />
         </FlexColumn>
       </div>

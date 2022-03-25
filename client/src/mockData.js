@@ -113,7 +113,7 @@ export const mallsData = [{
 export const mallComments = [{
     "_id": "1",
     "username": "john55",
-    "userLogo": "user.logo",
+    "userLogo": "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
     "createdAt": "March 2022",
     "description": "Morbi velit eros, sagittis in facilisis non, rhoncus et erat.",
     "img": ["imgLink"],
@@ -123,7 +123,7 @@ export const mallComments = [{
 {
     "_id": "2",
     "username": "elonmusk2",
-    "userLogo": "user.logo",
+    "userLogo": "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
     "createdAt": "June 2022",
     "description": "Phasellus efficitur tortor aliquam turpis lobortis, a tristique nisl porttitor.",
     "img": ["imgLink"],
@@ -133,7 +133,7 @@ export const mallComments = [{
 {
     "_id": "3",
     "username": "david",
-    "userLogo": "user.logo",
+    "userLogo": "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png",
     "createdAt": "May 2021",
     "description": "Aenean ultrices pretium congue. Sed tempor ligula eget tempor convallis.",
     "img": ["imgLink"],
