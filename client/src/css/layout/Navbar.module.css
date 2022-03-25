@@ -1,6 +1,6 @@
 .container {
   height: 70px;
-  background-color: #f5ebebed;
+  background-color: white;
 }
 
 .wrapper {
@@ -50,6 +50,8 @@ ul > li.menuItem {
 
 .loginButton {
   background-color: #373991;
+  display: flex;
+  justify-content: space-between;
   color: #efefef;
   border: none;
   text-align: center;
