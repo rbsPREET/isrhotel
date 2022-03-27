@@ -2,7 +2,8 @@
   min-height: 620px;
   display: flex;
   z-index: 0;
-  overflow: hidden;
+  overflow: clip;
+  overflow-y: visible;
   background-size: cover !important;
   background-position: center !important;
   background-image: url("/public/assets/images/header-home.svg");
