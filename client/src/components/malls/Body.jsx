@@ -10,6 +10,10 @@ import LabTabs from "../../ui/LabTabs";
 import SideBar from "./SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { AddOrUpdateMallReviewsStars } from "../../store/mall";
+import FlexColumn from "../../ui/FlexColumn";
+
+import { mallComments } from "../../mockData";
+import CommentsList from "./CommentsList";
 
 const Body = (props) => {
   const userId = useSelector((state) => state.user._id);
@@ -147,6 +151,11 @@ const Body = (props) => {
             ))}
           </FlexRow>
         </div>
+        {/* Left side => Comments */}
+        <FlexColumn customWidth={100}>
+          <h1 className={classes.title}>Reviews</h1>
+          <CommentsList comments={mallComments} />
+        </FlexColumn>
       </div>
       {/* Right side */}
       <div className={classes.right}>
