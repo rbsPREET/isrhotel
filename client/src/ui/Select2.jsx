@@ -1,8 +1,7 @@
 import { forwardRef, useEffect, useState } from "react";
 import Input from "./Input";
 import { useDispatch } from "react-redux";
-import { da } from "date-fns/locale";
-const Select2 = forwardRef((props,ref) => {
+const Select2 = forwardRef((props, ref) => {
   const dispatch = useDispatch();
   const [options, setOptionsData] = useState([]);
   const [chosenOption, setChosenOption] = useState({
@@ -21,7 +20,7 @@ const Select2 = forwardRef((props,ref) => {
         name: e.target.value,
       };
     });
-    props.data(chosenOption)
+    props.data(chosenOption);
   };
 
   const chosenOptionHandler = (e) => {
@@ -38,8 +37,8 @@ const Select2 = forwardRef((props,ref) => {
 
   useEffect(() => {
     dispatch(props.data);
-    props.dataValue(props.dataValueName,chosenOption.name)
-  }, [dispatch,chosenOption]);
+    props.dataValue(props.dataValueName, chosenOption.name);
+  }, [dispatch, chosenOption, props.dataValueName]);
 
   return (
     <Input

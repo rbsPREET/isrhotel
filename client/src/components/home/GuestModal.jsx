@@ -3,14 +3,11 @@ import FlexColumn from "../../ui/FlexColumn";
 import FlexRow from "../../ui/FlexRow";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const GuestModal = (props) => {
-  const [amount, setAmount] = useState({
-    adults: 1,
-    childrens: 0,
-    infants: 0,
-  });
+  const { amount } = props;
+  
   const increaseHandler = (amountName) => {
     let newAmount = {};
     Object.entries(amount).filter((a) => {
@@ -18,7 +15,7 @@ const GuestModal = (props) => {
         newAmount[`${amountName}`] = a[1] + 1;
       }
     });
-    setAmount((prev) => {
+    props.setAmount((prev) => {
       return {
         ...prev,
         ...newAmount,
@@ -36,7 +33,7 @@ const GuestModal = (props) => {
         newAmount[`${amountName}`] = a[1] - 1;
       }
     });
-    setAmount((prev) => {
+    props.setAmount((prev) => {
       return {
         ...prev,
         ...newAmount,

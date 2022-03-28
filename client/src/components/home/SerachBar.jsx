@@ -3,7 +3,6 @@ import classes from "../../css/home/SearchBar.module.css";
 import LocationIcon from "@material-ui/icons/LocationOnOutlined";
 import DatesIcon from "@material-ui/icons/DateRangeOutlined";
 import PeopleIcon from "@material-ui/icons/EmojiPeopleOutlined";
-import Input from "../../ui/Input";
 import ResponsiveDateTimePickers from "../../ui/ResponsiveDateTimePickers";
 
 import Country from "../Country";
@@ -93,29 +92,15 @@ const SearchBar = (props) => {
           nameId="location"
           mainDiv={classes.border__right}
         />
-        {/* <InputRangeDates
-          dataValue={getDetails}
-          dataValueName="dates"
-          ref={dates}
+        <InputWrapper
+          className={classes.border__right}
           icon={<DatesIcon />}
-          mainDiv={classes.border__right}
-          nameId="dates"
-          label={props.dates}
-        /> */}
-        <InputWrapper className={classes.border__right} icon={<DatesIcon />} left>
+          left
+        >
           <ResponsiveDateTimePickers className={classes.inputTime} row />
         </InputWrapper>
-        {/* <Input
-          dataValue={getDetails}
-          dataValueName="guests"
-          icon={<PeopleIcon />}
-          type="text"
-          ref={guests}
-          nameId="guests"
-          label={props.guests}
-        /> */}
-       <Guest icon={<PeopleIcon />}/>
-      
+        <Guest icon={<PeopleIcon />} />
+
         <SearchBarButton>Book Now</SearchBarButton>
       </Form>
     </Section>
