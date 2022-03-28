@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Transition from "react-transition-group/Transition";
 import FlexColumn from "../../ui/FlexColumn";
 import FlexRow from "../../ui/FlexRow";
@@ -7,6 +7,7 @@ import GuestModal from "./GuestModal";
 import classes from "../../css/home/Guest.module.css";
 
 const Guest = (props) => {
+  const guestRef = useRef();
   const [activeModal, setActiveModal] = useState(false);
   const [guestAmount, setGuestsAmount] = useState(1);
   const [amount, setAmount] = useState({
@@ -15,8 +16,8 @@ const Guest = (props) => {
     infants: 0,
   });
 
-  const openModal = () => {
-    setActiveModal(!activeModal);
+  const guestModalHandler = (e) => {
+    console.log(e.target);
   };
 
   const modal = (
@@ -35,7 +36,7 @@ const Guest = (props) => {
   return (
     <InputWrapper icon={props.icon} mainDiv={classes.mainDiv}>
       {modal}
-      <FlexColumn relative onClick={openModal}>
+      <FlexColumn relative onClick={(e) => setActiveModal(!activeModal)}>
         <h4>
           {guestAmount} {guestAmount > 1 ? "Guests" : "Guest"}
         </h4>

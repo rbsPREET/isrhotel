@@ -12,7 +12,6 @@ const Modal = (props) => {
 
   const { setActiveModal, activeModal } = props;
 
-  
   const escPress = useCallback(
     (e) => {
       if (e.key === "Escape" && activeModal) {
@@ -31,17 +30,19 @@ const Modal = (props) => {
     <div
       ref={modalRef}
       onClick={closeModal}
-      className={classes.modalBackground}
+      className={`${props.modalBackground && classes.modalBackground}`}
     >
-      <div className={classes.wrapper}>
-        {props.changed ? props.isLogin : props.isNotLogin}
-        <button
-          className={classes.closeModal}
-          onClick={() => setActiveModal(!activeModal)}
-          aria-label="Close"
-        >
-          &#10005;
-        </button>
+      <div className={`${props.className} ${props.defaultWrapper && classes.wrapper}`}>
+        {props.changed ? props.isChanged : props.children}
+        {props.modalBackground && (
+          <button
+            className={classes.closeModal}
+            onClick={() => setActiveModal(!activeModal)}
+            aria-label="Close"
+          >
+            &#10005;
+          </button>
+        )}
       </div>
     </div>
   );

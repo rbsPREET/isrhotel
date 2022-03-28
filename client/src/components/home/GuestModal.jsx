@@ -3,11 +3,12 @@ import FlexColumn from "../../ui/FlexColumn";
 import FlexRow from "../../ui/FlexRow";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { useEffect } from "react";
+import { forwardRef, useEffect } from "react";
+import Modal from "../../ui/Modal";
 
 const GuestModal = (props) => {
   const { amount } = props;
-  
+
   const increaseHandler = (amountName) => {
     let newAmount = {};
     Object.entries(amount).filter((a) => {
@@ -49,7 +50,11 @@ const GuestModal = (props) => {
     };
   }, [increaseHandler, decreaseHandler]);
   return (
-    <div className={classes.wrapper}>
+    <Modal
+      setActiveModal={props.setActiveModal}
+      activateModal={props.activeModal}
+      className={classes.wrapper}
+    >
       <FlexRow justifyBetween>
         <FlexColumn>
           <h4>Adults</h4>
@@ -101,7 +106,7 @@ const GuestModal = (props) => {
           />
         </FlexRow>
       </FlexRow>
-    </div>
+    </Modal>
   );
 };
 

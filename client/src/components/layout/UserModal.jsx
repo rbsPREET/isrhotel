@@ -126,12 +126,15 @@ const UserModal = (props) => {
 
   return (
     <Modal
+      defaultWrapper
+      modalBackground
       changed={isLogin}
       activeModal={props.activeModal}
       setActiveModal={props.setActiveModal}
-      isLogin={SideisLogin}
-      isNotLogin={SideisNotLogin}
-    />
+      isChanged={SideisLogin}
+    >
+      {SideisNotLogin}
+    </Modal>
   );
 };
 
