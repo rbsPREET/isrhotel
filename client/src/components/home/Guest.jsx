@@ -35,7 +35,8 @@ const Guest = (props) => {
         <h4>
           {guestAmount} {guestAmount > 1 ? "Guests" : "Guest"}
         </h4>
-        {guestAmount == 1 && <p>Click to add more</p>}
+        {/* {guestAmount == 1 && <p>Click to add more</p>} */}
+        <p>Click to add more</p>
       </FlexColumn>
     </InputWrapper>
   );

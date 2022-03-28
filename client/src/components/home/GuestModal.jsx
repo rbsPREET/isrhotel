@@ -26,13 +26,31 @@ const GuestModal = (props) => {
     });
   };
 
+  const decreaseHandler = (amountName) => {
+    let newAmount = {};
+    Object.entries(amount).filter((a) => {
+      if (a[0] === amountName) {
+        if ((a[1] === 1 && a[0] === "adults") || a[1] === 0) {
+          return;
+        }
+        newAmount[`${amountName}`] = a[1] - 1;
+      }
+    });
+    setAmount((prev) => {
+      return {
+        ...prev,
+        ...newAmount,
+      };
+    });
+  };
+
   useEffect(() => {
     let newAmount = Object.values(amount).reduce((a, b) => +a + +b);
     props.guestValue(newAmount);
     return () => {
       newAmount = 0;
     };
-  }, [increaseHandler]);
+  }, [increaseHandler, decreaseHandler]);
   return (
     <div className={classes.wrapper}>
       <FlexRow justifyBetween>
@@ -46,7 +64,10 @@ const GuestModal = (props) => {
             className={classes.icon}
           />
           <p className={classes.amount}>{amount.adults}</p>
-          <RemoveIcon className={classes.icon} />
+          <RemoveIcon
+            onClick={decreaseHandler.bind(null, "adults")}
+            className={classes.icon}
+          />
         </FlexRow>
       </FlexRow>
       <FlexRow className={classes.mt24} justifyBetween>
@@ -60,7 +81,10 @@ const GuestModal = (props) => {
             className={classes.icon}
           />
           <p className={classes.amount}>{amount.childrens}</p>
-          <RemoveIcon className={classes.icon} />
+          <RemoveIcon
+            onClick={decreaseHandler.bind(null, "childrens")}
+            className={classes.icon}
+          />
         </FlexRow>
       </FlexRow>
       <FlexRow className={classes.mt24} justifyBetween>
@@ -74,7 +98,10 @@ const GuestModal = (props) => {
             className={classes.icon}
           />
           <p className={classes.amount}>{amount.infants}</p>
-          <RemoveIcon className={classes.icon} />
+          <RemoveIcon
+            onClick={decreaseHandler.bind(null, "infants")}
+            className={classes.icon}
+          />
         </FlexRow>
       </FlexRow>
     </div>
