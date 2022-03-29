@@ -140,7 +140,7 @@ const Navbar = () => {
         {/* Check if User is logged in to display Login/Register Modal / if logged in => display User Icon and Name*/}
         <div className={classes.right}>
           {state.isLoggedIn ?
-            <AccountMenu username={state.currentUsername || "User"} />
+            <AccountMenu user={state.user || "User"} />
             :
             <button
               onClick={openModal}

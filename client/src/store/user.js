@@ -8,19 +8,23 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         _id: null,
+        username: null,
         isLoggedIn: false,
     },
     reducers: {
         checkAuthenticated(state, action) {
             state._id = action.payload._id;
+            state.username = action.payload.username;
             state.isLoggedIn = action.payload.isLoggedIn;
         },
         login(state, action) {
             state._id = action.payload._id;
+            state.username = action.payload.username;
             state.isLoggedIn = action.payload.isLoggedIn;
         },
         logout(state, action) {
             state._id = null;
+            state.username = null;
             state.isLoggedIn = false;
         },
     }
@@ -39,6 +43,7 @@ export const loginHandler = (data) => {
             const user = await sendRequest();
             dispatch(userActions.login({
                 _id: user.id,
+                username: "TempUser", // will add getUser handler to get logged in user details
                 isLoggedIn: true,
             }))
         } catch (err) {
@@ -47,8 +52,6 @@ export const loginHandler = (data) => {
         }
     }
 };
-
-
 
 export const logoutHandler = (id) => {
     return async (dispatch) => {
@@ -60,6 +63,7 @@ export const logoutHandler = (id) => {
         }
         try {
             await sendRequest();
+
             dispatch(userActions.logout());
         } catch (err) {
             const msg = err.message.split('status code')
@@ -67,8 +71,6 @@ export const logoutHandler = (id) => {
         }
     }
 };
-
-
 
 export const storeUser = (data) => {
     return async () => {
@@ -88,7 +90,6 @@ export const storeUser = (data) => {
     }
 }
 
-
 export const checkIfLoggedIn = (id) => {
     return async (dispatch) => {
         const sendRequest = async () => {
@@ -104,6 +105,7 @@ export const checkIfLoggedIn = (id) => {
             const data = await sendRequest();
             dispatch(userActions.checkAuthenticated({
                 isLoggedIn: data.success,
+                username: data.data.user.username,
                 _id: data.data.user._id,
             }))
         } catch (err) {
