@@ -105,7 +105,7 @@ export const checkIfLoggedIn = (id) => {
             const data = await sendRequest();
             dispatch(userActions.checkAuthenticated({
                 isLoggedIn: data.success,
-                username: data.data.user.username,
+                username: "TempUser",
                 _id: data.data.user._id,
             }))
         } catch (err) {

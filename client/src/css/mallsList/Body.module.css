@@ -1,0 +1,28 @@
+.container {
+   display: flex;
+   width: 70vw;
+   height: 100vh;
+   margin: 50px auto;
+}
+
+.left {
+    flex: 5;
+    display: flex;
+}
+
+.mid {
+    flex: 1;
+}
+
+.right {
+    flex: 2;
+    display: flex;
+}
+
+.title {
+    
+}
+
+.subtitle {
+
+}

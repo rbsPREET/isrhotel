@@ -6,6 +6,7 @@
   margin: 0 10px;
   position: relative;
   border-radius: 15px;
+  cursor: pointer;
 }
 
 .backgroundImage {
