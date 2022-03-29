@@ -21,16 +21,17 @@ const reducers = combineReducers({
 
 const persisteConfig = {
     key: 'root',
-    storage:storageSession,
-    transforms:[
-        expireReducer('user',{
+    storage: storageSession,
+    transforms: [
+        expireReducer('user', {
             persistedAtKey: '__persisted_at',
             // (Required) Seconds after which store will be expired
             expireSeconds: 86400, //after day
             // (Optional) State to be used for resetting e.g. provide initial reducer state
             expiredState: {
-                _id:null,
-                isLoggedIn:false
+                _id: null,
+                username: false,
+                isLoggedIn: false,
             },
             // (Optional) Use it if you don't want to manually set the time in the reducer i.e. at `persistedAtKey` 
             // and want the store to  be automatically expired if the record is not updated in the `expireSeconds` time

@@ -41,7 +41,7 @@ export default function AccountMenu(props) {
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
                     >
-                        {props.username} {/* Will change to User Icon Img */}
+                        {state.username} {/* Will change to User Icon Img */}
                     </IconButton>
                 </Tooltip>
             </Box>
