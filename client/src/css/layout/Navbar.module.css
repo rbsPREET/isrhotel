@@ -1,6 +1,10 @@
 .container {
   height: 70px;
   background-color: white;
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  width: 100%;
 }
 
 .wrapper {
