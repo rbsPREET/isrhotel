@@ -17,6 +17,7 @@ export default function BasicDateRangePicker(props) {
         value={value}
         onChange={(newValue) => {
           setValue(newValue);
+          props.dataValue(props.dataValueName, newValue);
         }}
         renderInput={(startProps, endProps) => (
           <React.Fragment>

@@ -14,23 +14,17 @@ import { InputWrapper } from "../../ui/InputWrapper";
 import Transition from "react-transition-group/Transition";
 import GuestModal from "./GuestModal";
 import Guest from "./Guest";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = (props) => {
   const location = useRef();
-  const dates = useRef();
-  const guests = useRef();
+  const navigate = useNavigate();
 
   const [details, setDetails] = useState({
     location: location.current,
-    dates: dates.current,
-    guests: guests.current,
+    dates: "",
+    guests: "",
   });
-
-  const [activeModal, setActiveModal] = useState(false);
-
-  const openModal = () => {
-    setActiveModal(true);
-  };
 
   const getDetails = (name, value) => {
     switch (name) {
@@ -51,10 +45,18 @@ const SearchBar = (props) => {
         });
         break;
       case "dates":
+        let dates = [];
+        value.map((val) => {
+          if (val) {
+            const oldVal = val.toString().split(" ");
+            const newVal = `${oldVal[1]}-${oldVal[2]}-${oldVal[3]}`;
+            dates.push(newVal);
+          }
+        });
         setDetails((prev) => {
           return {
             ...prev,
-            dates: value,
+            dates: dates,
           };
         });
         break;
@@ -62,17 +64,13 @@ const SearchBar = (props) => {
         break;
     }
   };
-
-  const modal = (
-    <Transition unmountOnExit in={activeModal} timeout={150}>
-      {(state) => (
-        <GuestModal
-          activeModal={state === "entered" && activeModal}
-          setActiveModal={setActiveModal}
-        />
-      )}
-    </Transition>
-  );
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    console.log(details);
+    navigate(
+      `../${details.location}/${details.dates[0]}+${details.dates[1]}/a${details.guests.adults}c${details.guests.childrens}i${details.guests.infants}`
+    );
+  };
 
   useEffect(() => {
     console.log(details);
@@ -80,7 +78,7 @@ const SearchBar = (props) => {
 
   return (
     <Section customWidth={props.customWidth} className={classes.container}>
-      <Form className={classes.wrapper}>
+      <Form onSubmit={onSubmitHandler} className={classes.wrapper}>
         <Country
           dataValue={getDetails}
           dataValueName="location"
@@ -97,9 +95,18 @@ const SearchBar = (props) => {
           icon={<DatesIcon />}
           left
         >
-          <ResponsiveDateTimePickers className={classes.inputTime} row />
+          <ResponsiveDateTimePickers
+            dataValue={getDetails}
+            dataValueName="dates"
+            className={classes.inputTime}
+            row
+          />
         </InputWrapper>
-        <Guest icon={<PeopleIcon />} />
+        <Guest
+          dataValue={getDetails}
+          dataValueName="guests"
+          icon={<PeopleIcon />}
+        />
 
         <SearchBarButton>Book Now</SearchBarButton>
       </Form>
