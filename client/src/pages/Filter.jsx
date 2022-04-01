@@ -11,7 +11,7 @@ const Filter = (props) => {
     <Fragment>
       <Section title="Filter" />
       <FlexColumn center>
-        <SearchBar dates="Dates" guests="Guests" customWidth={1320} />
+        <SearchBar customWidth={1320} />
         <FlexRow wrap customWidth={65}>
           <Cards
             borderRadius={false}

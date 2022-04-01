@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Transition from "react-transition-group/Transition";
 import FlexColumn from "../../ui/FlexColumn";
 import FlexRow from "../../ui/FlexRow";
@@ -7,7 +7,6 @@ import GuestModal from "./GuestModal";
 import classes from "../../css/home/Guest.module.css";
 
 const Guest = (props) => {
-  const guestRef = useRef();
   const [activeModal, setActiveModal] = useState(false);
   const [guestAmount, setGuestsAmount] = useState(1);
   const [amount, setAmount] = useState({
@@ -16,10 +15,9 @@ const Guest = (props) => {
     infants: 0,
   });
 
-  const guestModalHandler = (e) => {
-    console.log(e.target);
-  };
-
+  useEffect(() => {
+    props.dataValue(props.dataValueName, amount);
+  }, [amount]);
   const modal = (
     <Transition unmountOnExit in={activeModal} timeout={150}>
       {(state) =>
