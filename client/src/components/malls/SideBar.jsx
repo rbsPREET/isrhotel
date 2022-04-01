@@ -2,23 +2,23 @@ import { Button, CardActions } from "@mui/material";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import Country from "../Country";
 import Box from "../../ui/Box";
-import { Fragment, useState } from "react";
+import { Fragment, useState, useRef } from "react";
 import FlexRow from "../../ui/FlexRow";
 import FlexColumn from "../../ui/FlexColumn";
 import classes from "../../css/malls/SideBar.module.css";
 // Icons
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ResponsiveDateTimePickers from "../../ui/ResponsiveDateTimePickers";
-import LocalPhoneOutlinedIcon from '@mui/icons-material/LocalPhoneOutlined';
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import SendOutlinedIcon from '@mui/icons-material/SendOutlined';
+import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
 
 const SideBar = (props) => {
-
+  const countryRef = useRef();
   const [details, setDetails] = useState({
-    location: '',
+    location: "",
     dates: [],
     guests: {},
   });
@@ -63,19 +63,32 @@ const SideBar = (props) => {
     { day: "Friday", time: "9AM - 5PM" },
     { day: "Saturday", time: "9AM - 3PM" },
     { day: "Sunday", time: "Closed" },
-  ]
+  ];
   return (
     <>
       <Fragment>
         {/* Booking Card */}
         <Box maxWidth="330px">
-          <FlexRow wrap allCenter justifyCenter >
+          <FlexRow wrap allCenter justifyCenter>
             <EventAvailableIcon />
             <h3>Book {props.hotelName} Hotel</h3>
           </FlexRow>
           <hr />
-          <Country dataValue={getDetails} customWidth="90%" inBox nameId="location" label="Location" />
-          <ResponsiveDateTimePickers />
+          <Country
+            ref={countryRef}
+            dataValue={getDetails}
+            customWidth="90%"
+            inBox
+            dataValueName="location"
+            nameId="location"
+            label="Location"
+          />
+          <ResponsiveDateTimePickers
+            column
+            dataValue={getDetails}
+            dataValueName="dates"
+            className={classes.inputTime}
+          />
           <CardActions>
             {/*<Link to={`/:${props._id}}/order?rooms=${props.rooms}&guests=${props.guests}`}>*/}
             <Button
@@ -92,20 +105,24 @@ const SideBar = (props) => {
 
         {/* Opening Hours Card */}
         <Box maxWidth="330px" marginTop={5}>
-          <FlexRow wrap allCenter justifyCenter >
+          <FlexRow wrap allCenter justifyCenter>
             <AccessTimeIcon />
             <h3>Opening Hours</h3>
           </FlexRow>
           <hr />
           <CardActions>
             <FlexColumn customWidth={100}>
-              {openingHoursArr?.map(item => {
+              {openingHoursArr?.map((item) => {
                 return (
-                  <FlexRow key={item.day} justifyBetween className={classes.openingHours}>
+                  <FlexRow
+                    key={item.day}
+                    justifyBetween
+                    className={classes.openingHours}
+                  >
                     <span>{item.day}</span>
                     <span>{item.time}</span>
                   </FlexRow>
-                )
+                );
               })}
             </FlexColumn>
           </CardActions>
@@ -146,7 +163,7 @@ const SideBar = (props) => {
             </FlexColumn>
           </CardActions>
         </Box>
-      </Fragment >
+      </Fragment>
     </>
   );
 };
