@@ -67,14 +67,11 @@ const SearchBar = (props) => {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     console.log(details);
+    const guests = `a${details.guests.adults}c${details.guests.childrens}i${details.guests.infants}`;
     navigate(
-      `../${details.location}/${details.dates[0]}+${details.dates[1]}/a${details.guests.adults}c${details.guests.childrens}i${details.guests.infants}`
+      `../${details.location}/${details.dates[0]}+${details.dates[1]}/${guests}`
     );
   };
-
-  useEffect(() => {
-    console.log(details);
-  }, [details]);
 
   return (
     <Section customWidth={props.customWidth} className={classes.container}>
