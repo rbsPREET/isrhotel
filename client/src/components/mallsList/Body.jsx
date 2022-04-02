@@ -3,6 +3,7 @@ import FlexColumn from '../../ui/FlexColumn'
 import Section from '../../ui/Section'
 import classes from "../../css/mallsList/Body.module.css";
 import FlexRow from '../../ui/FlexRow';
+import { mallsData } from "../../mockData"
 
 const Body = () => {
     return (
@@ -24,14 +25,30 @@ const Body = () => {
                                 dropdown order filter
                             </div>
                         </FlexRow>
-                        <div>
-                            Mall1
-                        </div>
-                        <div>
-                            Mall2
-                        </div>
+                        {mallsData.map((mall) => {
+                            return (
+                                <FlexRow fullSize justifyBetween className={classes.mall_container}>
+                                    <div>
+                                        <img src={mall.img} alt="img" style={{ width: "240px", height: "220px" }} />
+                                    </div>
+                                    <FlexColumn className={classes.mall_section}>
+                                        <div key={mall.description}>
+                                            {mall.title}
+                                            <div>
+                                                {mall.address}, {mall.city}
+                                            </div>
+                                            <div>
+                                                {mall.stars} (10 reviews)
+                                            </div>
+                                        </div>
+                                    </FlexColumn>
+                                    <div className={classes.heart}>
+                                        Heart Icon
+                                    </div>
+                                </FlexRow>
+                            )
+                        })}
                     </FlexColumn>
-                    <FlexColumn fullSize className={classes.mid} />
                     {/* Filters */}
                     <FlexColumn fullSize className={classes.right}>
                         <div>

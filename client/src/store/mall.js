@@ -67,6 +67,8 @@ export const GetMall = (props) => {
     }
 }
 
+// TODO: GetMalls - `http://localhost:5000/api/v1/malls?city=${props.city}`
+
 export const AddOrUpdateMallReviewsStars = (data) => {
     return async (dispatch) => {
         const sendRequest = async () => {
