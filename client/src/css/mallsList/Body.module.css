@@ -1,12 +1,12 @@
 .container {
-   display: flex;
-   width: 70vw;
-   height: 100vh;
-   margin: 50px auto;
+    display: flex;
+    width: 70vw;
+    height: 100%;
+    margin: 50px auto;
 }
 
 .left {
-    flex: 5;
+    flex: 3;
     display: flex;
 }
 
@@ -15,14 +15,28 @@
 }
 
 .right {
-    flex: 2;
+    flex: 1;
     display: flex;
 }
 
-.title {
-    
+.title {}
+
+.subtitle {}
+
+.mall_container {
+    background-color: rgba(220, 220, 220, 0.10);
+    margin: 10px 0;
 }
 
-.subtitle {
+.mall_section {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+}
 
+.heart {
+    flex: 2;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
 }

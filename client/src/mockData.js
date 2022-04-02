@@ -25,7 +25,7 @@ export const mallsData = [{
     "title": "mall2",
     "description": "mall2",
     "stars": 5,
-    "address": "",
+    "address": "Rothschild 24",
     "city": "Tel Aviv",
 
     "img": [
@@ -48,7 +48,7 @@ export const mallsData = [{
     "title": "mall3",
     "description": "mall3",
     "stars": 5,
-    "address": "",
+    "address": "Rothschild 24",
     "city": "Tel Aviv",
     "img": [
         "https://storage.googleapis.com/static-content-hc/sites/default/files/cataloina_porto_doble_balcon2_2.jpg"
@@ -70,7 +70,7 @@ export const mallsData = [{
     "title": "mall4",
     "description": "mall4",
     "stars": 5,
-    "address": "",
+    "address": "Rothschild 24",
     "city": "Tel Aviv",
     "img": [
         "https://storage.googleapis.com/static-content-hc/sites/default/files/cataloina_porto_doble_balcon2_2.jpg"
@@ -92,7 +92,7 @@ export const mallsData = [{
     "title": "mall5",
     "description": "mall5",
     "stars": 5,
-    "address": "",
+    "address": "Rothschild 24",
     "city": "Tel Aviv",
     "img": [
         "https://storage.googleapis.com/static-content-hc/sites/default/files/cataloina_porto_doble_balcon2_2.jpg"
