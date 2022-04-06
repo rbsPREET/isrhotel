@@ -11,15 +11,12 @@ import { useEffect, useRef, useState } from "react";
 import Form from "../../ui/Form";
 import Section from "../../ui/Section";
 import { InputWrapper } from "../../ui/InputWrapper";
-import Transition from "react-transition-group/Transition";
-import GuestModal from "./GuestModal";
 import Guest from "./Guest";
 import { useNavigate } from "react-router-dom";
 
 const SearchBar = (props) => {
   const location = useRef();
   const navigate = useNavigate();
-
   const [details, setDetails] = useState({
     location: location.current,
     dates: "",
@@ -49,7 +46,7 @@ const SearchBar = (props) => {
         value.map((val) => {
           if (val) {
             const oldVal = val.toString().split(" ");
-            const newVal = `${oldVal[1]}-${oldVal[2]}-${oldVal[3]}`;
+            const newVal = `${oldVal[3]}-${oldVal[2]}-${oldVal[1]}`;
             dates.push(newVal);
           }
         });
@@ -64,14 +61,16 @@ const SearchBar = (props) => {
         break;
     }
   };
+  
   const onSubmitHandler = (e) => {
-    e.preventDefault();
     console.log(details);
+    e.preventDefault();
     const guests = `a${details.guests.adults}c${details.guests.childrens}i${details.guests.infants}`;
     navigate(
       `../${details.location}/${details.dates[0]}+${details.dates[1]}/${guests}`
     );
   };
+
 
   return (
     <Section customWidth={props.customWidth} className={classes.container}>

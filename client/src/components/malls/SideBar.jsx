@@ -7,7 +7,6 @@ import FlexRow from "../../ui/FlexRow";
 import FlexColumn from "../../ui/FlexColumn";
 import classes from "../../css/malls/SideBar.module.css";
 // Icons
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ResponsiveDateTimePickers from "../../ui/ResponsiveDateTimePickers";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -55,15 +54,15 @@ const SideBar = (props) => {
   };
 
   // Need to add opening hours to DB (Mall Model) or create 7 days and times dynamic
-  const openingHoursArr = [
-    { day: "Monday", time: "9AM - 5PM" },
-    { day: "Tuesday", time: "9AM - 5PM" },
-    { day: "Wednesday", time: "9AM - 5PM" },
-    { day: "Thursday ", time: "9AM - 5PM" },
-    { day: "Friday", time: "9AM - 5PM" },
-    { day: "Saturday", time: "9AM - 3PM" },
-    { day: "Sunday", time: "Closed" },
-  ];
+  // const openingHoursArr = [
+  //   { day: "Monday", time: "9AM - 5PM" },
+  //   { day: "Tuesday", time: "9AM - 5PM" },
+  //   { day: "Wednesday", time: "9AM - 5PM" },
+  //   { day: "Thursday ", time: "9AM - 5PM" },
+  //   { day: "Friday", time: "9AM - 5PM" },
+  //   { day: "Saturday", time: "9AM - 3PM" },
+  //   { day: "Sunday", time: "Closed" },
+  // ];
   return (
     <>
       <Fragment>
@@ -104,7 +103,7 @@ const SideBar = (props) => {
         </Box>
 
         {/* Opening Hours Card */}
-        <Box maxWidth="330px" marginTop={5}>
+        {/* <Box maxWidth="330px" marginTop={5}>
           <FlexRow wrap allCenter justifyCenter>
             <AccessTimeIcon />
             <h3>Opening Hours</h3>
@@ -126,7 +125,7 @@ const SideBar = (props) => {
               })}
             </FlexColumn>
           </CardActions>
-        </Box>
+        </Box> */}
 
         {/* Hotel Admin Card */}
         <Box maxWidth="330px" marginTop={5}>
